@@ -70,7 +70,7 @@ model Thermocline_Insulation_v3 "Thermocline Insulation subpackage"
   Data.Geometry geometry annotation (Dialog(group="Geometry"),Placement(transformation(
           extent={{-98,78},{-78,98}})));
 
-          parameter SI.Temperature T_Init = 120+273.15 "Initial temperature of thermocline medium and wall";
+  parameter SI.Temperature T_Init = 35+273.15 "Initial temperature of thermocline medium and wall";
 equation
   connect(simpleWall.port_b, thermocline_fluidprops_heaters_newHC_120C.heatPorts[
     :, 1]) annotation (Line(points={{-40,2},{-34,2},{-34,3},{-28.56,3}},

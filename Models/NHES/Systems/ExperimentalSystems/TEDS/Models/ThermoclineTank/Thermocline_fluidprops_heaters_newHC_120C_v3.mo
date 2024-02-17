@@ -9,10 +9,10 @@ model Thermocline_fluidprops_heaters_newHC_120C_v3
       choicesAllMatching=true);
 
 //Tank Parameters
-parameter SI.Length Radius_Tank=7.3 "Radius of the thermocline tank [m]";
-parameter Real Porosity=0.25 "Porosity in the tank";
+parameter SI.Length Radius_Tank=0.438 "Radius of the thermocline tank [m]";
+parameter Real Porosity=0.50 "Porosity in the tank";
 parameter SI.Area XS_fluid = Porosity*(Radius_Tank^2.0)*Modelica.Constants.pi "Cross Sectional Area seen by the fluid at each axial location";
-parameter SI.Length Height_Tank = 14.6 "Tank Height [m]";
+parameter SI.Length Height_Tank = 4.435 "Tank Height [m]";
 
 //Discretization
 parameter Integer nodes=200 "Number of axial nodes";
@@ -52,7 +52,7 @@ SI.Density fluid_density[nodes] = Medium.density(mediums.state);
 SI.Length Sr "Heat Transfer Surface Area of rocks per unit length of tank [m]";
 parameter Real fs=3.0 "Surface Shape Factor, between 2 and 3 
 depending rocks packing scheme";
-parameter SI.Temperature T_Init = 120+273.15 "Initial temperature of thermocline medium and wall";
+parameter SI.Temperature T_Init = 40+273.15 "Initial temperature of thermocline medium and wall";
 
 SI.Temperature T_inlet_cold;
 SI.Temperature T_inlet_hot;

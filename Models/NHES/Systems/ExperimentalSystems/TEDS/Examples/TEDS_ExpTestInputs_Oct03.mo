@@ -1,5 +1,5 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Examples;
-model TEDS_ExpTestInputs
+model TEDS_ExpTestInputs_Oct03
   "Test designed to ensure the TEDS loop can operate in all modes."
 
   parameter Real FV_opening=0.00250;
@@ -87,9 +87,9 @@ model TEDS_ExpTestInputs
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
           dp_nominal=700, m_flow_nominal=0.84))
                     annotation (Placement(transformation(
-        extent={{6,6},{-6,-6}},
+        extent={{5,5},{-5,-5}},
         rotation=0,
-        origin={206,-144})));
+        origin={205,-145})));
   TRANSFORM.Fluid.Sensors.MassFlowRate m_thot(redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
@@ -115,7 +115,7 @@ model TEDS_ExpTestInputs
     allowFlowReversal=true,
     m_flow_start=1e-2,
     dp_nominal=3000,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
         extent={{-6,6},{6,-6}},
         rotation=-90,
         origin={84,66})));
@@ -124,7 +124,7 @@ model TEDS_ExpTestInputs
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     allowFlowReversal=true,
     dp_nominal=3000,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=-90,
         origin={176,66})));
@@ -133,7 +133,7 @@ model TEDS_ExpTestInputs
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     allowFlowReversal=true,
     dp_nominal=3000,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=180,
         origin={56,-106})));
@@ -142,7 +142,7 @@ model TEDS_ExpTestInputs
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     allowFlowReversal=true,
     dp_nominal=3000,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=-90,
         origin={174,-130})));
@@ -176,7 +176,7 @@ model TEDS_ExpTestInputs
     allowFlowReversal=true,
     m_flow_start=0.41,
     dp_nominal=3000,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
         extent={{-6,6},{6,-6}},
         rotation=0,
         origin={-90,-146})));
@@ -186,7 +186,7 @@ model TEDS_ExpTestInputs
         extent={{9,-8},{-9,8}},
         rotation=270,
         origin={-103,-98})));
-  ControlSystems.Control_System_TEDS_ExpTest_Oct2024
+  ControlSystems.Control_System_TEDS_ExpTest_Oct2024_PV012toPV009
     control_System_Therminol_4_element_all_modes_ExpTest3_1(T_hot_design=523.15)
     annotation (Placement(transformation(extent={{0,154},{40,190}})));
   BaseClasses_1.SignalSubBus_ActuatorInput Sen
@@ -349,7 +349,7 @@ model TEDS_ExpTestInputs
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     allowFlowReversal=true,
     dp_nominal=3000,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
         rotation=90,
         origin={56,-182})));
@@ -358,10 +358,10 @@ model TEDS_ExpTestInputs
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     allowFlowReversal=true,
     dp_nominal=3000,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
-        extent={{6,6},{-6,-6}},
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
+        extent={{5,5},{-5,-5}},
         rotation=0,
-        origin={92,-144})));
+        origin={91,-145})));
   SupportComponents.NonLinear_Break
                               nonLinear_Break(redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C)
@@ -383,7 +383,7 @@ model TEDS_ExpTestInputs
     allowFlowReversal=true,
     m_flow_start=0.41,
     dp_nominal=3000,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
         extent={{6,6},{-6,-6}},
         rotation=0,
         origin={-54,-146})));
@@ -412,9 +412,9 @@ model TEDS_ExpTestInputs
   SupportComponents.NonLinear_Break
                               nonLinear_Break3(redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C)
-    annotation (Placement(transformation(extent={{6,-8},{-6,8}},
+    annotation (Placement(transformation(extent={{5,-7},{-5,7}},
         rotation=0,
-        origin={112,-144})));
+        origin={127,-145})));
   Modelica.Fluid.Pipes.DynamicPipe pipe1(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
@@ -449,7 +449,7 @@ model TEDS_ExpTestInputs
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     allowFlowReversal=true,
     dp_nominal=100,
-    m_flow_nominal=0.840) annotation (Placement(transformation(
+    m_flow_nominal=2.6)   annotation (Placement(transformation(
         extent={{6,6},{-6,-6}},
         rotation=90,
         origin={190,-176})));
@@ -574,7 +574,7 @@ equation
   connect(nonLinear_Break2.port_b, pump.port_a) annotation (Line(points={{0,-146},
           {-4,-146}},                color={0,127,255}));
   connect(PV_009.port_b, TC_006.port_b)
-    annotation (Line(points={{86,-144},{40,-145}}, color={0,127,255}));
+    annotation (Line(points={{86,-145},{40,-145}}, color={0,127,255}));
   connect(FM_001.port_a, pump.port_b)
     annotation (Line(points={{-24,-146},{-20,-146}}, color={0,127,255}));
   connect(PV_004.port_b, ValveFl.port_b)
@@ -600,8 +600,8 @@ equation
   connect(Chiller_Mass_flow_T66.port_b, TC_004.port_b) annotation (Line(points={
           {124.5,-209},{126,-209},{126,-212},{124,-212},{124,-214}}, color={0,127,
           255}));
-  connect(nonLinear_Break3.port_b, PV_009.port_a) annotation (Line(points={{106,
-          -144},{98,-144}},                       color={0,127,255}));
+  connect(nonLinear_Break3.port_b, PV_009.port_a) annotation (Line(points={{122,
+          -145},{96,-145}},                       color={0,127,255}));
   connect(pipe1.port_a, nonLinear_Break1.port_b) annotation (Line(points={{-26,
           -106},{-56,-106}},                     color={0,127,255}));
   connect(pipe1.port_b, FM_201.port_a)
@@ -615,7 +615,7 @@ equation
     annotation (Line(points={{74,-88},{74,-106},{62,-106}},
                                                   color={0,127,255}));
   connect(pipe3.port_b, nonLinear_Break3.port_a)
-    annotation (Line(points={{200,-144},{118,-144}}, color={0,127,255}));
+    annotation (Line(points={{200,-145},{132,-145}}, color={0,127,255}));
   connect(pipe8.port_b, Chiller_Mass_flow_T66.port_a) annotation (Line(points={{142,
           -186},{124.5,-186},{124.5,-190}},     color={0,127,255}));
   connect(PV_052.port_b, pipe8.port_a) annotation (Line(points={{174,-136},{174,
@@ -693,7 +693,7 @@ equation
       extent={{-6,3},{-6,3}},
       horizontalAlignment=TextAlignment.Right));
   connect(Ac.PV009, PV_009.opening) annotation (Line(
-      points={{-19,142},{240,142},{240,-158},{92,-158},{92,-148.8}},
+      points={{-19,142},{240,142},{240,-158},{91,-158},{91,-149}},
       color={239,82,82},
       pattern=LinePattern.Dash,
       thickness=0.5), Text(
@@ -797,9 +797,9 @@ equation
   connect(T_chiller_after.port_b, nonLinear_Break5.port_a)
     annotation (Line(points={{214,-76},{214,-96}}, color={0,127,255}));
   connect(nonLinear_Break5.port_b, pipe3.port_a) annotation (Line(points={{214,
-          -108},{214,-144},{212,-144}}, color={0,127,255}));
+          -108},{214,-145},{210,-145}}, color={0,127,255}));
   connect(PV_008.port_a, pipe3.port_b) annotation (Line(points={{190,-170},{190,
-          -144},{200,-144}}, color={0,127,255}));
+          -145},{200,-145}}, color={0,127,255}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-260},{240,140}}),
                     graphics={
@@ -815,11 +815,18 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-260},{240,
             140}})),
     experiment(
-      StopTime=16000,
+      StopTime=25000,
       Interval=10,
       Tolerance=0.001,
       __Dymola_Algorithm="Esdirk45a"),
     __Dymola_Commands(file="../../TEDS/Basic_TEDS_setup.mos" "Basic_TEDS_setup",
         file="../../TEDS/M3_TEDS.mos" "M3_TEDS"),
-    conversion(noneFromVersion=""));
-end TEDS_ExpTestInputs;
+    conversion(noneFromVersion=""),
+    Documentation(info="<html>
+<p>1/26/2024 - Size of ValveFl is increased. </p>
+<p>- mflow_nominal (kg/sec) 0.840 ==&gt; 2</p>
+<p><br>1/28/2024 </p>
+<p>- Size of PV-008/ PV-009 / PV-004 / PV-049 / PV-051/ PV-052 are increased. </p>
+<p>- mflow_nominal (kg/sec) 0.840 ==&gt; 2</p>
+</html>"));
+end TEDS_ExpTestInputs_Oct03;

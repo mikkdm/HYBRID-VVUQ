@@ -15,7 +15,9 @@ model Thermocline_Insulation_Test
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     p(displayUnit="Pa") = 1e5,
     T=498.15,
-    nPorts=1) annotation (Placement(transformation(extent={{58,-50},{38,-30}})));
+    nPorts=1) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+        rotation=270,
+        origin={12,-40})));
 
   Modelica.Blocks.Sources.Pulse pulse(
     amplitude=-190.74*0,
@@ -42,15 +44,16 @@ model Thermocline_Insulation_Test
       Wall_Thickness=0.051,
       Height_Tank=14.6,
       T_amb=293.15))
-    annotation (Placement(transformation(extent={{-20,-28},{24,24}})));
+    annotation (Placement(transformation(extent={{-10,-22},{34,30}})));
 
 equation
   connect(pulse.y, boundary.m_flow_in)
     annotation (Line(points={{-59,46},{-42,46}}, color={0,0,127}));
   connect(boundary.ports[1], testerofwall_extender.port_a)
-    annotation (Line(points={{-22,38},{2,38},{2,24}}, color={0,127,255}));
+    annotation (Line(points={{-22,38},{12,38},{12,30}},
+                                                      color={0,127,255}));
   connect(testerofwall_extender.port_b, boundary1.ports[1])
-    annotation (Line(points={{2,-28},{2,-40},{38,-40}}, color={0,127,255}));
+    annotation (Line(points={{12,-22},{12,-30}},        color={0,127,255}));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}})),
