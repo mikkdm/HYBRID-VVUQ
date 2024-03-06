@@ -126,7 +126,7 @@ model Thermocline_UQ_Test
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
     annotation (Placement(transformation(extent={{-82,-78},{-62,-58}})));
-  Models.ThermoclineTank.Thermocline_Insulation_v3
+  Models.ThermoclineTank.Thermocline_Insulation_UQVV
     testerofwall_extender(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,

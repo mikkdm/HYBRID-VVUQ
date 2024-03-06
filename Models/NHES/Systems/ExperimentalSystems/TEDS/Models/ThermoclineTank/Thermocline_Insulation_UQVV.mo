@@ -1,5 +1,5 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
-model Thermocline_Insulation_v3 "Thermocline Insulation subpackage"
+model Thermocline_Insulation_UQVV "Thermocline Insulation subpackage"
 
   replaceable package Medium =
       TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
@@ -14,10 +14,10 @@ model Thermocline_Insulation_v3 "Thermocline Insulation subpackage"
                                                   "Tank Wall Material"
                                                    annotation (__Dymola_choicesAllMatching=true);
 
-  parameter SI.Temperature T_Init = 35+273.15 "Initial temperature of thermocline medium and wall";
-  parameter SI.Density filler_d = 3982.54     "Filler density";
+  parameter SI.Temperature T_Init = 35+273.15       "Initial temperature of thermocline medium and wall";
+  parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
 
-  Thermocline_fluidprops_heaters_newHC_120C_v3
+  Thermocline_fluidprops_heaters_newHC_120C_UQVV
     thermocline_fluidprops_heaters_newHC_120C(
     redeclare package Medium = Medium,
     Radius_Tank=geometry.Radius_Tank,
@@ -26,7 +26,7 @@ model Thermocline_Insulation_v3 "Thermocline Insulation subpackage"
     Height_Tank=geometry.Height_Tank,
     nodes=geometry.nodes,
     dz=geometry.dz,
-    filler_density(displayUnit="kg/m3") = filler_d,
+    filler_density(displayUnit="kg/m3") = Density_Filler,
     Cr=1091,
     kr=16.181,
     dr=geometry.dr,
@@ -79,7 +79,6 @@ model Thermocline_Insulation_v3 "Thermocline Insulation subpackage"
 
   Data.Geometry geometry annotation (Dialog(group="Geometry"),Placement(transformation(
           extent={{-98,78},{-78,98}})));
-
 
 equation
   connect(simpleWall.port_b, thermocline_fluidprops_heaters_newHC_120C.heatPorts[
@@ -2515,4 +2514,4 @@ Thermocline System"),
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.SpecificHeatCapacity</span>&nbsp;Cr&nbsp; &nbsp;<span style=\"font-family: Courier New; color: #006400;\">&quot;J/kg*K&nbsp;of&nbsp;granite&quot;</span>;</p>
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.ThermalConductivity</span>&nbsp; kr &nbsp; <span style=\"font-family: Courier New; color: #006400;\">&quot;W/m*K&nbsp;of&nbsp;filler&quot;</span>;</p>
 </html>"));
-end Thermocline_Insulation_v3;
+end Thermocline_Insulation_UQVV;
