@@ -67,9 +67,8 @@ model Thermocline_Insulation_test_porosity_v3
     TRANSFORM.Media.Interfaces.Solids.PartialAlloy
                                                   "Tank Wall Material"
                                                    annotation (__Dymola_choicesAllMatching=true);
-  Data.Geometry geometry(Porosity=0.9)
-                         annotation (Dialog(group="Geometry"),Placement(transformation(
-          extent={{-98,78},{-78,98}})));
+  Data.Geometry_Old geometry(Porosity=0.9) annotation (Dialog(group="Geometry"),
+      Placement(transformation(extent={{-98,78},{-78,98}})));
 
 equation
   connect(simpleWall.port_b, thermocline_fluidprops_heaters_newHC_70C.heatPorts[

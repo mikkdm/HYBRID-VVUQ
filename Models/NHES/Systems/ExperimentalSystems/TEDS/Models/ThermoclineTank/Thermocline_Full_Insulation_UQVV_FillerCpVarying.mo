@@ -1,8 +1,25 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
-model Thermocline_Insulation_test_porosity_v2
-  "Thermocline Insulation subpackage"
-  ThermoclineTank.Thermocline_fluidprops_heaters_newHC_70C_v2
-    thermocline_fluidprops_heaters_newHC_70C(
+model Thermocline_Full_Insulation_UQVV_FillerCpVarying
+  "FillerCpVarying"
+
+  replaceable package Medium =
+      TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
+    TRANSFORM.Media.Interfaces.Fluids.PartialMedium "Fluid Medium" annotation (
+      choicesAllMatching=true);
+  replaceable package InsulationMaterial =
+      TRANSFORM.Media.Solids.FiberGlassGeneric constrainedby
+    TRANSFORM.Media.Interfaces.Solids.PartialAlloy "Insulation Material" annotation (__Dymola_choicesAllMatching=true);
+
+  replaceable package WallMaterial = TRANSFORM.Media.Solids.SS304  constrainedby
+    TRANSFORM.Media.Interfaces.Solids.PartialAlloy
+                                                  "Tank Wall Material"
+                                                   annotation (__Dymola_choicesAllMatching=true);
+
+  parameter SI.Temperature T_Init = 35+273.15       "Initial temperature of thermocline medium and wall";
+  parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
+
+
+  Thermocline_UQVV_test1_multiplePorosity TES(
     redeclare package Medium = Medium,
     Radius_Tank=geometry.Radius_Tank,
     Porosity=geometry.Porosity,
@@ -10,21 +27,22 @@ model Thermocline_Insulation_test_porosity_v2
     Height_Tank=geometry.Height_Tank,
     nodes=geometry.nodes,
     dz=geometry.dz,
-    filler_density(displayUnit="kg/m3") = 3950,
-    Cr=1091,
+    filler_density(displayUnit="kg/m3") = Density_Filler,
     kr=16.181,
-    dr=geometry.dr)
+    dr=geometry.dr,
+    T_Init=T_Init)
     annotation (Placement(transformation(extent={{-28,-24},{28,30}})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[
-    thermocline_fluidprops_heaters_newHC_70C.nodes](
-    length=fill(thermocline_fluidprops_heaters_newHC_70C.Height_Tank/
-        thermocline_fluidprops_heaters_newHC_70C.nodes,
-        thermocline_fluidprops_heaters_newHC_70C.nodes),
+
+    // SpecificHeatCapacity Cr   "J/kg*K of HTF (or concrete)";
+    // ThermalConductivity  kr   "W/m*K  of filler";
+
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[TES.nodes](
+    length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
     r_inner=fill(geometry.Radius_Tank, geometry.nodes),
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
     redeclare package Material = WallMaterial,
-    T_start=303.15)
-    annotation (Placement(transformation(extent={{-60,-8},{-40,12}})));
+    T_start=T_Init)
+    annotation (Placement(transformation(extent={{-58,-6},{-40,12}})));
 
   Modelica.Blocks.Sources.RealExpression boundaryT[geometry.nodes](y=fill(
         geometry.T_amb, geometry.nodes)) annotation (Placement(transformation(
@@ -37,17 +55,14 @@ model Thermocline_Insulation_test_porosity_v2
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-90,-24})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[
-    thermocline_fluidprops_heaters_newHC_70C.nodes](
-    length=fill(thermocline_fluidprops_heaters_newHC_70C.Height_Tank/
-        thermocline_fluidprops_heaters_newHC_70C.nodes,
-        thermocline_fluidprops_heaters_newHC_70C.nodes),
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[TES.nodes](
+    length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
     r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness + geometry.Insulation_thickness,
         geometry.nodes),
     redeclare package Material = InsulationMaterial,
     T_start=303.15)
-    annotation (Placement(transformation(extent={{-86,-8},{-66,12}})));
+    annotation (Placement(transformation(extent={{-84,-6},{-66,12}})));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare package Medium =
         Medium)
@@ -55,33 +70,21 @@ model Thermocline_Insulation_test_porosity_v2
   Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
-  replaceable package Medium =
-      TRANSFORM.Media.Fluids.DOWTHERM.LinearDOWTHERM_A_95C constrainedby
-    TRANSFORM.Media.Interfaces.Fluids.PartialMedium "Fluid Medium" annotation (
-      choicesAllMatching=true);
-  replaceable package InsulationMaterial =
-      TRANSFORM.Media.Solids.FiberGlassGeneric constrainedby
-    TRANSFORM.Media.Interfaces.Solids.PartialAlloy "Insulation Material" annotation (__Dymola_choicesAllMatching=true);
 
-  replaceable package WallMaterial = TRANSFORM.Media.Solids.SS304  constrainedby
-    TRANSFORM.Media.Interfaces.Solids.PartialAlloy
-                                                  "Tank Wall Material"
-                                                   annotation (__Dymola_choicesAllMatching=true);
-  Data.Geometry_Old geometry(Porosity=0.9) annotation (Dialog(group="Geometry"),
-      Placement(transformation(extent={{-98,78},{-78,98}})));
+  Data.Geometry_Old geometry annotation (Dialog(group="Geometry"), Placement(
+        transformation(extent={{-98,78},{-78,98}})));
 
 equation
-  connect(simpleWall.port_b, thermocline_fluidprops_heaters_newHC_70C.heatPorts[
-    :, 1]) annotation (Line(points={{-40,2},{-34,2},{-34,3},{-28.56,3}},
-        color={191,0,0}));
+
+  connect(simpleWall.port_b, TES.heatPorts[:, 1])
+    annotation (Line(points={{-40,3},{-28.56,3}}, color={191,0,0}));
   connect(simpleWall.port_a, Insulation.port_b)
-    annotation (Line(points={{-60,2},{-66,2}}, color={191,0,0}));
+    annotation (Line(points={{-58,3},{-66,3}}, color={191,0,0}));
   connect(boundary2.port, Insulation.port_a)
-    annotation (Line(points={{-90,-14},{-90,2},{-86,2}}, color={191,0,0}));
-  connect(thermocline_fluidprops_heaters_newHC_70C.port_b, port_b)
-    annotation (Line(points={{3.55271e-15,-24},{3.55271e-15,-62},{0,-62},{0,-100}},
-        color={0,127,255}));
-  connect(thermocline_fluidprops_heaters_newHC_70C.port_a, port_a)
+    annotation (Line(points={{-90,-14},{-90,3},{-84,3}}, color={191,0,0}));
+  connect(TES.port_b, port_b) annotation (Line(points={{3.55271e-15,-24},{3.55271e-15,
+          -62},{0,-62},{0,-100}}, color={0,127,255}));
+  connect(TES.port_a, port_a)
     annotation (Line(points={{0,30},{0,100}}, color={0,127,255}));
   connect(boundaryT.y, boundary2.T_ext)
     annotation (Line(points={{-90,-45},{-90,-28}}, color={0,0,127}));
@@ -2487,5 +2490,21 @@ Thermocline System"),
     experiment(
       StopTime=1080000,
       Interval=10.000008,
-      __Dymola_Algorithm="Esdirk45a"));
-end Thermocline_Insulation_test_porosity_v2;
+      __Dymola_Algorithm="Esdirk45a"),
+    Documentation(info="<html>
+<p>Note: </p>
+<p>1. Filler Density:</p>
+<p><span style=\"font-family: Courier New;\">filler_density(displayUnit=&quot;kg/m3&quot;)&nbsp;=&nbsp;3950 </span></p>
+<p><span style=\"font-family: Courier New;\">==&gt; Refrence: Ronald Munro. &quot;Evaluated Material Properties for a Sintered alpha-Alumina.&quot; Jounrnal of American Ceramics. Volume 80. Pgs. 1919-1928. 1997.</span></p>
+<p><br><span style=\"font-family: Courier New;\">filler_density(displayUnit=&quot;kg/m3&quot;) = 3982.54 </span></p>
+<p><span style=\"font-family: Courier New;\">==&gt; Refrence: T-99 PROX-SVERS Data Sheet.pdf (GRP-TEDS - TK-004/Thermocline Media/T-99 PROX-SVERS Data Sheet.pdf)</span></p>
+<p><span style=\"font-family: Courier New;\">Alumina (Al2O3) &gt;99.0; Density = 3.99 g/cm3</span></p>
+<p><span style=\"font-family: Courier New;\">Silica (SiO2) &lt;0.35; Density = 2.65 g/cm3</span></p>
+<p><span style=\"font-family: Courier New;\">Iron (Fe2O3) &lt;0.15; Density = 7.874 g/cm3</span></p>
+<p><span style=\"font-family: Courier New;\">Soda (Na2O) &lt;0.5; Density = 2.27 g/cm3</span></p>
+<p><span style=\"font-family: Courier New;\">3.99 x .99 + 2.65 x .0035 + 7.874 x .0015 + 2.27 x .005 = 3982.54 (kg/m3)</span></p>
+<p><br>2. Specific Heat Capacity / Thermal Conductivity</p>
+<p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.SpecificHeatCapacity</span>&nbsp;Cr&nbsp; &nbsp;<span style=\"font-family: Courier New; color: #006400;\">&quot;J/kg*K&nbsp;of&nbsp;granite&quot;</span>;</p>
+<p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.ThermalConductivity</span>&nbsp; kr &nbsp; <span style=\"font-family: Courier New; color: #006400;\">&quot;W/m*K&nbsp;of&nbsp;filler&quot;</span>;</p>
+</html>"));
+end Thermocline_Full_Insulation_UQVV_FillerCpVarying;

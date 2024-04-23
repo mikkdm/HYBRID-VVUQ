@@ -67,7 +67,7 @@ model Thermocline_Insulation_v1 "Thermocline Insulation subpackage"
     TRANSFORM.Media.Interfaces.Solids.PartialAlloy
                                                   "Tank Wall Material"
                                                    annotation (__Dymola_choicesAllMatching=true);
-  Data.Geometry geometry annotation (Dialog(group="Geometry"), Placement(
+  Data.Geometry_Old geometry annotation (Dialog(group="Geometry"), Placement(
         transformation(extent={{-98,78},{-78,98}})));
 
           parameter SI.Temperature T_Init = 120+273.15 "Initial temperature of thermocline medium and wall";

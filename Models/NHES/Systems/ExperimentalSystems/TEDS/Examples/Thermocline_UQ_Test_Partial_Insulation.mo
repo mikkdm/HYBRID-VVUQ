@@ -1,5 +1,5 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Examples;
-model Thermocline_UQ_Test
+model Thermocline_UQ_Test_Partial_Insulation
   "Ensuring the system operates properly and with the right time constants."
   extends Modelica.Icons.Example;
 
@@ -126,7 +126,7 @@ model Thermocline_UQ_Test
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
     annotation (Placement(transformation(extent={{-82,-78},{-62,-58}})));
-  Models.ThermoclineTank.Thermocline_Insulation_UQVV
+  Models.ThermoclineTank.Thermocline_Partial_Insulation_UQVV_v2
     testerofwall_extender(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
@@ -136,10 +136,13 @@ model Thermocline_UQ_Test
     geometry(
       Radius_Tank=0.438,
       Porosity=0.36,
+      nodesTankTop=1,
       nodes=177,
+      nodesTankBottom=1,
       dr=0.00317,
       Insulation_thickness=3*0.051,
       Wall_Thickness=0.019,
+      Height_TankTop=0.05,
       Height_Tank=3.55,
       T_amb=293.15))
     annotation (Placement(transformation(extent={{-6,-22},{30,20}})));
@@ -1778,4 +1781,4 @@ equation
 <p>Insulation = 0.204m; ~8in</p>
 <p>Wall thickness = 0.051 m</p>
 </html>"));
-end Thermocline_UQ_Test;
+end Thermocline_UQ_Test_Partial_Insulation;

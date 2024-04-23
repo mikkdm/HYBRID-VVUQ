@@ -1,90 +1,176 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
-model Thermocline_Insulation_test_porosity_v2
-  "Thermocline Insulation subpackage"
-  ThermoclineTank.Thermocline_fluidprops_heaters_newHC_70C_v2
-    thermocline_fluidprops_heaters_newHC_70C(
-    redeclare package Medium = Medium,
-    Radius_Tank=geometry.Radius_Tank,
-    Porosity=geometry.Porosity,
-    XS_fluid=geometry.XS_Fluid,
-    Height_Tank=geometry.Height_Tank,
-    nodes=geometry.nodes,
-    dz=geometry.dz,
-    filler_density(displayUnit="kg/m3") = 3950,
-    Cr=1091,
-    kr=16.181,
-    dr=geometry.dr)
-    annotation (Placement(transformation(extent={{-28,-24},{28,30}})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[
-    thermocline_fluidprops_heaters_newHC_70C.nodes](
-    length=fill(thermocline_fluidprops_heaters_newHC_70C.Height_Tank/
-        thermocline_fluidprops_heaters_newHC_70C.nodes,
-        thermocline_fluidprops_heaters_newHC_70C.nodes),
-    r_inner=fill(geometry.Radius_Tank, geometry.nodes),
-    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
-    redeclare package Material = WallMaterial,
-    T_start=303.15)
-    annotation (Placement(transformation(extent={{-60,-8},{-40,12}})));
+model Thermocline_UQVV_test1_multiplePorosity "varying Cp of filler"
+  import TRANSFORM;
 
-  Modelica.Blocks.Sources.RealExpression boundaryT[geometry.nodes](y=fill(
-        geometry.T_amb, geometry.nodes)) annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-90,-56})));
-  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary2(nPorts=geometry.nodes,                             use_port=true)
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={-90,-24})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[
-    thermocline_fluidprops_heaters_newHC_70C.nodes](
-    length=fill(thermocline_fluidprops_heaters_newHC_70C.Height_Tank/
-        thermocline_fluidprops_heaters_newHC_70C.nodes,
-        thermocline_fluidprops_heaters_newHC_70C.nodes),
-    r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
-    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness + geometry.Insulation_thickness,
-        geometry.nodes),
-    redeclare package Material = InsulationMaterial,
-    T_start=303.15)
-    annotation (Placement(transformation(extent={{-86,-8},{-66,12}})));
+  replaceable package Medium =
+      TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
+    TRANSFORM.Media.Interfaces.Fluids.PartialMedium "Fluid Medium" annotation (
+      choicesAllMatching=true);
 
+//Discretization
+parameter Integer nodes=200 "Number of axial nodes";
+parameter SI.Length dz = Height_Tank/nodes "delta height in each node";
+
+//Tank Parameters
+parameter SI.Length Radius_Tank = 0.438 "Radius of the thermocline tank [m]";
+parameter SI.Length Height_Tank = 4.435 "Tank Height [m]";
+
+//Attempt to input medium package
+//SI.Density d_T[nodes]= Medium.density(mediums.state);
+SI.Pressure ps[nodes] = fill(1e5,nodes);
+Real Porosity[nodes] = fill(0.50, nodes) "Porosity in the tank";
+
+//parameter Real userspecificheat= 2474.5 "Should be input in J/kg*K";
+SI.SpecificHeatCapacity Cf[nodes] = Medium.specificHeatCapacityCp(mediums.state);
+//SI.SpecificHeatCapacity Cf[nodes] = fill(userspecificheat,nodes); //This can be used if the user knows an approximately constant value over their desired operations range, else comment this line and uncomment the one above it.
+
+Medium.BaseProperties mediums[nodes];
+
+SI.Temperature Tf[nodes] "Fluid Temperature up and down the thermocline";
+SI.Temperature Tr[nodes] "Filler Temperature up and down the thermocline";
+
+parameter SI.Density filler_density = 2630 "Filler Density (Granite)";
+SI.SpecificHeatCapacity Cr[nodes];
+SI.Area XS_fluid[nodes];
+
+parameter SI.ThermalConductivity kr = 2.8 "W/m*K of filler";
+
+SI.ReynoldsNumber Re[nodes] "Unitless";
+SI.MassFlowRate mf;  //=-128.74 "kg/s";
+SI.Velocity vel[nodes] "meter/s";
+SI.CoefficientOfHeatTransfer h_c[nodes] "W/m^2*K";
+SI.PrandtlNumber Pr[nodes] "Unitless";
+//SI.Length r_char "hydraulic radius [m]";
+SI.Length r_char[nodes] "hydraulic radius [m]";
+parameter SI.Length dr=0.04 "nominal diameter of filler material [m]";
+
+SI.ThermalConductivity kf[nodes] = Medium.thermalConductivity(mediums.state) "W/m*K of fluid";
+SI.DynamicViscosity mu_f[nodes] = Medium.dynamicViscosity(mediums.state);
+SI.Density fluid_density[nodes] = Medium.density(mediums.state);
+
+SI.Length Sr[nodes] "Heat Transfer Surface Area of rocks per unit length of tank [m]";
+parameter Real fs=3.0 "Surface Shape Factor, between 2 and 3 depending rocks packing scheme";
+parameter SI.Temperature T_Init = 40+273.15 "Initial temperature of thermocline medium and wall";
+
+SI.Temperature T_inlet_cold;
+SI.Temperature T_inlet_hot;
+
+SI.Temperature Tf_edge[nodes+1] "Boundary Nodes for fluid temperatures";
+
+SI.Length z_star[nodes];
+
+Medium.ThermodynamicState port_a_state "Properties of fluid port a";
+Medium.ThermodynamicState port_b_state "Properties of fluid port b";
+
+//parameter SI.Area XS_fluid = Porosity*(Radius_Tank^2.0)*Modelica.Constants.pi "Cross Sectional Area seen by the fluid at each axial location";
+
+//***************** Initialization Step *****************
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare package Medium =
-        Medium)
+  Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare replaceable package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
-  replaceable package Medium =
-      TRANSFORM.Media.Fluids.DOWTHERM.LinearDOWTHERM_A_95C constrainedby
-    TRANSFORM.Media.Interfaces.Fluids.PartialMedium "Fluid Medium" annotation (
-      choicesAllMatching=true);
-  replaceable package InsulationMaterial =
-      TRANSFORM.Media.Solids.FiberGlassGeneric constrainedby
-    TRANSFORM.Media.Interfaces.Solids.PartialAlloy "Insulation Material" annotation (__Dymola_choicesAllMatching=true);
+  TRANSFORM.HeatAndMassTransfer.Interfaces.HeatPort_Flow
+                                               heatPorts[nodes,1]
+    annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
+        iconTransformation(extent={{-112,-10},{-92,10}})));
+initial equation
+  for i in 1:integer(nodes*1.33/2) loop
+    Tf[i]=T_Init;
+    Tr[i]=T_Init;
+  end for;
+  for i in integer(nodes*1.33/2)+1:nodes loop
+    Tf[i]=T_Init;
+    Tr[i]=T_Init;
+  end for;
 
-  replaceable package WallMaterial = TRANSFORM.Media.Solids.SS304  constrainedby
-    TRANSFORM.Media.Interfaces.Solids.PartialAlloy
-                                                  "Tank Wall Material"
-                                                   annotation (__Dymola_choicesAllMatching=true);
-  Data.Geometry_Old geometry(Porosity=0.9) annotation (Dialog(group="Geometry"),
-      Placement(transformation(extent={{-98,78},{-78,98}})));
-
+// ***************** Start of the actual Thermocline Equation Set *****************
 equation
-  connect(simpleWall.port_b, thermocline_fluidprops_heaters_newHC_70C.heatPorts[
-    :, 1]) annotation (Line(points={{-40,2},{-34,2},{-34,3},{-28.56,3}},
-        color={191,0,0}));
-  connect(simpleWall.port_a, Insulation.port_b)
-    annotation (Line(points={{-60,2},{-66,2}}, color={191,0,0}));
-  connect(boundary2.port, Insulation.port_a)
-    annotation (Line(points={{-90,-14},{-90,2},{-86,2}}, color={191,0,0}));
-  connect(thermocline_fluidprops_heaters_newHC_70C.port_b, port_b)
-    annotation (Line(points={{3.55271e-15,-24},{3.55271e-15,-62},{0,-62},{0,-100}},
-        color={0,127,255}));
-  connect(thermocline_fluidprops_heaters_newHC_70C.port_a, port_a)
-    annotation (Line(points={{0,30},{0,100}}, color={0,127,255}));
-  connect(boundaryT.y, boundary2.T_ext)
-    annotation (Line(points={{-90,-45},{-90,-28}}, color={0,0,127}));
+  // Resetting the density, and dynamic viscosity as function of temperature at each node
+  mediums.p = ps;
+  mediums.T = Tr;
+
+  // Port Parameters
+  port_a.p = port_b.p;
+  port_b.h_outflow = mediums[nodes].h;
+  port_a.h_outflow = mediums[1].h;
+  0 = port_a.m_flow+port_b.m_flow;
+  port_a_state = Medium.setState_ph(port_a.p,inStream(port_a.h_outflow));
+  port_b_state = Medium.setState_ph(port_b.p,inStream(port_b.h_outflow));
+
+  heatPorts[:,1].T = Tf;
+//heatPorts[:,2].T = Tr;
+
+  //define ports
+  T_inlet_cold = port_b_state.T;
+  T_inlet_hot = port_a_state.T;
+
+  mf = port_a.m_flow;
+
+//Ensure there is no divide by zero circumstance.*********************************************
+  for i in 1:nodes loop
+    r_char[i] = Porosity[i]*dr/(4.0*(1-Porosity[i]));
+  end for;
+
+  if mf > -0.002 and mf < 0.002 then
+    Re = fill(0.0001,nodes); //Simply forces the answer to not be equal to 0
+  else
+    for i in 1:nodes loop
+      Re[i] = 4*r_char[i]*(abs(mf)/(Porosity[i]*(Radius_Tank^2.0)*Modelica.Constants.pi))/mu_f[i];
+    end for;
+  end if;
+
+  for i in 1:nodes loop
+    Cr[i] = -1.733e-8*(Tr[i]^4)+3.989e-5*(Tr[i]^3)-3.519e-2*(Tr[i]^2)+1.463e1*(Tr[i])-1.382e3;
+    XS_fluid[i] = Porosity[i]*(Radius_Tank^2.0)*Modelica.Constants.pi "Cross Sectional Area seen by the fluid at each axial location";
+  end for;
+
+  for i in 1:nodes loop
+    Pr[i] = Cf[i]*mu_f[i]/kf[i];
+  end for;
+
+  for i in 1:nodes loop
+    // Eq. (4.2) in Gunn, D. J. "Transfer of heat or mass to particles in fixed and fluidised beds." International Journal of Heat and Mass Transfer 21.4 (1978): 467-476.
+    h_c[i] = ((7-10*Porosity[i] + 5*(Porosity[i]^2))*(1+0.7*(Re[i]^0.2)*(Pr[i]^(1/3))) + (1.33-2.4*Porosity[i]+1.2*(Porosity[i]^2.))*(Re[i]^0.7)*(Pr[i]^(1/3)))*kf[i]/(2*r_char[i]);
+    Sr[i] = fs*Modelica.Constants.pi*(1-Porosity[i])*(Radius_Tank^2.0)/(dr/2);
+  end for;
+
+  //Fluid Energy Equation**************************************************************
+  //Will likely need to add in the Q(i) term into the fluid temperature section rather than into both of the energy equations.
+  for i in 1:nodes loop
+    vel[i] = mf/(fluid_density[i]*XS_fluid[i]);
+  end for;
+
+  if mf >= 0.0 then
+    for i in 2:nodes loop
+      (h_c[i]*Sr[i]/(fluid_density[i]*Cf[i]*Porosity[i]*Modelica.Constants.pi*(Radius_Tank^2.0)))*(Tr[i]-Tf[i]) + heatPorts[i,1].Q_flow/(fluid_density[i]*Cf[i]*XS_fluid[i]*dz) = der(Tf[i]) + vel[i]* (Tf[i]-Tf[i-1])/dz;
+    end for;
+    //Boundary Condition for positive flow from cold to hot.
+    (h_c[1]*Sr[1]/(fluid_density[1]*Cf[1]*Porosity[1]*Modelica.Constants.pi*(Radius_Tank^2.0)))*(Tr[1]-Tf[1]) + heatPorts[1,1].Q_flow/(fluid_density[1]*Cf[1]*XS_fluid[1]*dz) = der(Tf[1]) + vel[1]* (Tf[1]-T_inlet_hot)/dz;
+  else
+    for i in 1:nodes-1 loop
+      (h_c[i]*Sr[i]/(fluid_density[i]*Cf[i]*Porosity[i]*Modelica.Constants.pi*(Radius_Tank^2.0)))*(Tr[i]-Tf[i]) + heatPorts[i,1].Q_flow/(fluid_density[i]*Cf[i]*XS_fluid[i]*dz) = der(Tf[i]) + vel[i]* (Tf[i+1]-Tf[i])/dz;
+    end for;
+    //Boundary Condition for positive flow from cold to hot.
+    (h_c[nodes]*Sr[nodes]/(fluid_density[nodes]*Cf[nodes]*Porosity[nodes]*Modelica.Constants.pi*(Radius_Tank^2.0)))*(Tr[nodes]-Tf[nodes])+ heatPorts[nodes,1].Q_flow/(fluid_density[nodes]*Cf[nodes]*XS_fluid[nodes]*dz) = der(Tf[nodes]) + vel[nodes]* (T_inlet_cold-Tf[nodes])/dz;
+  end if;
+
+  Tf_edge[1] = T_inlet_hot;
+  Tf_edge[nodes+1]=Tf[nodes];
+  for i in 2:nodes loop
+    Tf_edge[i] = (Tf[i]+Tf[i-1])/2;
+  end for;
+
+  //Rock Energy
+  for i in 1:nodes loop
+    h_c[i]*Sr[i]*(Tr[i]-Tf[i])*dz  = -filler_density*Cr[i]*(1-Porosity[i])*Modelica.Constants.pi*(Radius_Tank^2.0)*dz*der(Tr[i]);
+  end for;
+
+  for i in 1:nodes loop
+    z_star[i] = (i-1)*Height_Tank + dz/2; //Should put it at the halfway point of the tank.
+  end for;
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-60,90},{60,0}},
@@ -2450,42 +2536,145 @@ equation
           lineThickness=1,
           fillPattern=FillPattern.Solid,
           fillColor={175,175,175}),
+        Line(
+          points={{-60,-76},{60,-76}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-66},{60,-66}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-54},{60,-54}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-14},{60,-14}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-30},{60,-30}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-42},{60,-42}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,0},{60,0}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,12},{60,12}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,24},{60,24}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,36},{60,36}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,52},{60,52}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
         Text(
-          extent={{-46,86},{50,66}},
+          extent={{-10,-80},{10,-86}},
           lineColor={0,0,0},
-          lineThickness=1,
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
           fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          textStyle={TextStyle.Bold,TextStyle.Italic},
-          textString="Packed Bed 
-Thermocline System"),
-        Rectangle(
-          extent={{-60,90},{-68,-90}},
+          textString="i=N"),
+        Text(
+          extent={{-10,-68},{10,-74}},
           lineColor={0,0,0},
-          fillColor={0,0,0},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          lineThickness=1),
-        Rectangle(
-          extent={{-68,90},{-78,-90}},
+          textString="i=N-1"),
+        Text(
+          extent={{-10,-58},{10,-64}},
           lineColor={0,0,0},
-          fillColor={244,125,35},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          lineThickness=1),
-        Rectangle(
-          extent={{68,90},{60,-90}},
+          textString="i=N-2"),
+        Line(
+          points={{-60,64},{60,64}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,74},{60,74}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,82},{60,82}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Text(
+          extent={{-8,88},{12,82}},
           lineColor={0,0,0},
-          fillColor={0,0,0},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          lineThickness=1),
-        Rectangle(
-          extent={{78,90},{68,-90}},
+          textString="i=1"),
+        Text(
+          extent={{-8,80},{12,74}},
           lineColor={0,0,0},
-          fillColor={244,125,35},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          lineThickness=1)}),                                    Diagram(
+          textString="i=2"),
+        Text(
+          extent={{-8,72},{12,66}},
+          lineColor={0,0,0},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
+          fillPattern=FillPattern.Solid,
+          textString="i=3"),
+        Ellipse(
+          extent={{-36,56},{-30,50}},
+          lineColor={238,46,47},
+          lineThickness=1,
+          fillPattern=FillPattern.Solid,
+          fillColor={175,175,175})}),                            Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
-      StopTime=1080000,
-      Interval=10.000008,
-      __Dymola_Algorithm="Esdirk45a"));
-end Thermocline_Insulation_test_porosity_v2;
+      StopTime=86400,
+      Interval=1,
+      Tolerance=1e-06,
+      __Dymola_Algorithm="Esdirk45a"),
+    Documentation(info="<html>
+<p>Author: Konor Frick</p>
+<p>Date: March 2, 2020</p>
+<p>Description:</p>
+<p>The Model Developed here was implemented based upon two papers. </p>
+<p>1. Analysis of Heat Storage and Delivery of a Thermocline Tank Having Solid Filler Material </p>
+<p>-<span style=\"font-family: Roboto,Arial,sans-serif;\">DOI: 10.1115/1.4003685</span></p>
+<p>2. A Versatile one-dimensional numebrical model for packed-bed heat storage systems</p>
+<p>-DOI. <span style=\"font-family: NexusSans,Arial,Helvetica,Lucida Sans Unicode,Microsoft Sans Serif,Segoe UI Symbol,STIXGeneral,Cambria Math,Arial Unicode MS,sans-serif;\"><a href=\"https://doi.org/10.1016/j.renene.2018.10.012\">https://doi.org/10.1016/j.renene.2018.10.012</a></span></p>
+<p><br>The model backbone is the Schumann equations with additional terms incorporated for thermal conduction when in standby mode. </p>
+</html>"));
+end Thermocline_UQVV_test1_multiplePorosity;

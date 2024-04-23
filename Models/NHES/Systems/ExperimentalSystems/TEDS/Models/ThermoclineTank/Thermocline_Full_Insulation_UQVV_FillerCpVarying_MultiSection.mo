@@ -1,5 +1,6 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
-model Thermocline_Insulation_UQVV "Thermocline Insulation subpackage"
+model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection
+  "FillerCpVarying"
 
   replaceable package Medium =
       TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
@@ -17,8 +18,7 @@ model Thermocline_Insulation_UQVV "Thermocline Insulation subpackage"
   parameter SI.Temperature T_Init = 35+273.15       "Initial temperature of thermocline medium and wall";
   parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
 
-  Thermocline_fluidprops_heaters_newHC_120C_UQVV
-    thermocline_fluidprops_heaters_newHC_120C(
+  Thermocline_UQVV_test1_multiplePorosity TES(
     redeclare package Medium = Medium,
     Radius_Tank=geometry.Radius_Tank,
     Porosity=geometry.Porosity,
@@ -27,7 +27,6 @@ model Thermocline_Insulation_UQVV "Thermocline Insulation subpackage"
     nodes=geometry.nodes,
     dz=geometry.dz,
     filler_density(displayUnit="kg/m3") = Density_Filler,
-    Cr=1091,
     kr=16.181,
     dr=geometry.dr,
     T_Init=T_Init)
@@ -36,39 +35,35 @@ model Thermocline_Insulation_UQVV "Thermocline Insulation subpackage"
     // SpecificHeatCapacity Cr   "J/kg*K of HTF (or concrete)";
     // ThermalConductivity  kr   "W/m*K  of filler";
 
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[
-    thermocline_fluidprops_heaters_newHC_120C.nodes](
-    length=fill(thermocline_fluidprops_heaters_newHC_120C.Height_Tank/
-        thermocline_fluidprops_heaters_newHC_120C.nodes,
-        thermocline_fluidprops_heaters_newHC_120C.nodes),
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[TES.nodes]
+    (
+    length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
     r_inner=fill(geometry.Radius_Tank, geometry.nodes),
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
     redeclare package Material = WallMaterial,
     T_start=T_Init)
-    annotation (Placement(transformation(extent={{-60,-8},{-40,12}})));
+    annotation (Placement(transformation(extent={{-58,-6},{-40,12}})));
 
   Modelica.Blocks.Sources.RealExpression boundaryT[geometry.nodes](y=fill(
         geometry.T_amb, geometry.nodes)) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={-90,-56})));
+        origin={-94,-26})));
   TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
     boundary2(nPorts=geometry.nodes,                             use_port=true)
     annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
+        extent={{-6,-6},{6,6}},
         rotation=90,
-        origin={-90,-24})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[
-    thermocline_fluidprops_heaters_newHC_120C.nodes](
-    length=fill(thermocline_fluidprops_heaters_newHC_120C.Height_Tank/
-        thermocline_fluidprops_heaters_newHC_120C.nodes,
-        thermocline_fluidprops_heaters_newHC_120C.nodes),
+        origin={-94,-8})));
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[TES.nodes]
+    (
+    length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
     r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness + geometry.Insulation_thickness,
         geometry.nodes),
     redeclare package Material = InsulationMaterial,
     T_start=303.15)
-    annotation (Placement(transformation(extent={{-86,-8},{-66,12}})));
+    annotation (Placement(transformation(extent={{-84,-6},{-66,12}})));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare package Medium =
         Medium)
@@ -77,24 +72,126 @@ model Thermocline_Insulation_UQVV "Thermocline Insulation subpackage"
         Medium)
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
-  Data.Geometry geometry annotation (Dialog(group="Geometry"),Placement(transformation(
-          extent={{-98,78},{-78,98}})));
+  Data.Geometry_Old geometry(
+    Porosity_2=0.9999999,
+    nodesTop=1,
+    nodesBottom=1,
+    Height_TankTop=0.44,
+    Height_TankBottom=0.44) annotation (Dialog(group="Geometry"), Placement(
+        transformation(extent={{-98,78},{-78,98}})));
 
+  Thermocline_noBeads_Top_UQVV TES_Top(
+    Radius_Tank=geometry.Radius_Tank,
+    Porosity=geometry.Porosity_2,
+    XS_fluid=geometry.XS_Fluid,
+    Height_Tank=geometry.Height_TankTop,
+    nodes=1,
+    dr=geometry.dr_void)
+    annotation (Placement(transformation(extent={{-28,34},{28,84}})));
+  Thermocline_noInsulation_Bottom_UQVV TES_Bottom(
+    Radius_Tank=geometry.Radius_Tank,
+    Porosity=geometry.Porosity_2,
+    XS_fluid=geometry.XS_Fluid,
+    Height_Tank=geometry.Height_TankTop,
+    nodes=1,
+    dr=geometry.dr_void)
+    annotation (Placement(transformation(extent={{-28,-76},{28,-26}})));
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWallTop[TES_Top.nodes](
+    length=fill(TES_Top.Height_Tank/TES_Top.nodes, TES_Top.nodes),
+    r_inner=fill(geometry.Radius_Tank, geometry.nodes),
+    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
+    redeclare package Material = WallMaterial,
+    T_start=T_Init)
+    annotation (Placement(transformation(extent={{-56,50},{-38,68}})));
+
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder InsulationTop[TES_Top.nodes](
+    length=fill(TES_Top.Height_Tank/TES_Top.nodes, TES_Top.nodes),
+    r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
+    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness + geometry.Insulation_thickness,
+        geometry.nodes),
+    redeclare package Material = InsulationMaterial,
+    T_start=303.15)
+    annotation (Placement(transformation(extent={{-84,50},{-66,68}})));
+
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWallBottom[
+    TES_Bottom.nodes](
+    length=fill(TES_Bottom.Height_Tank/TES_Bottom.nodes, TES_Bottom.nodes),
+    r_inner=fill(geometry.Radius_Tank, geometry.nodes),
+    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
+    redeclare package Material = WallMaterial,
+    T_start=T_Init)
+    annotation (Placement(transformation(extent={{-58,-60},{-40,-42}})));
+
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder InsulationBottom[
+    TES_Bottom.nodes](
+    length=fill(TES_Bottom.Height_Tank/TES_Bottom.nodes, TES_Bottom.nodes),
+    r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
+    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness + geometry.Insulation_thickness,
+        geometry.nodes),
+    redeclare package Material = InsulationMaterial,
+    T_start=303.15)
+    annotation (Placement(transformation(extent={{-84,-60},{-66,-42}})));
+
+  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
+    boundary1(nPorts=geometry.nodesTop, use_port=true)
+    annotation (Placement(transformation(
+        extent={{-6,-6},{6,6}},
+        rotation=90,
+        origin={-94,48})));
+  Modelica.Blocks.Sources.RealExpression boundaryT1[geometry.nodesTop](y=fill(
+        geometry.T_amb, geometry.nodesTop)) annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-94,30})));
+  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
+    boundary3(nPorts=geometry.nodesBottom, use_port=true)
+    annotation (Placement(transformation(
+        extent={{-6,-6},{6,6}},
+        rotation=90,
+        origin={-94,-64})));
+  Modelica.Blocks.Sources.RealExpression boundaryT2[geometry.nodesBottom](y=
+        fill(geometry.T_amb, geometry.nodesBottom)) annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-94,-84})));
 equation
-  connect(simpleWall.port_b, thermocline_fluidprops_heaters_newHC_120C.heatPorts[
-    :, 1]) annotation (Line(points={{-40,2},{-34,2},{-34,3},{-28.56,3}},
-        color={191,0,0}));
+
+  connect(simpleWall.port_b, TES.heatPorts[:, 1])
+    annotation (Line(points={{-40,3},{-28.56,3}}, color={191,0,0}));
   connect(simpleWall.port_a, Insulation.port_b)
-    annotation (Line(points={{-60,2},{-66,2}}, color={191,0,0}));
+    annotation (Line(points={{-58,3},{-66,3}}, color={191,0,0}));
   connect(boundary2.port, Insulation.port_a)
-    annotation (Line(points={{-90,-14},{-90,2},{-86,2}}, color={191,0,0}));
-  connect(thermocline_fluidprops_heaters_newHC_120C.port_b, port_b)
-    annotation (Line(points={{3.55271e-15,-24},{3.55271e-15,-62},{0,-62},{0,-100}},
-        color={0,127,255}));
-  connect(thermocline_fluidprops_heaters_newHC_120C.port_a, port_a)
-    annotation (Line(points={{0,30},{0,100}}, color={0,127,255}));
+    annotation (Line(points={{-94,-2},{-94,4},{-84,4},{-84,3}},
+                                                         color={191,0,0}));
   connect(boundaryT.y, boundary2.T_ext)
-    annotation (Line(points={{-90,-45},{-90,-28}}, color={0,0,127}));
+    annotation (Line(points={{-94,-15},{-94,-10.4}},
+                                                   color={0,0,127}));
+  connect(TES.port_a, TES_Top.port_b) annotation (Line(points={{3.55271e-15,30},
+          {3.55271e-15,52.5}}, color={0,127,255}));
+  connect(TES.port_b, TES_Bottom.port_a) annotation (Line(points={{3.55271e-15,
+          -24},{3.55271e-15,-45}}, color={0,127,255}));
+  connect(TES_Bottom.port_b, port_b) annotation (Line(points={{3.55271e-15,-57},
+          {3.55271e-15,-43.12},{0,-43.12},{0,-100}}, color={0,127,255}));
+  connect(simpleWallTop.port_b, TES_Top.heatPorts[:, 1]) annotation (Line(
+        points={{-38,59},{-34,59},{-34,59},{-28.56,59}}, color={191,0,0}));
+  connect(InsulationTop.port_b, simpleWallTop.port_a)
+    annotation (Line(points={{-66,59},{-56,59}}, color={191,0,0}));
+  connect(simpleWallBottom.port_b, TES_Bottom.heatPorts[:, 1])
+    annotation (Line(points={{-40,-51},{-28.56,-51}}, color={191,0,0}));
+  connect(boundary1.port, InsulationTop.port_a) annotation (Line(points={{-94,
+          54},{-94,58},{-84,58},{-84,59}}, color={191,0,0}));
+  connect(boundaryT1.y, boundary1.T_ext)
+    annotation (Line(points={{-94,41},{-94,45.6}}, color={0,0,127}));
+  connect(boundary3.port, InsulationBottom.port_a)
+    annotation (Line(points={{-94,-58},{-94,-51},{-84,-51}}, color={191,0,0}));
+  connect(boundaryT2.y, boundary3.T_ext)
+    annotation (Line(points={{-94,-73},{-94,-66.4}}, color={0,0,127}));
+  connect(InsulationBottom.port_b, simpleWallBottom.port_a)
+    annotation (Line(points={{-66,-51},{-58,-51}}, color={191,0,0}));
+  connect(port_a, TES_Top.port_a) annotation (Line(points={{0,100},{0,82.75},{
+          3.55271e-15,82.75},{3.55271e-15,65.5}}, color={0,127,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-60,90},{60,0}},
@@ -2514,4 +2611,4 @@ Thermocline System"),
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.SpecificHeatCapacity</span>&nbsp;Cr&nbsp; &nbsp;<span style=\"font-family: Courier New; color: #006400;\">&quot;J/kg*K&nbsp;of&nbsp;granite&quot;</span>;</p>
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.ThermalConductivity</span>&nbsp; kr &nbsp; <span style=\"font-family: Courier New; color: #006400;\">&quot;W/m*K&nbsp;of&nbsp;filler&quot;</span>;</p>
 </html>"));
-end Thermocline_Insulation_UQVV;
+end Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection;

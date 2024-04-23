@@ -77,8 +77,8 @@ model Thermocline_Insulation_v3 "Thermocline Insulation subpackage"
         Medium)
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
-  Data.Geometry geometry annotation (Dialog(group="Geometry"),Placement(transformation(
-          extent={{-98,78},{-78,98}})));
+  Data.Geometry_Old geometry annotation (Dialog(group="Geometry"), Placement(
+        transformation(extent={{-98,78},{-78,98}})));
 
 
 equation
