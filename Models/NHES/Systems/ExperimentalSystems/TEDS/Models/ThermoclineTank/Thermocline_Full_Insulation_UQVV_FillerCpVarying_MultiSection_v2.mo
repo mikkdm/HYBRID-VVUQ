@@ -18,7 +18,7 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v2
   parameter SI.Temperature T_Init = 35+273.15       "Initial temperature of thermocline medium and wall";
   parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
 
-  Thermocline_UQVV_test1_multiplePorosity TES(
+  Thermocline_UQVV_test1_multiplePorosity_NOTWorking TES(
     redeclare package Medium = Medium,
     Radius_Tank=geometry.Radius_Tank,
     Porosity=geometry.Porosity,
@@ -35,8 +35,7 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v2
     // SpecificHeatCapacity Cr   "J/kg*K of HTF (or concrete)";
     // ThermalConductivity  kr   "W/m*K  of filler";
 
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[TES.nodes]
-    (
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[TES.nodes](
     length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
     r_inner=fill(geometry.Radius_Tank, geometry.nodes),
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
@@ -55,8 +54,7 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v2
         extent={{-6,-6},{6,6}},
         rotation=90,
         origin={-94,2})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[TES.nodes]
-    (
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[TES.nodes](
     length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
     r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness + geometry.Insulation_thickness,
@@ -93,7 +91,6 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v2
     length=TES_Top.geometry.length,
     r_inner=geometry.Radius_Tank + geometry.Wall_Thickness,
     r_outer=geometry.Radius_Tank + geometry.Wall_Thickness + geometry.Insulation_thickness,
-
     redeclare package Material = InsulationMaterial,
     T_start=303.15)
     annotation (Placement(transformation(extent={{-82,64},{-66,80}})));
@@ -157,10 +154,10 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v2
     length=TES_Bottom.geometry.length,
     r_inner=geometry.Radius_Tank + geometry.Wall_Thickness,
     r_outer=geometry.Radius_Tank + geometry.Wall_Thickness + geometry.Insulation_thickness,
-
     redeclare package Material = InsulationMaterial,
     T_start=303.15)
     annotation (Placement(transformation(extent={{-82,-58},{-66,-42}})));
+
 equation
 
   connect(simpleWall.port_b, TES.heatPorts[:, 1])

@@ -90,7 +90,7 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v6
   parameter Real insulationRouter_71 = 0.61;
 
 
-  Thermocline_UQVV_test1_multiplePorosity TES(
+  Thermocline_UQVV_test2_multiplePorosity            TES(
     redeclare package Medium = Medium,
     Radius_Tank=geometry.Radius_Tank,
     Porosity=geometry.Porosity,

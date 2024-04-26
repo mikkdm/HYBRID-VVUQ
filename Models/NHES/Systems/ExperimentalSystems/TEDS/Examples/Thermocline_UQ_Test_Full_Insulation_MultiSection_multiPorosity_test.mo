@@ -1,5 +1,5 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Examples;
-model Thermocline_UQ_Test_Full_Insulation_MultiSection_singlePorosity
+model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiPorosity_test
   "Ensuring the system operates properly and with the right time constants."
   extends Modelica.Icons.Example;
   SI.Temperature TES_Tf_1;
@@ -139,11 +139,11 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_singlePorosity
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
     annotation (Placement(transformation(extent={{-82,-78},{-62,-58}})));
-  Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v7
+  Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v3
     TES_Tank(
     geometry(
       Radius_Tank=0.438,
-      Porosity=0.36,
+      Porosity=0.36*ones(71),
       nodes=71,
       dr=0.00317,
       Insulation_thickness=3*0.051,
@@ -151,6 +151,8 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_singlePorosity
       Height_Tank=3.55,
       weightFactorTop=0.01,
       weightFactorBottom=0.0005,
+      XS_Fluid=0.36*ones(71)*Modelica.Constants.pi*(TES_Tank.geometry.Radius_Tank
+          ^2.0),
       T_amb=293.15,
       T_ground=273.15),
     redeclare package Medium =
@@ -1808,4 +1810,4 @@ equation
 <p>Insulation = 0.204m; ~8in</p>
 <p>Wall thickness = 0.051 m</p>
 </html>"));
-end Thermocline_UQ_Test_Full_Insulation_MultiSection_singlePorosity;
+end Thermocline_UQ_Test_Full_Insulation_MultiSection_multiPorosity_test;
