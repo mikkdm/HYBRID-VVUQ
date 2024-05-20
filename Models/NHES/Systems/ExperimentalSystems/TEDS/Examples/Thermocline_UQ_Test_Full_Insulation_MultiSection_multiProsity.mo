@@ -101,9 +101,9 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
   Modelica.Fluid.Sources.Boundary_pT boundary1(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
-    use_T_in=false,
+    use_T_in=true,
     p(displayUnit="Pa") = 1e5,
-    T=498.15,
+    T(displayUnit="K") = 292.08,
     nPorts=1) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=270,
         origin={12,-68})));
@@ -212,8 +212,8 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
         394.7; 31140,393.16; 31200,391.47; 31260,389.66; 31320,388.04; 31380,
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
-    annotation (Placement(transformation(extent={{-82,-78},{-62,-58}})));
-  Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v6
+    annotation (Placement(transformation(extent={{-96,-98},{-76,-78}})));
+  Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     TES_Tank(
     geometry(
       Radius_Tank=0.438,
@@ -1843,6 +1843,7 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
     annotation (Placement(transformation(extent={{70,-84},{62,-76}})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_202_Sim(redeclare package
       Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+    T_start(displayUnit="K") = 292.08,
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=-90,
@@ -1853,6 +1854,9 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
         extent={{-9,8},{9,-8}},
         rotation=0,
         origin={-1,38})));
+  Modelica.Blocks.Sources.RealExpression RMSE(y=(TN_1_1_Exp.y - TES_Tank.TES.Tf[
+        1])^2)
+    annotation (Placement(transformation(extent={{-88,-20},{-68,0}})));
 equation
   TES_Tf_1 = TES_Tank.TES.Tf[1];
   TES_Tf_7 = TES_Tank.TES.Tf[7];
@@ -1880,6 +1884,8 @@ equation
     annotation (Line(points={{-22,38},{-10,38}}, color={0,127,255}));
   connect(TC_201_Sim.port_b, TES_Tank.port_a)
     annotation (Line(points={{8,38},{12,38},{12,20}}, color={0,127,255}));
+  connect(TC_202_Exp.y, boundary1.T_in)
+    annotation (Line(points={{-75,-88},{16,-88},{16,-80}}, color={0,0,127}));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}})),
