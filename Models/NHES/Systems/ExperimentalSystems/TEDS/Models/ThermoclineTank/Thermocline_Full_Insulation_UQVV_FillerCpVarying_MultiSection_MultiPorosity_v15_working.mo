@@ -1,6 +1,7 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
-model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
-  "v8 - Remove TES_Top and TES_Bottom and modify insulation block"
+model
+  Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosity_v15_working
+  "v8 + modification"
 
   replaceable package Medium =
       TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
@@ -102,6 +103,25 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
   parameter Real insulationRouter_69 = 0.61;
   parameter Real insulationRouter_70 = 0.61;
   parameter Real insulationRouter_71 = 0.61;
+  parameter Real insulationRouter_72 = 0.61;
+  parameter Real insulationRouter_73 = 0.61;
+  parameter Real insulationRouter_74 = 0.61;
+  parameter Real insulationRouter_75 = 0.61;
+  parameter Real insulationRouter_76 = 0.61;
+  parameter Real insulationRouter_77 = 0.61;
+  parameter Real insulationRouter_78 = 0.61;
+  parameter Real insulationRouter_79 = 0.61;
+  parameter Real insulationRouter_80 = 0.61;
+  parameter Real insulationRouter_81 = 0.61;
+  parameter Real insulationRouter_82 = 0.61;
+  parameter Real insulationRouter_83 = 0.61;
+  parameter Real insulationRouter_84 = 0.61;
+  parameter Real insulationRouter_85 = 0.61;
+  parameter Real insulationRouter_86 = 0.61;
+  parameter Real insulationRouter_87 = 0.61;
+  parameter Real insulationRouter_88 = 0.61;
+  parameter Real insulationRouter_89 = 0.61;
+  parameter Real insulationRouter_90 = 0.61;
 
   Thermocline_UQVV_test3_multiplePorosity_initialT_Working TES(
     redeclare package Medium = Medium,
@@ -113,34 +133,47 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     dz=geometry.dz,
     filler_density(displayUnit="kg/m3") = Density_Filler,
     kr=16.181,
-    dr=geometry.dr)
+    dr=geometry.dr,
+    T_Init={312.08,313,314,315,316,317,317,317,317,317,317.51,317,317,317,317,
+        317,318.36,318,318,318,318,318,317.26,317,317,317,317,316,316.06,316,
+        316,316,316,314.36,314,313,312,311,311,311.72,311,311,311,310,310,
+        309.14,309,309,308,307,307.24,307,306,305,304,304,304.03,304,303,302,
+        301,301,301.52,301,301,300,299,299,299.07,299})
     annotation (Placement(transformation(extent={{-24,-10},{24,38}})));
 
     // SpecificHeatCapacity Cr   "J/kg*K of HTF (or concrete)";
     // ThermalConductivity  kr   "W/m*K  of filler";
 
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[TES.nodes](
-    length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
-    r_inner=fill(geometry.Radius_Tank, geometry.nodes),
-    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[geometry.nodesTotal]
+    (
+    length=fill(geometry.Height_System/geometry.nodesTotal, geometry.nodesTotal),
+
+    r_inner=fill(geometry.Radius_Tank, geometry.nodesTotal),
+    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodesTotal),
+
     redeclare package Material = WallMaterial,
     T_start=T_Init[TES.nodes])
-    annotation (Placement(transformation(extent={{-46,6},{-30,22}})));
+    annotation (Placement(transformation(extent={{-78,6},{-62,22}})));
 
-  Modelica.Blocks.Sources.RealExpression boundaryT[50](y=fill(geometry.T_amb,
-        50)) annotation (Placement(transformation(
+  Modelica.Blocks.Sources.RealExpression boundaryT[geometry.nodesTotal](y=fill(
+        geometry.T_amb, geometry.nodesTotal)) annotation (Placement(
+        transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={-96,2})));
+        origin={-124,2})));
   TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary2(nPorts=50,             use_port=true) annotation (Placement(
+    boundary2(nPorts=geometry.nodesTotal,
+                                     use_port=true) annotation (Placement(
         transformation(
         extent={{6,-6},{-6,6}},
         rotation=180,
-        origin={-82,14})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[50](
-    length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
-    r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
+        origin={-110,14})));
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[geometry.nodesTotal]
+    (
+    length=fill(geometry.Height_System/geometry.nodesTotal, geometry.nodesTotal),
+
+    r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodesTotal),
+
     r_outer={insulationRouter_1,insulationRouter_2,insulationRouter_3,
         insulationRouter_4,insulationRouter_5,insulationRouter_6,
         insulationRouter_7,insulationRouter_8,insulationRouter_9,
@@ -164,10 +197,16 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
         insulationRouter_61,insulationRouter_62,insulationRouter_63,
         insulationRouter_64,insulationRouter_65,insulationRouter_66,
         insulationRouter_67,insulationRouter_68,insulationRouter_69,
-        insulationRouter_70,insulationRouter_71},
+        insulationRouter_70,insulationRouter_71,insulationRouter_72,
+        insulationRouter_73,insulationRouter_74,insulationRouter_75,
+        insulationRouter_76,insulationRouter_77,insulationRouter_78,
+        insulationRouter_79,insulationRouter_80,insulationRouter_81,
+        insulationRouter_82,insulationRouter_83,insulationRouter_84,
+        insulationRouter_85,insulationRouter_86,insulationRouter_87,
+        insulationRouter_88,insulationRouter_89,insulationRouter_90},
     redeclare package Material = InsulationMaterial,
     T_start=303.15)
-    annotation (Placement(transformation(extent={{-68,6},{-52,22}})));
+    annotation (Placement(transformation(extent={{-100,6},{-84,22}})));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare package Medium =
         Medium)
@@ -177,7 +216,8 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
   Data.Geometry_multiplePoro geometry(
-    nodes=71,
+    nodes=70,
+    nodesTotal=90,
     Porosity={0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
         0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
         0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
@@ -193,51 +233,68 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     T_amb=293.15) annotation (Dialog(group="Geometry"), Placement(
         transformation(extent={{-98,76},{-76,98}})));
 
-  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary1(nPorts=11, use_port=true)             annotation (Placement(
-        transformation(
-        extent={{6,-6},{-6,6}},
-        rotation=180,
-        origin={-82,-18})));
-  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary3(nPorts=10, use_port=true)             annotation (Placement(
-        transformation(
-        extent={{6,-6},{-6,6}},
-        rotation=180,
-        origin={-82,46})));
-  Modelica.Blocks.Sources.RealExpression boundaryT1[10](y=fill(geometry.T_amb,
-        10)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=270,
-        origin={-98,30})));
-  Modelica.Blocks.Sources.RealExpression boundaryT2[11](y=fill(geometry.T_amb,
-        11)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=270,
-        origin={-96,-32})));
+  TRANSFORM.Fluid.Volumes.MixingVolume TES_Top(
+    redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+    p_start=100000,
+    T_start=313.15,
+    redeclare model Geometry =
+        TRANSFORM.Fluid.ClosureRelations.Geometry.Models.LumpedVolume.Cylinder
+        (length=geometry.Height_Tank_OilOnly, crossArea=Modelica.Constants.pi*(
+            geometry.Radius_Tank^2.0)),
+    use_HeatPort=true,
+    nPorts_a=1,
+    nPorts_b=1)
+    annotation (Placement(transformation(extent={{-10,10},{10,-10}},
+        rotation=90,
+        origin={0,54})));
+  TRANSFORM.Fluid.Volumes.MixingVolume TES_Bottom(
+    redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+    p_start=100000,
+    T_start=313.15,
+    redeclare model Geometry =
+        TRANSFORM.Fluid.ClosureRelations.Geometry.Models.LumpedVolume.Cylinder
+        (length=geometry.Height_Tank_OilOnly, crossArea=Modelica.Constants.pi*(
+            geometry.Radius_Tank^2.0)),
+    use_HeatPort=true,
+    nPorts_b=1,
+    nPorts_a=1) annotation (Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=90,
+        origin={0,-30})));
+  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Collector collector(n=
+        10) annotation (Placement(transformation(extent={{-32,42},{-12,62}})));
+  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Collector collector1(n=
+        10) annotation (Placement(transformation(extent={{-32,-40},{-12,-20}})));
 equation
 
-  connect(simpleWall.port_b, TES.heatPorts[:, 1])
-    annotation (Line(points={{-30,14},{-24.48,14}},
-                                                  color={191,0,0}));
-  connect(TES.port_b, port_b)
-    annotation (Line(points={{0,-10},{0,-100}}, color={0,127,255}));
-  connect(port_a, TES.port_a)
-    annotation (Line(points={{0,100},{0,38}}, color={0,127,255}));
+  connect(simpleWall.port_a, Insulation.port_b)
+    annotation (Line(points={{-78,14},{-84,14}},
+                                               color={191,0,0}));
   connect(boundary2.port, Insulation.port_a)
-    annotation (Line(points={{-76,14},{-68,14}}, color={191,0,0}));
-  connect(boundaryT.y, boundary2.T_ext) annotation (Line(points={{-96,13},{
-          -90.2,13},{-90.2,14},{-84.4,14}}, color={0,0,127}));
-  connect(Insulation.port_b, simpleWall[11:60].port_a)
-    annotation (Line(points={{-52,14},{-46,14}}, color={191,0,0}));
-  connect(boundary1.port, simpleWall[61:71].port_a) annotation (Line(points={{
-          -76,-18},{-50,-18},{-50,-16},{-46,-16},{-46,14}}, color={191,0,0}));
-  connect(boundaryT1.y, boundary3.T_ext)
-    annotation (Line(points={{-98,41},{-98,46},{-84.4,46}}, color={0,0,127}));
-  connect(boundaryT2.y, boundary1.T_ext) annotation (Line(points={{-96,-21},{
-          -96,-18},{-84.4,-18}}, color={0,0,127}));
-  connect(boundary3.port, simpleWall[1:10].port_a) annotation (Line(points={{
-          -76,46},{-48,46},{-48,14},{-46,14}}, color={191,0,0}));
+    annotation (Line(points={{-104,14},{-100,14}},       color={191,0,0}));
+  connect(boundaryT.y, boundary2.T_ext)
+    annotation (Line(points={{-124,13},{-124,14},{-112.4,14}},
+                                                   color={0,0,127}));
+  connect(TES_Top.port_a[1], TES.port_a) annotation (Line(points={{-4.44089e-16,
+          48},{0,48},{0,38}}, color={0,127,255}));
+  connect(TES.port_b, TES_Bottom.port_b[1]) annotation (Line(points={{0,-10},{0,
+          -9},{3.88578e-16,-9},{3.88578e-16,-24}}, color={0,127,255}));
+  connect(simpleWall[11:80].port_b, TES.heatPorts[:, 1])
+    annotation (Line(points={{-62,14},{-24.48,14}}, color={191,0,0}));
+  connect(port_a, TES_Top.port_b[1]) annotation (Line(points={{0,100},{0,80},{
+          3.88578e-16,80},{3.88578e-16,60}}, color={0,127,255}));
+  connect(TES_Bottom.port_a[1], port_b) annotation (Line(points={{-3.88578e-16,
+          -36},{-3.88578e-16,-68},{0,-68},{0,-100}}, color={0,127,255}));
+  connect(simpleWall[1:10].port_b, collector.port_a) annotation (Line(points={{
+          -62,14},{-42,14},{-42,52},{-32,52}}, color={191,0,0}));
+  connect(simpleWall[81:90].port_b, collector1.port_a) annotation (Line(points=
+          {{-62,14},{-42,14},{-42,-30},{-32,-30}}, color={191,0,0}));
+  connect(collector1.port_b, TES_Bottom.heatPort)
+    annotation (Line(points={{-12,-30},{-6,-30}}, color={191,0,0}));
+  connect(collector.port_b, TES_Top.heatPort)
+    annotation (Line(points={{-12,52},{-12,54},{-6,54}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-60,90},{60,0}},
@@ -2657,4 +2714,5 @@ Thermocline System"),
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.SpecificHeatCapacity</span>&nbsp;Cr&nbsp; &nbsp;<span style=\"font-family: Courier New; color: #006400;\">&quot;J/kg*K&nbsp;of&nbsp;granite&quot;</span>;</p>
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.ThermalConductivity</span>&nbsp; kr &nbsp; <span style=\"font-family: Courier New; color: #006400;\">&quot;W/m*K&nbsp;of&nbsp;filler&quot;</span>;</p>
 </html>"));
-end Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9;
+end
+  Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosity_v15_working;

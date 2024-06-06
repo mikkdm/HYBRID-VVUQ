@@ -11,6 +11,7 @@ parameter SI.Length Height_Tank = 2.92                                        "H
 parameter SI.Length Height_Tank_OilOnly = 0.44                                "Height of Thermocline Tank section (Oil Only)";
 parameter Real weightFactorTop = 0.1                                          "Top TES Weight factor for heat loss through TES head cover";
 parameter Real weightFactorBottom = 0.1                                       "Bottom TES Weight factor for heat loss through TES Bottom cover";
+parameter Real shapeFactor   = 2                                              "ShapeFactor - Perfect sphere = 3";
 
 parameter SI.Area XS_Fluid = Porosity*Modelica.Constants.pi*(Radius_Tank^2.0) "Cross Sectional Area of the Fluid";
 

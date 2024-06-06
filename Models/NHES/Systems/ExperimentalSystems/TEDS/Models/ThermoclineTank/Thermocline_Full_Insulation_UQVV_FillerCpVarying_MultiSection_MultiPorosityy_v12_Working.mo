@@ -1,6 +1,7 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
-model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
-  "v8 - Remove TES_Top and TES_Bottom and modify insulation block"
+model
+  Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosityy_v12_Working
+  "v11 + single boundary"
 
   replaceable package Medium =
       TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
@@ -17,93 +18,114 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
 
   parameter SI.Temperature T_UpperInit = 35+273.15       "Initial temperature of thermocline medium and wall";
   parameter SI.Temperature T_LowerInit = 35+273.15       "Initial temperature of thermocline medium and wall";
-  parameter SI.Temperature T_Init[TES.nodes] = {312.08, 313, 314, 315, 316, 317,
+  parameter SI.Temperature T_Init[TES.nodes] = {312,    312, 312, 312, 312, 312, 312, 312, 312, 312,
+                                                312.08, 313, 314, 315, 316, 317,
                                                 317.51, 317, 317, 317, 317, 317,
-                                                318.36, 318, 318, 318, 318,
-                                                317.26, 317, 317, 317, 317, 316,
+                                                318.36, 318, 318, 318, 318, 318,
+                                                317.26, 317, 317, 317, 317,
                                                 316.06, 316, 316, 316, 316, 315,
                                                 314.36, 314, 313, 312, 311, 311,
                                                 311.72, 311, 311, 311, 310,
                                                 309.14, 309, 309, 308, 307, 307,
                                                 307.24, 307, 306, 305, 304, 304,
-                                                304.03, 304, 303, 302, 301,
-                                                301.52, 301, 301, 300, 299, 299,
+                                                304.03, 304, 303, 302, 301, 301,
+                                                301.52, 301, 301, 300,
                                                 299.07, 299, 299, 299, 298, 297,
-                                                297.32, 292}       "Initial temperature of thermocline medium and wall";
+                                                297.32,
+                                                292,292,292,292,292,292,292,292,292,292}       "Initial temperature of thermocline medium and wall";
   parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
-  parameter Real insulationRouter_1 = 0.61;
-  parameter Real insulationRouter_2 = 0.61;
-  parameter Real insulationRouter_3 = 0.61;
-  parameter Real insulationRouter_4 = 0.61;
-  parameter Real insulationRouter_5 = 0.61;
-  parameter Real insulationRouter_6 = 0.61;
-  parameter Real insulationRouter_7 = 0.61;
-  parameter Real insulationRouter_8 = 0.61;
-  parameter Real insulationRouter_9 = 0.61;
-  parameter Real insulationRouter_10 = 0.61;
-  parameter Real insulationRouter_11 = 0.61;
-  parameter Real insulationRouter_12 = 0.61;
-  parameter Real insulationRouter_13 = 0.61;
-  parameter Real insulationRouter_14 = 0.61;
-  parameter Real insulationRouter_15 = 0.61;
-  parameter Real insulationRouter_16 = 0.61;
-  parameter Real insulationRouter_17 = 0.61;
-  parameter Real insulationRouter_18 = 0.61;
-  parameter Real insulationRouter_19 = 0.61;
-  parameter Real insulationRouter_20 = 0.61;
-  parameter Real insulationRouter_21 = 0.61;
-  parameter Real insulationRouter_22 = 0.61;
-  parameter Real insulationRouter_23 = 0.61;
-  parameter Real insulationRouter_24 = 0.61;
-  parameter Real insulationRouter_25 = 0.61;
-  parameter Real insulationRouter_26 = 0.61;
-  parameter Real insulationRouter_27 = 0.61;
-  parameter Real insulationRouter_28 = 0.61;
-  parameter Real insulationRouter_29 = 0.61;
-  parameter Real insulationRouter_30 = 0.61;
-  parameter Real insulationRouter_31 = 0.61;
-  parameter Real insulationRouter_32 = 0.61;
-  parameter Real insulationRouter_33 = 0.61;
-  parameter Real insulationRouter_34 = 0.61;
-  parameter Real insulationRouter_35 = 0.61;
-  parameter Real insulationRouter_36 = 0.61;
-  parameter Real insulationRouter_37 = 0.61;
-  parameter Real insulationRouter_38 = 0.61;
-  parameter Real insulationRouter_39 = 0.61;
-  parameter Real insulationRouter_40 = 0.61;
-  parameter Real insulationRouter_41 = 0.61;
-  parameter Real insulationRouter_42 = 0.61;
-  parameter Real insulationRouter_43 = 0.61;
-  parameter Real insulationRouter_44 = 0.61;
-  parameter Real insulationRouter_45 = 0.61;
-  parameter Real insulationRouter_46 = 0.61;
-  parameter Real insulationRouter_47 = 0.61;
-  parameter Real insulationRouter_48 = 0.61;
-  parameter Real insulationRouter_49 = 0.61;
-  parameter Real insulationRouter_50 = 0.61;
-  parameter Real insulationRouter_51 = 0.61;
-  parameter Real insulationRouter_52 = 0.61;
-  parameter Real insulationRouter_53 = 0.61;
-  parameter Real insulationRouter_54 = 0.61;
-  parameter Real insulationRouter_55 = 0.61;
-  parameter Real insulationRouter_56 = 0.61;
-  parameter Real insulationRouter_57 = 0.61;
-  parameter Real insulationRouter_58 = 0.61;
-  parameter Real insulationRouter_59 = 0.61;
-  parameter Real insulationRouter_60 = 0.61;
-  parameter Real insulationRouter_61 = 0.61;
-  parameter Real insulationRouter_62 = 0.61;
-  parameter Real insulationRouter_63 = 0.61;
-  parameter Real insulationRouter_64 = 0.61;
-  parameter Real insulationRouter_65 = 0.61;
-  parameter Real insulationRouter_66 = 0.61;
-  parameter Real insulationRouter_67 = 0.61;
-  parameter Real insulationRouter_68 = 0.61;
-  parameter Real insulationRouter_69 = 0.61;
-  parameter Real insulationRouter_70 = 0.61;
-  parameter Real insulationRouter_71 = 0.61;
+  parameter Real insRout_1  = 0.153;
+  parameter Real insRout_2  = 0.153;
+  parameter Real insRout_3  = 0.153;
+  parameter Real insRout_4  = 0.153;
+  parameter Real insRout_5  = 0.153;
+  parameter Real insRout_6  = 0.153;
+  parameter Real insRout_7  = 0.153;
+  parameter Real insRout_8  = 0.153;
+  parameter Real insRout_9  = 0.153;
+  parameter Real insRout_10 = 0.153;
+  parameter Real insRout_11 = 0.153;
+  parameter Real insRout_12 = 0.153;
+  parameter Real insRout_13 = 0.153;
+  parameter Real insRout_14 = 0.153;
+  parameter Real insRout_15 = 0.153;
+  parameter Real insRout_16 = 0.153;
+  parameter Real insRout_17 = 0.153;
+  parameter Real insRout_18 = 0.153;
+  parameter Real insRout_19 = 0.153;
+  parameter Real insRout_20 = 0.153;
+  parameter Real insRout_21 = 0.153;
+  parameter Real insRout_22 = 0.153;
+  parameter Real insRout_23 = 0.153;
+  parameter Real insRout_24 = 0.153;
+  parameter Real insRout_25 = 0.153;
+  parameter Real insRout_26 = 0.153;
+  parameter Real insRout_27 = 0.153;
+  parameter Real insRout_28 = 0.153;
+  parameter Real insRout_29 = 0.153;
+  parameter Real insRout_30 = 0.153;
+  parameter Real insRout_31 = 0.153;
+  parameter Real insRout_32 = 0.153;
+  parameter Real insRout_33 = 0.153;
+  parameter Real insRout_34 = 0.153;
+  parameter Real insRout_35 = 0.153;
+  parameter Real insRout_36 = 0.153;
+  parameter Real insRout_37 = 0.153;
+  parameter Real insRout_38 = 0.153;
+  parameter Real insRout_39 = 0.153;
+  parameter Real insRout_40 = 0.153;
+  parameter Real insRout_41 = 0.153;
+  parameter Real insRout_42 = 0.153;
+  parameter Real insRout_43 = 0.153;
+  parameter Real insRout_44 = 0.153;
+  parameter Real insRout_45 = 0.153;
+  parameter Real insRout_46 = 0.153;
+  parameter Real insRout_47 = 0.153;
+  parameter Real insRout_48 = 0.153;
+  parameter Real insRout_49 = 0.153;
+  parameter Real insRout_50 = 0.153;
+  parameter Real insRout_51 = 0.153;
+  parameter Real insRout_52 = 0.153;
+  parameter Real insRout_53 = 0.153;
+  parameter Real insRout_54 = 0.153;
+  parameter Real insRout_55 = 0.153;
+  parameter Real insRout_56 = 0.153;
+  parameter Real insRout_57 = 0.153;
+  parameter Real insRout_58 = 0.153;
+  parameter Real insRout_59 = 0.153;
+  parameter Real insRout_60 = 0.153;
+  parameter Real insRout_61 = 0.153;
+  parameter Real insRout_62 = 0.153;
+  parameter Real insRout_63 = 0.153;
+  parameter Real insRout_64 = 0.153;
+  parameter Real insRout_65 = 0.153;
+  parameter Real insRout_66 = 0.153;
+  parameter Real insRout_67 = 0.153;
+  parameter Real insRout_68 = 0.153;
+  parameter Real insRout_69 = 0.153;
+  parameter Real insRout_70 = 0.153;
+  parameter Real insRout_71 = 0.153;
+  parameter Real insRout_72 = 0.153;
+  parameter Real insRout_73 = 0.153;
+  parameter Real insRout_74 = 0.153;
+  parameter Real insRout_75 = 0.153;
+  parameter Real insRout_76 = 0.153;
+  parameter Real insRout_77 = 0.153;
+  parameter Real insRout_78 = 0.153;
+  parameter Real insRout_79 = 0.153;
+  parameter Real insRout_80 = 0.153;
+  parameter Real insRout_81 = 0.153;
+  parameter Real insRout_82 = 0.153;
+  parameter Real insRout_83 = 0.153;
+  parameter Real insRout_84 = 0.153;
+  parameter Real insRout_85 = 0.153;
+  parameter Real insRout_86 = 0.153;
+  parameter Real insRout_87 = 0.153;
+  parameter Real insRout_88 = 0.153;
+  parameter Real insRout_89 = 0.153;
+  parameter Real insRout_90 = 0.153;
 
-  Thermocline_UQVV_test3_multiplePorosity_initialT_Working TES(
+  Thermocline_UQVV_test4_multiplePorosity_initialT_noBeadsTES_Working TES(
     redeclare package Medium = Medium,
     Radius_Tank=geometry.Radius_Tank,
     Porosity=geometry.Porosity,
@@ -113,7 +135,14 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     dz=geometry.dz,
     filler_density(displayUnit="kg/m3") = Density_Filler,
     kr=16.181,
-    dr=geometry.dr)
+    dr=geometry.dr,
+    fs=geometry.shapeFactor,
+    T_Init={312.08,313,314,315,316,317,317.51,317,317,317,317,317,318.36,318,
+        318,318,318,317.26,317,317,317,317,316,316.06,316,316,316,316,315,
+        314.36,314,313,312,311,311,311.72,311,311,311,310,309.14,309,309,308,
+        307,307,307.24,307,306,305,304,304,304.03,304,303,302,301,301.52,301,
+        301,300,299,299,299.07,299,299,299,298,297,297.32,292,292,292,292,292,
+        292,292,292,292,292,292,292,292,292,292,292,292,292,292,292})
     annotation (Placement(transformation(extent={{-24,-10},{24,38}})));
 
     // SpecificHeatCapacity Cr   "J/kg*K of HTF (or concrete)";
@@ -127,44 +156,37 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     T_start=T_Init[TES.nodes])
     annotation (Placement(transformation(extent={{-46,6},{-30,22}})));
 
-  Modelica.Blocks.Sources.RealExpression boundaryT[50](y=fill(geometry.T_amb,
-        50)) annotation (Placement(transformation(
+  Modelica.Blocks.Sources.RealExpression boundaryT[90](y=fill(geometry.T_amb,
+        90))
+    annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={-96,2})));
+        origin={-98,2})));
   TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary2(nPorts=50,             use_port=true) annotation (Placement(
+    boundary2(nPorts=90,             use_port=true) annotation (Placement(
         transformation(
         extent={{6,-6},{-6,6}},
         rotation=180,
         origin={-82,14})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[50](
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[90](
     length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
     r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
-    r_outer={insulationRouter_1,insulationRouter_2,insulationRouter_3,
-        insulationRouter_4,insulationRouter_5,insulationRouter_6,
-        insulationRouter_7,insulationRouter_8,insulationRouter_9,
-        insulationRouter_10,insulationRouter_11,insulationRouter_12,
-        insulationRouter_13,insulationRouter_14,insulationRouter_15,
-        insulationRouter_16,insulationRouter_17,insulationRouter_18,
-        insulationRouter_19,insulationRouter_20,insulationRouter_21,
-        insulationRouter_22,insulationRouter_23,insulationRouter_24,
-        insulationRouter_25,insulationRouter_26,insulationRouter_27,
-        insulationRouter_28,insulationRouter_29,insulationRouter_30,
-        insulationRouter_31,insulationRouter_32,insulationRouter_33,
-        insulationRouter_34,insulationRouter_35,insulationRouter_36,
-        insulationRouter_37,insulationRouter_38,insulationRouter_39,
-        insulationRouter_40,insulationRouter_41,insulationRouter_42,
-        insulationRouter_43,insulationRouter_44,insulationRouter_45,
-        insulationRouter_46,insulationRouter_47,insulationRouter_48,
-        insulationRouter_49,insulationRouter_50,insulationRouter_51,
-        insulationRouter_52,insulationRouter_53,insulationRouter_54,
-        insulationRouter_55,insulationRouter_56,insulationRouter_57,
-        insulationRouter_58,insulationRouter_59,insulationRouter_60,
-        insulationRouter_61,insulationRouter_62,insulationRouter_63,
-        insulationRouter_64,insulationRouter_65,insulationRouter_66,
-        insulationRouter_67,insulationRouter_68,insulationRouter_69,
-        insulationRouter_70,insulationRouter_71},
+    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes)
+               + {insRout_1,insRout_2,insRout_3,insRout_4,insRout_5,insRout_6,
+                  insRout_7,insRout_8,insRout_9,insRout_10,insRout_11,insRout_12,
+                  insRout_13,insRout_14,insRout_15,insRout_16,insRout_17,insRout_18,
+                  insRout_19,insRout_20,insRout_21,insRout_22,insRout_23,insRout_24,
+                  insRout_25,insRout_26,insRout_27,insRout_28,insRout_29,insRout_30,
+                  insRout_31,insRout_32,insRout_33,insRout_34,insRout_35,insRout_36,
+                  insRout_37,insRout_38,insRout_39,insRout_40,insRout_41,insRout_42,
+                  insRout_43,insRout_44,insRout_45,insRout_46,insRout_47,insRout_48,
+                  insRout_49,insRout_50,insRout_51,insRout_52,insRout_53,insRout_54,
+                  insRout_55,insRout_56,insRout_57,insRout_58,insRout_59,insRout_60,
+                  insRout_61,insRout_62,insRout_63,insRout_64,insRout_65,insRout_66,
+                  insRout_67,insRout_68,insRout_69,insRout_70,insRout_71,insRout_72,
+                  insRout_73,insRout_74,insRout_75,insRout_76,insRout_77,insRout_78,
+                  insRout_79,insRout_80,insRout_81,insRout_82,insRout_83,insRout_84,
+                  insRout_85,insRout_86,insRout_87,insRout_88,insRout_89,insRout_90},
     redeclare package Material = InsulationMaterial,
     T_start=303.15)
     annotation (Placement(transformation(extent={{-68,6},{-52,22}})));
@@ -177,13 +199,14 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
 
   Data.Geometry_multiplePoro geometry(
-    nodes=71,
-    Porosity={0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36},
+    nodes=90,
+    Porosity={0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
+        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
+        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
+        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
+        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
+        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
+        0.36},
     XS_Fluid={0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
         0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
         0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
@@ -193,28 +216,6 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     T_amb=293.15) annotation (Dialog(group="Geometry"), Placement(
         transformation(extent={{-98,76},{-76,98}})));
 
-  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary1(nPorts=11, use_port=true)             annotation (Placement(
-        transformation(
-        extent={{6,-6},{-6,6}},
-        rotation=180,
-        origin={-82,-18})));
-  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary3(nPorts=10, use_port=true)             annotation (Placement(
-        transformation(
-        extent={{6,-6},{-6,6}},
-        rotation=180,
-        origin={-82,46})));
-  Modelica.Blocks.Sources.RealExpression boundaryT1[10](y=fill(geometry.T_amb,
-        10)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=270,
-        origin={-98,30})));
-  Modelica.Blocks.Sources.RealExpression boundaryT2[11](y=fill(geometry.T_amb,
-        11)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=270,
-        origin={-96,-32})));
 equation
 
   connect(simpleWall.port_b, TES.heatPorts[:, 1])
@@ -224,20 +225,12 @@ equation
     annotation (Line(points={{0,-10},{0,-100}}, color={0,127,255}));
   connect(port_a, TES.port_a)
     annotation (Line(points={{0,100},{0,38}}, color={0,127,255}));
+  connect(boundaryT.y, boundary2.T_ext) annotation (Line(points={{-98,13},{-98,14},
+          {-84.4,14}},                color={0,0,127}));
   connect(boundary2.port, Insulation.port_a)
     annotation (Line(points={{-76,14},{-68,14}}, color={191,0,0}));
-  connect(boundaryT.y, boundary2.T_ext) annotation (Line(points={{-96,13},{
-          -90.2,13},{-90.2,14},{-84.4,14}}, color={0,0,127}));
-  connect(Insulation.port_b, simpleWall[11:60].port_a)
+  connect(Insulation.port_b, simpleWall.port_a)
     annotation (Line(points={{-52,14},{-46,14}}, color={191,0,0}));
-  connect(boundary1.port, simpleWall[61:71].port_a) annotation (Line(points={{
-          -76,-18},{-50,-18},{-50,-16},{-46,-16},{-46,14}}, color={191,0,0}));
-  connect(boundaryT1.y, boundary3.T_ext)
-    annotation (Line(points={{-98,41},{-98,46},{-84.4,46}}, color={0,0,127}));
-  connect(boundaryT2.y, boundary1.T_ext) annotation (Line(points={{-96,-21},{
-          -96,-18},{-84.4,-18}}, color={0,0,127}));
-  connect(boundary3.port, simpleWall[1:10].port_a) annotation (Line(points={{
-          -76,46},{-48,46},{-48,14},{-46,14}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-60,90},{60,0}},
@@ -2657,4 +2650,5 @@ Thermocline System"),
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.SpecificHeatCapacity</span>&nbsp;Cr&nbsp; &nbsp;<span style=\"font-family: Courier New; color: #006400;\">&quot;J/kg*K&nbsp;of&nbsp;granite&quot;</span>;</p>
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.ThermalConductivity</span>&nbsp; kr &nbsp; <span style=\"font-family: Courier New; color: #006400;\">&quot;W/m*K&nbsp;of&nbsp;filler&quot;</span>;</p>
 </html>"));
-end Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9;
+end
+  Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosityy_v12_Working;

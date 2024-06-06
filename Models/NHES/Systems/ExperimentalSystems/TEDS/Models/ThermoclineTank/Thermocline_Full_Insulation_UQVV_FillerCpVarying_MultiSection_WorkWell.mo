@@ -18,7 +18,7 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_WorkWell
   parameter SI.Temperature T_Init = 35+273.15       "Initial temperature of thermocline medium and wall";
   parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
 
-  Thermocline_UQVV_test2_singlePorosity TES(
+  Thermocline_UQVV_test2_singlePorosity_initialT TES(
     redeclare package Medium = Medium,
     Radius_Tank=geometry.Radius_Tank,
     XS_fluid=geometry.XS_Fluid,

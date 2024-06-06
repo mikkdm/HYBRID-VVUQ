@@ -1,6 +1,6 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
-model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
-  "v8 - Remove TES_Top and TES_Bottom and modify insulation block"
+model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v10_Working
+  "v9 + Something"
 
   replaceable package Medium =
       TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
@@ -127,11 +127,11 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
     T_start=T_Init[TES.nodes])
     annotation (Placement(transformation(extent={{-46,6},{-30,22}})));
 
-  Modelica.Blocks.Sources.RealExpression boundaryT[50](y=fill(geometry.T_amb,
-        50)) annotation (Placement(transformation(
+  Modelica.Blocks.Sources.RealExpression boundaryT[50](y=fill(geometry.T_amb, 50))
+    annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={-96,2})));
+        origin={-98,2})));
   TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
     boundary2(nPorts=50,             use_port=true) annotation (Placement(
         transformation(
@@ -157,14 +157,7 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
         insulationRouter_40,insulationRouter_41,insulationRouter_42,
         insulationRouter_43,insulationRouter_44,insulationRouter_45,
         insulationRouter_46,insulationRouter_47,insulationRouter_48,
-        insulationRouter_49,insulationRouter_50,insulationRouter_51,
-        insulationRouter_52,insulationRouter_53,insulationRouter_54,
-        insulationRouter_55,insulationRouter_56,insulationRouter_57,
-        insulationRouter_58,insulationRouter_59,insulationRouter_60,
-        insulationRouter_61,insulationRouter_62,insulationRouter_63,
-        insulationRouter_64,insulationRouter_65,insulationRouter_66,
-        insulationRouter_67,insulationRouter_68,insulationRouter_69,
-        insulationRouter_70,insulationRouter_71},
+        insulationRouter_49,insulationRouter_50},
     redeclare package Material = InsulationMaterial,
     T_start=303.15)
     annotation (Placement(transformation(extent={{-68,6},{-52,22}})));
@@ -205,16 +198,16 @@ model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
         extent={{6,-6},{-6,6}},
         rotation=180,
         origin={-82,46})));
-  Modelica.Blocks.Sources.RealExpression boundaryT1[10](y=fill(geometry.T_amb,
-        10)) annotation (Placement(transformation(
+  Modelica.Blocks.Sources.RealExpression boundaryT1[10](y=fill(geometry.T_amb, 10))
+    annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={-98,30})));
-  Modelica.Blocks.Sources.RealExpression boundaryT2[11](y=fill(geometry.T_amb,
-        11)) annotation (Placement(transformation(
+        origin={-98,34})));
+  Modelica.Blocks.Sources.RealExpression boundaryT2[11](y=fill(geometry.T_amb, 11))
+    annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={-96,-32})));
+        origin={-98,-30})));
 equation
 
   connect(simpleWall.port_b, TES.heatPorts[:, 1])
@@ -226,18 +219,19 @@ equation
     annotation (Line(points={{0,100},{0,38}}, color={0,127,255}));
   connect(boundary2.port, Insulation.port_a)
     annotation (Line(points={{-76,14},{-68,14}}, color={191,0,0}));
-  connect(boundaryT.y, boundary2.T_ext) annotation (Line(points={{-96,13},{
-          -90.2,13},{-90.2,14},{-84.4,14}}, color={0,0,127}));
+  connect(boundaryT.y, boundary2.T_ext) annotation (Line(points={{-98,13},{-98,
+          14},{-84.4,14}},            color={0,0,127}));
   connect(Insulation.port_b, simpleWall[11:60].port_a)
     annotation (Line(points={{-52,14},{-46,14}}, color={191,0,0}));
-  connect(boundary1.port, simpleWall[61:71].port_a) annotation (Line(points={{
-          -76,-18},{-50,-18},{-50,-16},{-46,-16},{-46,14}}, color={191,0,0}));
+  connect(boundary1.port, simpleWall[61:71].port_a) annotation (Line(points={{-76,-18},
+          {-48,-18},{-48,14},{-46,14}},                 color={191,0,0}));
   connect(boundaryT1.y, boundary3.T_ext)
-    annotation (Line(points={{-98,41},{-98,46},{-84.4,46}}, color={0,0,127}));
-  connect(boundaryT2.y, boundary1.T_ext) annotation (Line(points={{-96,-21},{
-          -96,-18},{-84.4,-18}}, color={0,0,127}));
-  connect(boundary3.port, simpleWall[1:10].port_a) annotation (Line(points={{
-          -76,46},{-48,46},{-48,14},{-46,14}}, color={191,0,0}));
+    annotation (Line(points={{-98,45},{-98,46},{-84.4,46}}, color={0,0,127}));
+  connect(boundaryT2.y, boundary1.T_ext) annotation (Line(points={{-98,-19},{
+          -98,-18},{-84.4,-18}},
+                             color={0,0,127}));
+  connect(boundary3.port, simpleWall[1:10].port_a) annotation (Line(points={{-76,
+          46},{-48,46},{-48,14},{-46,14}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-60,90},{60,0}},
@@ -2657,4 +2651,4 @@ Thermocline System"),
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.SpecificHeatCapacity</span>&nbsp;Cr&nbsp; &nbsp;<span style=\"font-family: Courier New; color: #006400;\">&quot;J/kg*K&nbsp;of&nbsp;granite&quot;</span>;</p>
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.ThermalConductivity</span>&nbsp; kr &nbsp; <span style=\"font-family: Courier New; color: #006400;\">&quot;W/m*K&nbsp;of&nbsp;filler&quot;</span>;</p>
 </html>"));
-end Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9;
+end Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v10_Working;

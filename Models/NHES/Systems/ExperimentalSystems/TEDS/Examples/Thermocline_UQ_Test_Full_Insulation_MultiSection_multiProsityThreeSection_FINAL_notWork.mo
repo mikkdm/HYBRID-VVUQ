@@ -1,120 +1,26 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Examples;
-model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
+model
+  Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsityThreeSection_FINAL_notWork
   "Ensuring the system operates properly and with the right time constants."
   extends Modelica.Icons.Example;
   SI.Temperature TES_Tf_1;
-  SI.Temperature TES_Tf_6;
-  SI.Temperature TES_Tf_11;
-  SI.Temperature TES_Tf_17;
-  SI.Temperature TES_Tf_23;
-  SI.Temperature TES_Tf_29;
-  SI.Temperature TES_Tf_34;
-  SI.Temperature TES_Tf_40;
-  SI.Temperature TES_Tf_46;
-  SI.Temperature TES_Tf_51;
-  SI.Temperature TES_Tf_57;
-  SI.Temperature TES_Tf_63;
-  SI.Temperature TES_Tf_69;
-  SI.Temperature TES_Tf_74;
-  SI.Temperature TES_Tf_80;
-  SI.Temperature TES_Tf_85;
-  SI.Temperature TES_Tf_90;
-
+  SI.Temperature TES_Tf_7;
+  SI.Temperature TES_Tf_13;
+  SI.Temperature TES_Tf_19;
+  SI.Temperature TES_Tf_24;
+  SI.Temperature TES_Tf_30;
+  SI.Temperature TES_Tf_36;
+  SI.Temperature TES_Tf_41;
+  SI.Temperature TES_Tf_47;
+  SI.Temperature TES_Tf_53;
+  SI.Temperature TES_Tf_59;
+  SI.Temperature TES_Tf_64;
+  SI.Temperature TES_Tf_70;
 
   parameter Real SF  = 3;
 
-  parameter Real poro_1  = 0.000000001;
-  parameter Real poro_2  = 0.000000001;
-  parameter Real poro_3  = 0.000000001;
-  parameter Real poro_4  = 0.000000001;
-  parameter Real poro_5  = 0.000000001;
-  parameter Real poro_6  = 0.000000001;
-  parameter Real poro_7  = 0.000000001;
-  parameter Real poro_8  = 0.000000001;
-  parameter Real poro_9  = 0.000000001;
-  parameter Real poro_10 = 0.40;
-  parameter Real poro_11 = 0.40;
-  parameter Real poro_12 = 0.40;
-  parameter Real poro_13 = 0.40;
-  parameter Real poro_14 = 0.40;
-  parameter Real poro_15 = 0.40;
-  parameter Real poro_16 = 0.40;
-  parameter Real poro_17 = 0.40;
-  parameter Real poro_18 = 0.40;
-  parameter Real poro_19 = 0.40;
-  parameter Real poro_20 = 0.40;
-  parameter Real poro_21 = 0.40;
-  parameter Real poro_22 = 0.40;
-  parameter Real poro_23 = 0.40;
-  parameter Real poro_24 = 0.40;
-  parameter Real poro_25 = 0.40;
-  parameter Real poro_26 = 0.40;
-  parameter Real poro_27 = 0.40;
-  parameter Real poro_28 = 0.40;
-  parameter Real poro_29 = 0.40;
-  parameter Real poro_30 = 0.40;
-  parameter Real poro_31 = 0.40;
-  parameter Real poro_32 = 0.40;
-  parameter Real poro_33 = 0.40;
-  parameter Real poro_34 = 0.40;
-  parameter Real poro_35 = 0.40;
-  parameter Real poro_36 = 0.40;
-  parameter Real poro_37 = 0.40;
-  parameter Real poro_38 = 0.40;
-  parameter Real poro_39 = 0.40;
-  parameter Real poro_40 = 0.40;
-  parameter Real poro_41 = 0.40;
-  parameter Real poro_42 = 0.40;
-  parameter Real poro_43 = 0.40;
-  parameter Real poro_44 = 0.40;
-  parameter Real poro_45 = 0.40;
-  parameter Real poro_46 = 0.40;
-  parameter Real poro_47 = 0.40;
-  parameter Real poro_48 = 0.40;
-  parameter Real poro_49 = 0.40;
-  parameter Real poro_50 = 0.40;
-  parameter Real poro_51 = 0.40;
-  parameter Real poro_52 = 0.40;
-  parameter Real poro_53 = 0.40;
-  parameter Real poro_54 = 0.40;
-  parameter Real poro_55 = 0.40;
-  parameter Real poro_56 = 0.000001;
-  parameter Real poro_57 = 0.000001;
-  parameter Real poro_58 = 0.000001;
-  parameter Real poro_59 = 0.40;
-  parameter Real poro_60 = 0.40;
-  parameter Real poro_61 = 0.40;
-  parameter Real poro_62 = 0.40;
-  parameter Real poro_63 = 0.40;
-  parameter Real poro_64 = 0.40;
-  parameter Real poro_65 = 0.40;
-  parameter Real poro_66 = 0.40;
-  parameter Real poro_67 = 0.40;
-  parameter Real poro_68 = 0.40;
-  parameter Real poro_69 = 0.40;
-  parameter Real poro_70 = 0.40;
-  parameter Real poro_71 = 0.40;
-  parameter Real poro_72 = 0.40;
-  parameter Real poro_73 = 0.40;
-  parameter Real poro_74 = 0.40;
-  parameter Real poro_75 = 0.40;
-  parameter Real poro_76 = 0.40;
-  parameter Real poro_77 = 0.40;
-  parameter Real poro_78 = 0.40;
-  parameter Real poro_79 = 0.40;
-  parameter Real poro_80 = 0.40;
-  parameter Real poro_81 = 0.40;
-  parameter Real poro_82 = 0.000000001;
-  parameter Real poro_83 = 0.000000001;
-  parameter Real poro_84 = 0.000000001;
-  parameter Real poro_85 = 0.000000001;
-  parameter Real poro_86 = 0.000000001;
-  parameter Real poro_87 = 0.000000001;
-  parameter Real poro_88 = 0.000000001;
-  parameter Real poro_89 = 0.000000001;
-  parameter Real poro_90 = 0.000000001;
-
-
+  parameter Real poro_empty  = 0.000000001;
+  parameter Real poro_fill   = 0.40;
 
   Modelica.Fluid.Sources.MassFlowSource_T boundary(
     redeclare package Medium =
@@ -132,7 +38,7 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
     T(displayUnit="K") = 292.08,
     nPorts=1) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={12,-68})));
+        origin={10,-68})));
 
   Modelica.Blocks.Sources.TimeTable TC_202_Exp(table=[0,292.08; 60,292.03; 120,
         291.98; 180,291.93; 240,291.91; 300,291.88; 360,291.84; 420,291.8; 480,
@@ -239,46 +145,57 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
     annotation (Placement(transformation(extent={{-96,-98},{-76,-78}})));
-  Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v11_Working
+  Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosityy_v14
     TES_Tank(
-    T_Init={312.08,313,314,315,316,317,317,317,317,317,317.51,317,317,317,317,
-        317,318.36,318,318,318,318,318,317.26,317,317,317,317,316,316.06,316,
-        316,316,316,314.36,314,313,312,311,311,311.72,311,311,311,310,310,
-        309.14,309,309,308,307,307.24,307,306,305,304,304,304.03,304,303,302,
-        301,301,301.52,301,301,300,299,299,299.07,299,299,299,298,297.32,292,
-        297,297,297,297,297.32,292,292,292,292,292,292,292,292,292,292},
+    T_Init(displayUnit="K") = {317.51,317,317,317,317,317,318.36,318,318,318,318,
+      318,317.26,317,317,317,317,316,316.06,316,316,316,316,314.36,314,313,312,311,
+      311,311.72,311,311,311,310,310,309.14,309,309,308,307,307.24,307,306,305,304,
+      304,304.03,304,303,302,301,301,301.52,301,301,300,299,299,299.07,299,299,299,
+      298,297.32,292,297,297,297,297,297.32},
+    insRout_1=0.0001,
+    insRout_2=0.0001,
+    insRout_3=0.0001,
+    insRout_4=0.0001,
+    insRout_5=0.0001,
+    insRout_6=0.0001,
+    insRout_7=0.0001,
+    insRout_8=0.0001,
+    insRout_9=0.0001,
+    insRout_10=0.0001,
+    insRout_88=0.00001,
+    insRout_89=0.00001,
+    insRout_90=0.00001,
     geometry(
       Radius_Tank=0.438,
-      Porosity={poro_1,poro_2,poro_3,poro_4,poro_5,poro_6,poro_7,poro_8,poro_9,
-          poro_10,poro_11,poro_12,poro_13,poro_14,poro_15,poro_16,poro_17,
-          poro_18,poro_19,poro_20,poro_21,poro_22,poro_23,poro_24,poro_25,
-          poro_26,poro_27,poro_28,poro_29,poro_30,poro_31,poro_32,poro_33,
-          poro_34,poro_35,poro_36,poro_37,poro_38,poro_39,poro_40,poro_41,
-          poro_42,poro_43,poro_44,poro_45,poro_46,poro_47,poro_48,poro_49,
-          poro_50,poro_51,poro_52,poro_53,poro_54,poro_55,poro_56,poro_57,
-          poro_58,poro_59,poro_60,poro_61,poro_62,poro_63,poro_64,poro_65,
-          poro_66,poro_67,poro_68,poro_69,poro_70,poro_71,poro_72,poro_73,
-          poro_74,poro_75,poro_76,poro_77,poro_78,poro_79,poro_80,poro_81,
-          poro_82,poro_83,poro_84,poro_85,poro_86,poro_87,poro_88,poro_89,
-          poro_90},
-      nodes=90,
+      nodesTotal=90,
+      Porosity={poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill},
+      nodes=70,
       shapeFactor=SF,
       dr=0.00317,
       Insulation_thickness=3*0.051,
       Wall_Thickness=0.019,
       Height_Tank=3.55,
-      XS_Fluid={poro_1,poro_2,poro_3,poro_4,poro_5,poro_6,poro_7,poro_8,poro_9,
-          poro_10,poro_11,poro_12,poro_13,poro_14,poro_15,poro_16,poro_17,
-          poro_18,poro_19,poro_20,poro_21,poro_22,poro_23,poro_24,poro_25,
-          poro_26,poro_27,poro_28,poro_29,poro_30,poro_31,poro_32,poro_33,
-          poro_34,poro_35,poro_36,poro_37,poro_38,poro_39,poro_40,poro_41,
-          poro_42,poro_43,poro_44,poro_45,poro_46,poro_47,poro_48,poro_49,
-          poro_50,poro_51,poro_52,poro_53,poro_54,poro_55,poro_56,poro_57,
-          poro_58,poro_59,poro_60,poro_61,poro_62,poro_63,poro_64,poro_65,
-          poro_66,poro_67,poro_68,poro_69,poro_70,poro_71,poro_72,poro_73,
-          poro_74,poro_75,poro_76,poro_77,poro_78,poro_79,poro_80,poro_81,
-          poro_82,poro_83,poro_84,poro_85,poro_86,poro_87,poro_88,poro_89,
-          poro_90}*Modelica.Constants.pi*(0.438^2.0),
+      XS_Fluid={poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill}*Modelica.Constants.pi*(0.438^2.0),
       T_amb=293.15,
       T_ground=273.15),
     redeclare package Medium =
@@ -286,7 +203,7 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
     redeclare package InsulationMaterial =
         TRANSFORM.Media.Solids.FiberGlassGeneric,
     redeclare package WallMaterial = TRANSFORM.Media.Solids.SS316)
-    annotation (Placement(transformation(extent={{-6,-22},{30,20}})));
+    annotation (Placement(transformation(extent={{-8,-22},{28,20}})));
 
   Modelica.Blocks.Sources.TimeTable FM_202_Exp(table=[0,0.001187; 60,0.001196;
         120,0.00121; 180,0.001219; 240,0.001188; 300,0.001204; 360,0.001182;
@@ -1888,7 +1805,7 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=-90,
-        origin={12,-41})));
+        origin={10,-41})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_201_Sim(redeclare package
       Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
@@ -1896,43 +1813,43 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
         rotation=0,
         origin={-1,38})));
   Modelica.Blocks.Sources.RealExpression MSE_TN_1_1(y=(TN_1_1_Exp.y - TES_Tank.TES.Tf[
-        11])^2)
+        1])^2)
     annotation (Placement(transformation(extent={{-150,86},{-122,104}})));
   Modelica.Blocks.Sources.RealExpression MSE_TN_1_2(y=(TN_1_2_Exp.y - TES_Tank.TES.Tf[
-        17])^2)
+        7])^2)
     annotation (Placement(transformation(extent={{-150,70},{-122,88}})));
   Modelica.Blocks.Sources.RealExpression MSE_TN_1_3(y=(TN_1_3_Exp.y - TES_Tank.TES.Tf[
-        23])^2)
+        13])^2)
     annotation (Placement(transformation(extent={{-150,54},{-122,72}})));
   Modelica.Blocks.Sources.RealExpression MSE_TS_1(y=(TS_1_avg_Exp.y - TES_Tank.TES.Tf[
-        29])^2)
+        19])^2)
     annotation (Placement(transformation(extent={{-150,38},{-122,56}})));
   Modelica.Blocks.Sources.RealExpression MSE_TS_2(y=(TS_2_avg_Exp.y - TES_Tank.TES.Tf[
-        34])^2)
+        24])^2)
     annotation (Placement(transformation(extent={{-150,22},{-122,40}})));
   Modelica.Blocks.Sources.RealExpression MSE_TS_3(y=(TS_3_avg_Exp.y - TES_Tank.TES.Tf[
-        40])^2)
+        30])^2)
     annotation (Placement(transformation(extent={{-150,6},{-122,24}})));
   Modelica.Blocks.Sources.RealExpression MSE_TW_1(y=(TW_1_avg_Exp.y - TES_Tank.TES.Tf[
-        46])^2)
+        36])^2)
     annotation (Placement(transformation(extent={{-150,-10},{-122,8}})));
   Modelica.Blocks.Sources.RealExpression MSE_TW_2(y=(TW_2_avg_Exp.y - TES_Tank.TES.Tf[
-        51])^2)
+        41])^2)
     annotation (Placement(transformation(extent={{-150,-26},{-122,-8}})));
   Modelica.Blocks.Sources.RealExpression MSE_TW_3(y=(TW_3_avg_Exp.y - TES_Tank.TES.Tf[
-        57])^2)
+        47])^2)
     annotation (Placement(transformation(extent={{-150,-42},{-122,-24}})));
   Modelica.Blocks.Sources.RealExpression MSE_TE_1(y=(TE_1_avg_Exp.y - TES_Tank.TES.Tf[
-        63])^2)
+        53])^2)
     annotation (Placement(transformation(extent={{-150,-58},{-122,-40}})));
   Modelica.Blocks.Sources.RealExpression MSE_TE_2(y=(TE_2_avg_Exp.y - TES_Tank.TES.Tf[
-        69])^2)
+        59])^2)
     annotation (Placement(transformation(extent={{-150,-74},{-122,-56}})));
   Modelica.Blocks.Sources.RealExpression MSE_TE_3(y=(TE_3_avg_Exp.y - TES_Tank.TES.Tf[
-        74])^2)
+        64])^2)
     annotation (Placement(transformation(extent={{-150,-90},{-122,-72}})));
   Modelica.Blocks.Sources.RealExpression MSE_TE_4(y=(TE_4_avg_Exp.y - TES_Tank.TES.Tf[
-        80])^2)
+        70])^2)
     annotation (Placement(transformation(extent={{-150,-106},{-122,-88}})));
   Modelica.Blocks.Continuous.Integrator sum_MSE_TN_1_1
     annotation (Placement(transformation(extent={{-116,90},{-106,100}})));
@@ -1962,37 +1879,33 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
     annotation (Placement(transformation(extent={{-116,-54},{-106,-44}})));
 equation
   TES_Tf_1  = TES_Tank.TES.Tf[1]*0.9999999;
-  TES_Tf_6  = TES_Tank.TES.Tf[6]*0.9999999;
-  TES_Tf_11 = TES_Tank.TES.Tf[11]*0.9999999;
-  TES_Tf_17 = TES_Tank.TES.Tf[17]*0.9999999;
-  TES_Tf_23 = TES_Tank.TES.Tf[23]*0.9999999;
-  TES_Tf_29 = TES_Tank.TES.Tf[29]*0.9999999;
-  TES_Tf_34 = TES_Tank.TES.Tf[34]*0.9999999;
-  TES_Tf_40 = TES_Tank.TES.Tf[40]*0.9999999;
-  TES_Tf_46 = TES_Tank.TES.Tf[46]*0.9999999;
-  TES_Tf_51 = TES_Tank.TES.Tf[51]*0.9999999;
-  TES_Tf_57 = TES_Tank.TES.Tf[57]*0.9999999;
-  TES_Tf_63 = TES_Tank.TES.Tf[63]*0.9999999;
-  TES_Tf_69 = TES_Tank.TES.Tf[69]*0.9999999;
-  TES_Tf_74 = TES_Tank.TES.Tf[74]*0.9999999;
-  TES_Tf_80 = TES_Tank.TES.Tf[80]*0.9999999;
-  TES_Tf_85 = TES_Tank.TES.Tf[85]*0.9999999;
-  TES_Tf_90 = TES_Tank.TES.Tf[90]*0.9999999;
+  TES_Tf_7  = TES_Tank.TES.Tf[7]*0.9999999;
+  TES_Tf_13 = TES_Tank.TES.Tf[13]*0.9999999;
+  TES_Tf_19 = TES_Tank.TES.Tf[19]*0.9999999;
+  TES_Tf_24 = TES_Tank.TES.Tf[24]*0.9999999;
+  TES_Tf_30 = TES_Tank.TES.Tf[30]*0.9999999;
+  TES_Tf_36 = TES_Tank.TES.Tf[36]*0.9999999;
+  TES_Tf_41 = TES_Tank.TES.Tf[41]*0.9999999;
+  TES_Tf_47 = TES_Tank.TES.Tf[47]*0.9999999;
+  TES_Tf_53 = TES_Tank.TES.Tf[53]*0.9999999;
+  TES_Tf_59 = TES_Tank.TES.Tf[59]*0.9999999;
+  TES_Tf_64 = TES_Tank.TES.Tf[64]*0.9999999;
+  TES_Tf_70 = TES_Tank.TES.Tf[70]*0.9999999;
 
   connect(FM_202_Exp.y, boundary.m_flow_in)
     annotation (Line(points={{-63,82},{-42,82},{-42,46}}, color={0,0,127}));
   connect(TC_201_Exp.y, boundary.T_in)
     annotation (Line(points={{-63,42},{-44,42}}, color={0,0,127}));
   connect(TES_Tank.port_b, TC_202_Sim.port_a)
-    annotation (Line(points={{12,-22},{12,-29}}, color={0,127,255}));
+    annotation (Line(points={{10,-22},{10,-29}}, color={0,127,255}));
   connect(TC_202_Sim.port_b, boundary1.ports[1])
-    annotation (Line(points={{12,-53},{12,-58}}, color={0,127,255}));
+    annotation (Line(points={{10,-53},{10,-58}}, color={0,127,255}));
   connect(boundary.ports[1], TC_201_Sim.port_a)
     annotation (Line(points={{-22,38},{-10,38}}, color={0,127,255}));
   connect(TC_201_Sim.port_b, TES_Tank.port_a)
-    annotation (Line(points={{8,38},{12,38},{12,20}}, color={0,127,255}));
+    annotation (Line(points={{8,38},{10,38},{10,20}}, color={0,127,255}));
   connect(TC_202_Exp.y, boundary1.T_in)
-    annotation (Line(points={{-75,-88},{16,-88},{16,-80}}, color={0,0,127}));
+    annotation (Line(points={{-75,-88},{14,-88},{14,-80}}, color={0,0,127}));
   connect(MSE_TN_1_1.y,sum_MSE_TN_1_1. u)
     annotation (Line(points={{-120.6,95},{-117,95}},   color={0,0,127}));
   connect(MSE_TW_2.y,sum_MSE_TW_2. u)
@@ -2035,4 +1948,5 @@ equation
 <p>Insulation = 0.204m; ~8in</p>
 <p>Wall thickness = 0.051 m</p>
 </html>"));
-end Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity;
+end
+  Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsityThreeSection_FINAL_notWork;

@@ -1,243 +1,209 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
-model Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9
-  "v8 - Remove TES_Top and TES_Bottom and modify insulation block"
+model Thermocline_UQVV_test5_multiplePorosity_initialT_correctCp
+  "test2_multiplePorosity + temperature initialization nodalization"
+  import TRANSFORM;
 
   replaceable package Medium =
       TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
     TRANSFORM.Media.Interfaces.Fluids.PartialMedium "Fluid Medium" annotation (
       choicesAllMatching=true);
-  replaceable package InsulationMaterial =
-      TRANSFORM.Media.Solids.FiberGlassGeneric constrainedby
-    TRANSFORM.Media.Interfaces.Solids.PartialAlloy "Insulation Material" annotation (__Dymola_choicesAllMatching=true);
 
-  replaceable package WallMaterial = TRANSFORM.Media.Solids.SS304  constrainedby
-    TRANSFORM.Media.Interfaces.Solids.PartialAlloy
-                                                  "Tank Wall Material"
-                                                   annotation (__Dymola_choicesAllMatching=true);
+  replaceable package MediumRock =
+      TRANSFORM.Media.Solids.Alumina constrainedby
+    TRANSFORM.Media.Interfaces.Solids.PartialAlloy "Rock Medium" annotation (
+      choicesAllMatching=true);
 
-  parameter SI.Temperature T_UpperInit = 35+273.15       "Initial temperature of thermocline medium and wall";
-  parameter SI.Temperature T_LowerInit = 35+273.15       "Initial temperature of thermocline medium and wall";
-  parameter SI.Temperature T_Init[TES.nodes] = {312.08, 313, 314, 315, 316, 317,
-                                                317.51, 317, 317, 317, 317, 317,
-                                                318.36, 318, 318, 318, 318,
-                                                317.26, 317, 317, 317, 317, 316,
-                                                316.06, 316, 316, 316, 316, 315,
-                                                314.36, 314, 313, 312, 311, 311,
-                                                311.72, 311, 311, 311, 310,
-                                                309.14, 309, 309, 308, 307, 307,
-                                                307.24, 307, 306, 305, 304, 304,
-                                                304.03, 304, 303, 302, 301,
-                                                301.52, 301, 301, 300, 299, 299,
-                                                299.07, 299, 299, 299, 298, 297,
-                                                297.32, 292}       "Initial temperature of thermocline medium and wall";
-  parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
-  parameter Real insulationRouter_1 = 0.61;
-  parameter Real insulationRouter_2 = 0.61;
-  parameter Real insulationRouter_3 = 0.61;
-  parameter Real insulationRouter_4 = 0.61;
-  parameter Real insulationRouter_5 = 0.61;
-  parameter Real insulationRouter_6 = 0.61;
-  parameter Real insulationRouter_7 = 0.61;
-  parameter Real insulationRouter_8 = 0.61;
-  parameter Real insulationRouter_9 = 0.61;
-  parameter Real insulationRouter_10 = 0.61;
-  parameter Real insulationRouter_11 = 0.61;
-  parameter Real insulationRouter_12 = 0.61;
-  parameter Real insulationRouter_13 = 0.61;
-  parameter Real insulationRouter_14 = 0.61;
-  parameter Real insulationRouter_15 = 0.61;
-  parameter Real insulationRouter_16 = 0.61;
-  parameter Real insulationRouter_17 = 0.61;
-  parameter Real insulationRouter_18 = 0.61;
-  parameter Real insulationRouter_19 = 0.61;
-  parameter Real insulationRouter_20 = 0.61;
-  parameter Real insulationRouter_21 = 0.61;
-  parameter Real insulationRouter_22 = 0.61;
-  parameter Real insulationRouter_23 = 0.61;
-  parameter Real insulationRouter_24 = 0.61;
-  parameter Real insulationRouter_25 = 0.61;
-  parameter Real insulationRouter_26 = 0.61;
-  parameter Real insulationRouter_27 = 0.61;
-  parameter Real insulationRouter_28 = 0.61;
-  parameter Real insulationRouter_29 = 0.61;
-  parameter Real insulationRouter_30 = 0.61;
-  parameter Real insulationRouter_31 = 0.61;
-  parameter Real insulationRouter_32 = 0.61;
-  parameter Real insulationRouter_33 = 0.61;
-  parameter Real insulationRouter_34 = 0.61;
-  parameter Real insulationRouter_35 = 0.61;
-  parameter Real insulationRouter_36 = 0.61;
-  parameter Real insulationRouter_37 = 0.61;
-  parameter Real insulationRouter_38 = 0.61;
-  parameter Real insulationRouter_39 = 0.61;
-  parameter Real insulationRouter_40 = 0.61;
-  parameter Real insulationRouter_41 = 0.61;
-  parameter Real insulationRouter_42 = 0.61;
-  parameter Real insulationRouter_43 = 0.61;
-  parameter Real insulationRouter_44 = 0.61;
-  parameter Real insulationRouter_45 = 0.61;
-  parameter Real insulationRouter_46 = 0.61;
-  parameter Real insulationRouter_47 = 0.61;
-  parameter Real insulationRouter_48 = 0.61;
-  parameter Real insulationRouter_49 = 0.61;
-  parameter Real insulationRouter_50 = 0.61;
-  parameter Real insulationRouter_51 = 0.61;
-  parameter Real insulationRouter_52 = 0.61;
-  parameter Real insulationRouter_53 = 0.61;
-  parameter Real insulationRouter_54 = 0.61;
-  parameter Real insulationRouter_55 = 0.61;
-  parameter Real insulationRouter_56 = 0.61;
-  parameter Real insulationRouter_57 = 0.61;
-  parameter Real insulationRouter_58 = 0.61;
-  parameter Real insulationRouter_59 = 0.61;
-  parameter Real insulationRouter_60 = 0.61;
-  parameter Real insulationRouter_61 = 0.61;
-  parameter Real insulationRouter_62 = 0.61;
-  parameter Real insulationRouter_63 = 0.61;
-  parameter Real insulationRouter_64 = 0.61;
-  parameter Real insulationRouter_65 = 0.61;
-  parameter Real insulationRouter_66 = 0.61;
-  parameter Real insulationRouter_67 = 0.61;
-  parameter Real insulationRouter_68 = 0.61;
-  parameter Real insulationRouter_69 = 0.61;
-  parameter Real insulationRouter_70 = 0.61;
-  parameter Real insulationRouter_71 = 0.61;
 
-  Thermocline_UQVV_test3_multiplePorosity_initialT_Working TES(
-    redeclare package Medium = Medium,
-    Radius_Tank=geometry.Radius_Tank,
-    Porosity=geometry.Porosity,
-    XS_fluid=geometry.XS_Fluid,
-    Height_Tank=geometry.Height_Tank,
-    nodes=geometry.nodes,
-    dz=geometry.dz,
-    filler_density(displayUnit="kg/m3") = Density_Filler,
-    kr=16.181,
-    dr=geometry.dr)
-    annotation (Placement(transformation(extent={{-24,-10},{24,38}})));
+//Tank Parameters
+parameter SI.Length Radius_Tank=7.3 "Radius of the thermocline tank [m]";
+//parameter Real Porosity=0.25 "Porosity in the tank";
+parameter Real Porosity[nodes] = 0.25*ones(nodes);
+parameter SI.Area XS_fluid[nodes] = Porosity*(Radius_Tank^2.0)*Modelica.Constants.pi "Cross Sectional Area seen by the fluid at each axial location";
+parameter SI.Length Height_Tank = 14.6 "Tank Height [m]";
 
-    // SpecificHeatCapacity Cr   "J/kg*K of HTF (or concrete)";
-    // ThermalConductivity  kr   "W/m*K  of filler";
+//Discretization
+parameter Integer nodes=71 "Number of axial nodes";
 
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[TES.nodes](
-    length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
-    r_inner=fill(geometry.Radius_Tank, geometry.nodes),
-    r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
-    redeclare package Material = WallMaterial,
-    T_start=T_Init[TES.nodes])
-    annotation (Placement(transformation(extent={{-46,6},{-30,22}})));
+parameter SI.Length dz = Height_Tank/nodes "delta height in each node";
 
-  Modelica.Blocks.Sources.RealExpression boundaryT[50](y=fill(geometry.T_amb,
-        50)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=270,
-        origin={-96,2})));
-  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary2(nPorts=50,             use_port=true) annotation (Placement(
-        transformation(
-        extent={{6,-6},{-6,6}},
-        rotation=180,
-        origin={-82,14})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[50](
-    length=fill(TES.Height_Tank/TES.nodes, TES.nodes),
-    r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodes),
-    r_outer={insulationRouter_1,insulationRouter_2,insulationRouter_3,
-        insulationRouter_4,insulationRouter_5,insulationRouter_6,
-        insulationRouter_7,insulationRouter_8,insulationRouter_9,
-        insulationRouter_10,insulationRouter_11,insulationRouter_12,
-        insulationRouter_13,insulationRouter_14,insulationRouter_15,
-        insulationRouter_16,insulationRouter_17,insulationRouter_18,
-        insulationRouter_19,insulationRouter_20,insulationRouter_21,
-        insulationRouter_22,insulationRouter_23,insulationRouter_24,
-        insulationRouter_25,insulationRouter_26,insulationRouter_27,
-        insulationRouter_28,insulationRouter_29,insulationRouter_30,
-        insulationRouter_31,insulationRouter_32,insulationRouter_33,
-        insulationRouter_34,insulationRouter_35,insulationRouter_36,
-        insulationRouter_37,insulationRouter_38,insulationRouter_39,
-        insulationRouter_40,insulationRouter_41,insulationRouter_42,
-        insulationRouter_43,insulationRouter_44,insulationRouter_45,
-        insulationRouter_46,insulationRouter_47,insulationRouter_48,
-        insulationRouter_49,insulationRouter_50,insulationRouter_51,
-        insulationRouter_52,insulationRouter_53,insulationRouter_54,
-        insulationRouter_55,insulationRouter_56,insulationRouter_57,
-        insulationRouter_58,insulationRouter_59,insulationRouter_60,
-        insulationRouter_61,insulationRouter_62,insulationRouter_63,
-        insulationRouter_64,insulationRouter_65,insulationRouter_66,
-        insulationRouter_67,insulationRouter_68,insulationRouter_69,
-        insulationRouter_70,insulationRouter_71},
-    redeclare package Material = InsulationMaterial,
-    T_start=303.15)
-    annotation (Placement(transformation(extent={{-68,6},{-52,22}})));
+//Attempt to input medium package
+//SI.Density d_T[nodes]= Medium.density(mediums.state);
+SI.Pressure ps[nodes] = fill(1e5,nodes);
 
+//parameter Real userspecificheat= 2474.5 "Should be input in J/kg*K";
+
+
+//SI.SpecificHeatCapacity Cf[nodes] = fill(userspecificheat,nodes); //This can be used if the user knows an approximately constant value over their desired operations range, else comment this line and uncomment the one above it.
+
+Medium.BaseProperties mediums[nodes];
+MediumRock.BaseProperties mediumRocks[nodes];
+
+SI.Temperature Tf[nodes] "Fluid Temperature up and down the thermocline";
+SI.Temperature Tr[nodes] "Filler Temperature up and down the thermocline";
+
+//////////////
+//parameter SI.Density filler_density = 2630 "Filler Density (Granite)";
+//parameter SI.SpecificHeatCapacity Cr = 775.0 "J/kg*K of granite";
+//parameter SI.ThermalConductivity kr = 2.8 "W/m*K of filler";
+//////////////
+
+//////////////
+parameter SI.SpecificHeatCapacity Cr[nodes] = MediumRock.specificHeatCapacityCp(mediumRocks.state) "J/kg*K";
+parameter SI.ThermalConductivity kr[nodes] = 2.8 "W/m*K of filler";
+parameter SI.Density filler_density = 2630 "Filler Density";
+//////////////
+
+SI.ReynoldsNumber Re[nodes] "Unitless";
+SI.MassFlowRate mf;  //=-128.74 "kg/s";
+SI.Velocity vel[nodes] "meter/s";
+SI.CoefficientOfHeatTransfer h_c[nodes] "W/m^2*K";
+SI.PrandtlNumber Pr[nodes] "Unitless";
+SI.Length r_char[nodes] "hydraulic radius [m]";
+parameter SI.Length dr=0.04 "nominal diameter of filler material [m]";
+
+SI.SpecificHeatCapacity Cf[nodes] = Medium.specificHeatCapacityCp(mediums.state);
+SI.ThermalConductivity kf[nodes] = Medium.thermalConductivity(mediums.state) "W/m*K of fluid";
+SI.DynamicViscosity mu_f[nodes] = Medium.dynamicViscosity(mediums.state);
+SI.Density fluid_density[nodes] = Medium.density(mediums.state);
+
+SI.Length Sr[nodes] "Heat Transfer Surface Area of rocks per unit length of tank [m]";
+parameter Real fs=3.0 "Surface Shape Factor, between 2 and 3 
+depending rocks packing scheme";
+//parameter SI.Temperature T_Init = 120+273.15 "Initial temperature of thermocline medium and wall";
+parameter SI.Temperature T_Init[nodes] =  {312.08, 313, 314, 315, 316, 317, 317, 317, 317, 317,
+                                           317.51, 317, 317, 317, 317, 317,
+                                           318.36, 318, 318, 318, 318, 318,
+                                           317.26, 317, 317, 317, 317, 316,
+                                           316.06, 316, 316, 316, 316,
+                                           314.36, 314, 313, 312, 311, 311,
+                                           311.72, 311, 311, 311, 310, 310,
+                                           309.14, 309, 309, 308, 307,
+                                           307.24, 307, 306, 305, 304, 304,
+                                           304.03, 304, 303, 302, 301, 301,
+                                           301.52, 301, 301, 300, 299, 299,
+                                           299.07, 299, 299, 299, 298,
+                                           297.32, 292, 297, 297, 297, 297,
+                                           297.32, 292, 292, 292, 292,
+                                           292, 292, 292, 292, 292,
+                                           292}  "Initial temperature of thermocline medium and wall";
+
+SI.Temperature T_inlet_cold;
+SI.Temperature T_inlet_hot;
+
+SI.Temperature Tf_edge[nodes+1] "Boundary Nodes for fluid temperatures";
+
+SI.Length z_star[nodes];
+
+Medium.ThermodynamicState port_a_state "Properties of fluid port a";
+Medium.ThermodynamicState port_b_state "Properties of fluid port b";
+
+//Initialization Step **********************************************
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare package Medium =
         Medium)
     annotation (Placement(transformation(extent={{-10,90},{10,110}})));
-  Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare package Medium =
-        Medium)
+  Modelica.Fluid.Interfaces.FluidPort_b port_b(redeclare replaceable package
+      Medium = Medium)
     annotation (Placement(transformation(extent={{-10,-110},{10,-90}})));
+  TRANSFORM.HeatAndMassTransfer.Interfaces.HeatPort_Flow
+                                               heatPorts[nodes,1]
+    annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
+        iconTransformation(extent={{-112,-10},{-92,10}})));
+initial equation
 
-  Data.Geometry_multiplePoro geometry(
-    nodes=71,
-    Porosity={0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36},
-    XS_Fluid={0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
-        0.36,0.36}*Modelica.Constants.pi*(geometry.Radius_Tank^2.0),
-    T_amb=293.15) annotation (Dialog(group="Geometry"), Placement(
-        transformation(extent={{-98,76},{-76,98}})));
+for i in 1:integer(nodes*1.33/2) loop
+  Tf[i]=T_Init[i];
+  Tr[i]=T_Init[i];
+end for;
+for i in integer(nodes*1.33/2)+1:nodes loop
 
-  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary1(nPorts=11, use_port=true)             annotation (Placement(
-        transformation(
-        extent={{6,-6},{-6,6}},
-        rotation=180,
-        origin={-82,-18})));
-  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary3(nPorts=10, use_port=true)             annotation (Placement(
-        transformation(
-        extent={{6,-6},{-6,6}},
-        rotation=180,
-        origin={-82,46})));
-  Modelica.Blocks.Sources.RealExpression boundaryT1[10](y=fill(geometry.T_amb,
-        10)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=270,
-        origin={-98,30})));
-  Modelica.Blocks.Sources.RealExpression boundaryT2[11](y=fill(geometry.T_amb,
-        11)) annotation (Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=270,
-        origin={-96,-32})));
+  Tf[i]=T_Init[i];
+  Tr[i]=T_Init[i];
+
+end for;
+
+// Start of the actual Thermocline Equation Set**********************
 equation
 
-  connect(simpleWall.port_b, TES.heatPorts[:, 1])
-    annotation (Line(points={{-30,14},{-24.48,14}},
-                                                  color={191,0,0}));
-  connect(TES.port_b, port_b)
-    annotation (Line(points={{0,-10},{0,-100}}, color={0,127,255}));
-  connect(port_a, TES.port_a)
-    annotation (Line(points={{0,100},{0,38}}, color={0,127,255}));
-  connect(boundary2.port, Insulation.port_a)
-    annotation (Line(points={{-76,14},{-68,14}}, color={191,0,0}));
-  connect(boundaryT.y, boundary2.T_ext) annotation (Line(points={{-96,13},{
-          -90.2,13},{-90.2,14},{-84.4,14}}, color={0,0,127}));
-  connect(Insulation.port_b, simpleWall[11:60].port_a)
-    annotation (Line(points={{-52,14},{-46,14}}, color={191,0,0}));
-  connect(boundary1.port, simpleWall[61:71].port_a) annotation (Line(points={{
-          -76,-18},{-50,-18},{-50,-16},{-46,-16},{-46,14}}, color={191,0,0}));
-  connect(boundaryT1.y, boundary3.T_ext)
-    annotation (Line(points={{-98,41},{-98,46},{-84.4,46}}, color={0,0,127}));
-  connect(boundaryT2.y, boundary1.T_ext) annotation (Line(points={{-96,-21},{
-          -96,-18},{-84.4,-18}}, color={0,0,127}));
-  connect(boundary3.port, simpleWall[1:10].port_a) annotation (Line(points={{
-          -76,46},{-48,46},{-48,14},{-46,14}}, color={191,0,0}));
+//Resetting the density, and dynamic viscosity as function of temperature at each node
+  mediums.p = ps;
+  mediums.T = Tr;
+
+// Port Parameters
+  port_a.p = port_b.p;
+  port_b.h_outflow = mediums[nodes].h;
+  port_a.h_outflow = mediums[1].h;
+  0 = port_a.m_flow+port_b.m_flow;
+  port_a_state = Medium.setState_ph(port_a.p,inStream(port_a.h_outflow));
+  port_b_state = Medium.setState_ph(port_b.p,inStream(port_b.h_outflow));
+
+heatPorts[:,1].T = Tf;
+//heatPorts[:,2].T = Tr;
+
+//define ports
+T_inlet_cold = port_b_state.T;
+T_inlet_hot = port_a_state.T;
+
+mf = port_a.m_flow;
+
+//Ensure there is no divide by zero circumstance.*********************************************
+if mf > -0.002 and mf < 0.002 then
+  Re = fill(0.0001,nodes); //Simply forces the answer to not be equal to 0
+else
+  for i in 1:nodes loop
+    Re[i] = 4*r_char[i]*(abs(mf)/(Porosity[i]*(Radius_Tank^2.0)*Modelica.Constants.pi))/mu_f[i];
+  end for;
+end if;
+
+//Pr = Cf*mu_f./kf;
+for i in 1:nodes loop
+  Pr[i] = Cf[i]*mu_f[i]/kf[i];
+  r_char[i] = Porosity[i]*dr/(4.0*(1-Porosity[i]));
+end for;
+
+//r_char = Porosity*dr/(4.0*(1-Porosity));
+for i in 1:nodes loop
+  //Change this Nusselt number equation....
+  h_c[i] = ((7-10*Porosity[i] + 5*(Porosity[i]^2))*(1+0.7*(Re[i]^0.2)*(Pr[i]^(1/3))) + (1.33-2.4*Porosity[i]+1.2*(Porosity[i]^2.))*(Re[i]^0.7)*(Pr[i]^(1/3)))*kf[i]/(2*r_char[i]);
+  //h_c[i] = (0.191*abs(mf)*Cf[i]/(Porosity*Modelica.Constants.pi.*(Radius_Tank^2.0)))*(Re[i]^(-0.278))*(Pr[i]^(-2/3)); **JunSoo came up with the h_c correlation? It comes from a paper somewhere.
+  //
+  Sr[i] = fs*Modelica.Constants.pi*(1-Porosity[i])*(Radius_Tank^2.0)/(dr/2); // Eq. (8) of (2011) Analysis of Heat Storage and Delivery of a Thermocline Tank Having Solid Filler Material
+end for;
+
+//Fluid Energy Equation**************************************************************
+//Will likely need to add in the Q(i) term into the fluid temperature section rather than into both of the energy equations.
+//for i in 1:nodes loop
+  vel = mf./(fluid_density.*XS_fluid);
+//end for;
+
+if mf >= 0.0 then
+  for i in 2:nodes loop
+    (h_c[i]*Sr[i]/(fluid_density[i]*Cf[i]*Porosity[i]*Modelica.Constants.pi*(Radius_Tank^2.0)))*(Tr[i]-Tf[i]) + heatPorts[i,1].Q_flow/(fluid_density[i]*Cf[i]*XS_fluid[i]*dz) = der(Tf[i]) + vel[i]* (Tf[i]-Tf[i-1])/dz;
+  end for;
+//Boundary Condition for positive flow from cold to hot.
+(h_c[1]*Sr[1]/(fluid_density[1]*Cf[1]*Porosity[1]*Modelica.Constants.pi*(Radius_Tank^2.0)))*(Tr[1]-Tf[1]) + heatPorts[1,1].Q_flow/(fluid_density[1]*Cf[1]*XS_fluid[1]*dz) = der(Tf[1]) + vel[1]* (Tf[1]-T_inlet_hot)/dz;
+else
+  for i in 1:nodes-1 loop
+    (h_c[i]*Sr[i]/(fluid_density[i]*Cf[i]*Porosity[i]*Modelica.Constants.pi*(Radius_Tank^2.0)))*(Tr[i]-Tf[i]) + heatPorts[i,1].Q_flow/(fluid_density[i]*Cf[i]*XS_fluid[i]*dz) = der(Tf[i]) + vel[i]* (Tf[i+1]-Tf[i])/dz;
+  end for;
+  //Boundary Condition for positive flow from cold to hot.
+  (h_c[nodes]*Sr[nodes]/(fluid_density[nodes]*Cf[nodes]*Porosity[nodes]*Modelica.Constants.pi*(Radius_Tank^2.0)))*(Tr[nodes]-Tf[nodes])+ heatPorts[nodes,1].Q_flow/(fluid_density[nodes]*Cf[nodes]*XS_fluid[nodes]*dz) = der(Tf[nodes]) + vel[nodes]* (T_inlet_cold-Tf[nodes])/dz;
+end if;
+
+Tf_edge[1]=T_inlet_hot;
+Tf_edge[nodes+1]=Tf[nodes];
+for i in 2:nodes loop
+  Tf_edge[i] = (Tf[i]+Tf[i-1])/2;
+end for;
+
+//Rock Energy
+for i in 1:nodes loop
+    h_c[i]*Sr[i]*(Tr[i]-Tf[i])*dz  = -filler_density*Cr*(1-Porosity[i])*Modelica.Constants.pi*(Radius_Tank^2.0)*dz*der(Tr[i]);
+end for;
+
+for i in 1:nodes loop
+  z_star[i] = (i-1)*Height_Tank + dz/2; //Should put it at the halfway point of the tank.
+end for;
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-60,90},{60,0}},
@@ -2603,58 +2569,139 @@ equation
           lineThickness=1,
           fillPattern=FillPattern.Solid,
           fillColor={175,175,175}),
+        Line(
+          points={{-60,-76},{60,-76}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-66},{60,-66}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-54},{60,-54}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-14},{60,-14}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-30},{60,-30}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,-42},{60,-42}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,0},{60,0}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,12},{60,12}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,24},{60,24}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,36},{60,36}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,52},{60,52}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
         Text(
-          extent={{-46,86},{50,66}},
+          extent={{-10,-80},{10,-86}},
           lineColor={0,0,0},
-          lineThickness=1,
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
           fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          textStyle={TextStyle.Bold,TextStyle.Italic},
-          textString="Packed Bed 
-Thermocline System"),
-        Rectangle(
-          extent={{-60,90},{-68,-90}},
+          textString="i=N"),
+        Text(
+          extent={{-10,-68},{10,-74}},
           lineColor={0,0,0},
-          fillColor={0,0,0},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          lineThickness=1),
-        Rectangle(
-          extent={{-68,90},{-78,-90}},
+          textString="i=N-1"),
+        Text(
+          extent={{-10,-58},{10,-64}},
           lineColor={0,0,0},
-          fillColor={244,125,35},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          lineThickness=1),
-        Rectangle(
-          extent={{68,90},{60,-90}},
+          textString="i=N-2"),
+        Line(
+          points={{-60,64},{60,64}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,74},{60,74}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Line(
+          points={{-60,82},{60,82}},
+          color={0,0,0},
+          thickness=0.5,
+          pattern=LinePattern.Dash),
+        Text(
+          extent={{-8,88},{12,82}},
           lineColor={0,0,0},
-          fillColor={0,0,0},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          lineThickness=1),
-        Rectangle(
-          extent={{78,90},{68,-90}},
+          textString="i=1"),
+        Text(
+          extent={{-8,80},{12,74}},
           lineColor={0,0,0},
-          fillColor={244,125,35},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
           fillPattern=FillPattern.Solid,
-          lineThickness=1)}),                                    Diagram(
+          textString="i=2"),
+        Text(
+          extent={{-8,72},{12,66}},
+          lineColor={0,0,0},
+          pattern=LinePattern.Dash,
+          lineThickness=0.5,
+          fillColor={175,175,175},
+          fillPattern=FillPattern.Solid,
+          textString="i=3")}),                                   Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     experiment(
-      StopTime=1080000,
-      Interval=10.000008,
+      StopTime=86400,
+      Interval=1,
+      Tolerance=1e-06,
       __Dymola_Algorithm="Esdirk45a"),
     Documentation(info="<html>
-<p>Note: </p>
-<p>1. Filler Density:</p>
-<p><span style=\"font-family: Courier New;\">filler_density(displayUnit=&quot;kg/m3&quot;)&nbsp;=&nbsp;3950 </span></p>
-<p><span style=\"font-family: Courier New;\">==&gt; Refrence: Ronald Munro. &quot;Evaluated Material Properties for a Sintered alpha-Alumina.&quot; Jounrnal of American Ceramics. Volume 80. Pgs. 1919-1928. 1997.</span></p>
-<p><br><span style=\"font-family: Courier New;\">filler_density(displayUnit=&quot;kg/m3&quot;) = 3982.54 </span></p>
-<p><span style=\"font-family: Courier New;\">==&gt; Refrence: T-99 PROX-SVERS Data Sheet.pdf (GRP-TEDS - TK-004/Thermocline Media/T-99 PROX-SVERS Data Sheet.pdf)</span></p>
-<p><span style=\"font-family: Courier New;\">Alumina (Al2O3) &gt;99.0; Density = 3.99 g/cm3</span></p>
-<p><span style=\"font-family: Courier New;\">Silica (SiO2) &lt;0.35; Density = 2.65 g/cm3</span></p>
-<p><span style=\"font-family: Courier New;\">Iron (Fe2O3) &lt;0.15; Density = 7.874 g/cm3</span></p>
-<p><span style=\"font-family: Courier New;\">Soda (Na2O) &lt;0.5; Density = 2.27 g/cm3</span></p>
-<p><span style=\"font-family: Courier New;\">3.99 x .99 + 2.65 x .0035 + 7.874 x .0015 + 2.27 x .005 = 3982.54 (kg/m3)</span></p>
-<p><br>2. Specific Heat Capacity / Thermal Conductivity</p>
-<p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.SpecificHeatCapacity</span>&nbsp;Cr&nbsp; &nbsp;<span style=\"font-family: Courier New; color: #006400;\">&quot;J/kg*K&nbsp;of&nbsp;granite&quot;</span>;</p>
-<p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.ThermalConductivity</span>&nbsp; kr &nbsp; <span style=\"font-family: Courier New; color: #006400;\">&quot;W/m*K&nbsp;of&nbsp;filler&quot;</span>;</p>
+    <p>Author: Konor Frick, Junyung Kim</p>
+    <p>Date: March 2, 2020 for initial model development, April 29 2024 for model improvement</p>
+<p>Description:</p>
+<p>The Model Developed here was implemented based upon two papers. </p>
+<p>1. Analysis of Heat Storage and Delivery of a Thermocline Tank Having Solid Filler Material </p>
+<p>-<span style=\"font-family: Roboto,Arial,sans-serif;\">DOI: 10.1115/1.4003685</span></p>
+<p>2. A Versatile one-dimensional numebrical model for packed-bed heat storage systems</p>
+<p>-DOI. <span style=\"font-family: NexusSans,Arial,Helvetica,Lucida Sans Unicode,Microsoft Sans Serif,Segoe UI Symbol,STIXGeneral,Cambria Math,Arial Unicode MS,sans-serif;\"><a href=\"https://doi.org/10.1016/j.renene.2018.10.012\">https://doi.org/10.1016/j.renene.2018.10.012</a></span></p>
+<p><br>The model backbone is the Schumann equations with additional terms incorporated for thermal conduction when in standby mode. </p>
 </html>"));
-end Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v9;
+end Thermocline_UQVV_test5_multiplePorosity_initialT_correctCp;

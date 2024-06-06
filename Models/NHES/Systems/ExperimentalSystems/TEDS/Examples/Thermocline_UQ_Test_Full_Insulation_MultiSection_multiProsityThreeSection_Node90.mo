@@ -1,5 +1,6 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Examples;
-model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
+model
+  Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsityThreeSection_Node90
   "Ensuring the system operates properly and with the right time constants."
   extends Modelica.Icons.Example;
   SI.Temperature TES_Tf_1;
@@ -20,101 +21,10 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
   SI.Temperature TES_Tf_85;
   SI.Temperature TES_Tf_90;
 
-
   parameter Real SF  = 3;
 
-  parameter Real poro_1  = 0.000000001;
-  parameter Real poro_2  = 0.000000001;
-  parameter Real poro_3  = 0.000000001;
-  parameter Real poro_4  = 0.000000001;
-  parameter Real poro_5  = 0.000000001;
-  parameter Real poro_6  = 0.000000001;
-  parameter Real poro_7  = 0.000000001;
-  parameter Real poro_8  = 0.000000001;
-  parameter Real poro_9  = 0.000000001;
-  parameter Real poro_10 = 0.40;
-  parameter Real poro_11 = 0.40;
-  parameter Real poro_12 = 0.40;
-  parameter Real poro_13 = 0.40;
-  parameter Real poro_14 = 0.40;
-  parameter Real poro_15 = 0.40;
-  parameter Real poro_16 = 0.40;
-  parameter Real poro_17 = 0.40;
-  parameter Real poro_18 = 0.40;
-  parameter Real poro_19 = 0.40;
-  parameter Real poro_20 = 0.40;
-  parameter Real poro_21 = 0.40;
-  parameter Real poro_22 = 0.40;
-  parameter Real poro_23 = 0.40;
-  parameter Real poro_24 = 0.40;
-  parameter Real poro_25 = 0.40;
-  parameter Real poro_26 = 0.40;
-  parameter Real poro_27 = 0.40;
-  parameter Real poro_28 = 0.40;
-  parameter Real poro_29 = 0.40;
-  parameter Real poro_30 = 0.40;
-  parameter Real poro_31 = 0.40;
-  parameter Real poro_32 = 0.40;
-  parameter Real poro_33 = 0.40;
-  parameter Real poro_34 = 0.40;
-  parameter Real poro_35 = 0.40;
-  parameter Real poro_36 = 0.40;
-  parameter Real poro_37 = 0.40;
-  parameter Real poro_38 = 0.40;
-  parameter Real poro_39 = 0.40;
-  parameter Real poro_40 = 0.40;
-  parameter Real poro_41 = 0.40;
-  parameter Real poro_42 = 0.40;
-  parameter Real poro_43 = 0.40;
-  parameter Real poro_44 = 0.40;
-  parameter Real poro_45 = 0.40;
-  parameter Real poro_46 = 0.40;
-  parameter Real poro_47 = 0.40;
-  parameter Real poro_48 = 0.40;
-  parameter Real poro_49 = 0.40;
-  parameter Real poro_50 = 0.40;
-  parameter Real poro_51 = 0.40;
-  parameter Real poro_52 = 0.40;
-  parameter Real poro_53 = 0.40;
-  parameter Real poro_54 = 0.40;
-  parameter Real poro_55 = 0.40;
-  parameter Real poro_56 = 0.000001;
-  parameter Real poro_57 = 0.000001;
-  parameter Real poro_58 = 0.000001;
-  parameter Real poro_59 = 0.40;
-  parameter Real poro_60 = 0.40;
-  parameter Real poro_61 = 0.40;
-  parameter Real poro_62 = 0.40;
-  parameter Real poro_63 = 0.40;
-  parameter Real poro_64 = 0.40;
-  parameter Real poro_65 = 0.40;
-  parameter Real poro_66 = 0.40;
-  parameter Real poro_67 = 0.40;
-  parameter Real poro_68 = 0.40;
-  parameter Real poro_69 = 0.40;
-  parameter Real poro_70 = 0.40;
-  parameter Real poro_71 = 0.40;
-  parameter Real poro_72 = 0.40;
-  parameter Real poro_73 = 0.40;
-  parameter Real poro_74 = 0.40;
-  parameter Real poro_75 = 0.40;
-  parameter Real poro_76 = 0.40;
-  parameter Real poro_77 = 0.40;
-  parameter Real poro_78 = 0.40;
-  parameter Real poro_79 = 0.40;
-  parameter Real poro_80 = 0.40;
-  parameter Real poro_81 = 0.40;
-  parameter Real poro_82 = 0.000000001;
-  parameter Real poro_83 = 0.000000001;
-  parameter Real poro_84 = 0.000000001;
-  parameter Real poro_85 = 0.000000001;
-  parameter Real poro_86 = 0.000000001;
-  parameter Real poro_87 = 0.000000001;
-  parameter Real poro_88 = 0.000000001;
-  parameter Real poro_89 = 0.000000001;
-  parameter Real poro_90 = 0.000000001;
-
-
+  parameter Real poro_empty  = 0.000000001;
+  parameter Real poro_fill   = 0.40;
 
   Modelica.Fluid.Sources.MassFlowSource_T boundary(
     redeclare package Medium =
@@ -239,7 +149,7 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
     annotation (Placement(transformation(extent={{-96,-98},{-76,-78}})));
-  Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v11_Working
+  Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosityy_v12_Working
     TES_Tank(
     T_Init={312.08,313,314,315,316,317,317,317,317,317,317.51,317,317,317,317,
         317,318.36,318,318,318,318,318,317.26,317,317,317,317,316,316.06,316,
@@ -247,38 +157,56 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
         309.14,309,309,308,307,307.24,307,306,305,304,304,304.03,304,303,302,
         301,301,301.52,301,301,300,299,299,299.07,299,299,299,298,297.32,292,
         297,297,297,297,297.32,292,292,292,292,292,292,292,292,292,292},
+    insRout_1=0.0001,
+    insRout_2=0.0001,
+    insRout_3=0.0001,
+    insRout_4=0.0001,
+    insRout_5=0.0001,
+    insRout_6=0.0001,
+    insRout_7=0.0001,
+    insRout_8=0.0001,
+    insRout_9=0.0001,
+    insRout_10=0.0001,
+    insRout_88=0.00001,
+    insRout_89=0.00001,
+    insRout_90=0.00001,
     geometry(
       Radius_Tank=0.438,
-      Porosity={poro_1,poro_2,poro_3,poro_4,poro_5,poro_6,poro_7,poro_8,poro_9,
-          poro_10,poro_11,poro_12,poro_13,poro_14,poro_15,poro_16,poro_17,
-          poro_18,poro_19,poro_20,poro_21,poro_22,poro_23,poro_24,poro_25,
-          poro_26,poro_27,poro_28,poro_29,poro_30,poro_31,poro_32,poro_33,
-          poro_34,poro_35,poro_36,poro_37,poro_38,poro_39,poro_40,poro_41,
-          poro_42,poro_43,poro_44,poro_45,poro_46,poro_47,poro_48,poro_49,
-          poro_50,poro_51,poro_52,poro_53,poro_54,poro_55,poro_56,poro_57,
-          poro_58,poro_59,poro_60,poro_61,poro_62,poro_63,poro_64,poro_65,
-          poro_66,poro_67,poro_68,poro_69,poro_70,poro_71,poro_72,poro_73,
-          poro_74,poro_75,poro_76,poro_77,poro_78,poro_79,poro_80,poro_81,
-          poro_82,poro_83,poro_84,poro_85,poro_86,poro_87,poro_88,poro_89,
-          poro_90},
+      Porosity={poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,
+          poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,
+          poro_empty,poro_empty,poro_empty,poro_empty},
       nodes=90,
       shapeFactor=SF,
       dr=0.00317,
       Insulation_thickness=3*0.051,
       Wall_Thickness=0.019,
       Height_Tank=3.55,
-      XS_Fluid={poro_1,poro_2,poro_3,poro_4,poro_5,poro_6,poro_7,poro_8,poro_9,
-          poro_10,poro_11,poro_12,poro_13,poro_14,poro_15,poro_16,poro_17,
-          poro_18,poro_19,poro_20,poro_21,poro_22,poro_23,poro_24,poro_25,
-          poro_26,poro_27,poro_28,poro_29,poro_30,poro_31,poro_32,poro_33,
-          poro_34,poro_35,poro_36,poro_37,poro_38,poro_39,poro_40,poro_41,
-          poro_42,poro_43,poro_44,poro_45,poro_46,poro_47,poro_48,poro_49,
-          poro_50,poro_51,poro_52,poro_53,poro_54,poro_55,poro_56,poro_57,
-          poro_58,poro_59,poro_60,poro_61,poro_62,poro_63,poro_64,poro_65,
-          poro_66,poro_67,poro_68,poro_69,poro_70,poro_71,poro_72,poro_73,
-          poro_74,poro_75,poro_76,poro_77,poro_78,poro_79,poro_80,poro_81,
-          poro_82,poro_83,poro_84,poro_85,poro_86,poro_87,poro_88,poro_89,
-          poro_90}*Modelica.Constants.pi*(0.438^2.0),
+      XS_Fluid={poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,
+          poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,
+          poro_empty,poro_empty,poro_empty,poro_empty}*Modelica.Constants.pi*(
+          0.438^2.0),
       T_amb=293.15,
       T_ground=273.15),
     redeclare package Medium =
@@ -2035,4 +1963,5 @@ equation
 <p>Insulation = 0.204m; ~8in</p>
 <p>Wall thickness = 0.051 m</p>
 </html>"));
-end Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity;
+end
+  Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsityThreeSection_Node90;
