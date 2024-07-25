@@ -2,7 +2,8 @@ within NHES.Systems.PrimaryHeatSystem.HTGR.RankineCycle.Models;
 class PebbleBed_PrimaryLoop_HeOut
     extends BaseClasses.Partial_SubSystem_A(
     redeclare replaceable ControlSystems.CS_Rankine_Primary CS,
-    redeclare replaceable ED_Dummy ED,
+    redeclare replaceable ControlSystems.ED_Dummy
+                                   ED,
     redeclare replaceable Data.Data_HTGR_Pebble data(
       Q_total=600000000,
       Q_total_el=300000000,

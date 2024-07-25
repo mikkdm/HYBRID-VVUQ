@@ -366,7 +366,7 @@ replaceable package Medium = Modelica.Media.Water.StandardWater annotation (__Dy
     annotation (Placement(transformation(extent={{112,-16},{124,-28}})));
   Modelica.Blocks.Sources.Constant const3(k=205)
     annotation (Placement(transformation(extent={{90,-16},{102,-4}})));
-  StagebyStageTurbineSecondary.Control_and_Distribution.Delay delay3(Ti=200)
+  SupportComponent.Delay                                      delay3(Ti=200)
     annotation (Placement(transformation(extent={{82,-70},{68,-58}})));
   Modelica.Blocks.Sources.Constant const2(k=1000)
     annotation (Placement(transformation(extent={{52,-2},{64,10}})));
@@ -383,7 +383,8 @@ replaceable package Medium = Modelica.Media.Water.StandardWater annotation (__Dy
     offset=0.5,
     startTime=500)
     annotation (Placement(transformation(extent={{-350,-62},{-338,-50}})));
-  Fluid.Pipes.NonLinear_Break nonLinear_Break(redeclare package Medium =
+  Fluid.Utilities.NonLinear_Break
+                              nonLinear_Break(redeclare package Medium =
         Modelica.Media.Water.StandardWater)
     annotation (Placement(transformation(extent={{124,30},{144,50}})));
   TRANSFORM.Controls.LimPID PID2(
@@ -405,10 +406,12 @@ replaceable package Medium = Modelica.Media.Water.StandardWater annotation (__Dy
         rotation=90,
         origin={-64,-74})));
 
-  Fluid.Pipes.NonLinear_Break nonLinear_Break1(redeclare package Medium =
+  Fluid.Utilities.NonLinear_Break
+                              nonLinear_Break1(redeclare package Medium =
         Modelica.Media.Water.StandardWater)
     annotation (Placement(transformation(extent={{2,-62},{-18,-42}})));
-  Fluid.Pipes.NonLinear_Break nonLinear_Break2(redeclare package Medium =
+  Fluid.Utilities.NonLinear_Break
+                              nonLinear_Break2(redeclare package Medium =
         Modelica.Media.Water.StandardWater)
     annotation (Placement(transformation(extent={{0,26},{-20,46}})));
 equation

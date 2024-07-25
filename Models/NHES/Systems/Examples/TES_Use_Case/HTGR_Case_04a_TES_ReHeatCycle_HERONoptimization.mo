@@ -317,9 +317,9 @@ class HTGR_Case_04a_TES_ReHeatCycle_HERONoptimization
     offset=62000000,
     startTime=13500)
     annotation (Placement(transformation(extent={{-48,200},{-36,212}})));
-  BalanceOfPlant.ReHeatCycle.ControlSystems.MinMaxFilter
-    Discharging_Valve_Position(min=1e-4, max=1)
-                                         annotation (Placement(transformation(
+  BalanceOfPlant.ReHeatCycle.SupportComponent.MinMaxFilter
+    Discharging_Valve_Position(min=1e-4, max=1) annotation (Placement(
+        transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={174,190})));

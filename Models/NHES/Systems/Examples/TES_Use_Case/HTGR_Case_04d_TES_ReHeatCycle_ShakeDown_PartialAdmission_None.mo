@@ -317,9 +317,9 @@ class HTGR_Case_04d_TES_ReHeatCycle_ShakeDown_PartialAdmission_None
     offset=80e6,
     startTime=11500)
     annotation (Placement(transformation(extent={{-50,200},{-38,212}})));
-  BalanceOfPlant.ReHeatCycle.ControlSystems.MinMaxFilter
-    Discharging_Valve_Position(min=1e-4, max=1)
-                                         annotation (Placement(transformation(
+  BalanceOfPlant.ReHeatCycle.SupportComponent.MinMaxFilter
+    Discharging_Valve_Position(min=1e-4, max=1) annotation (Placement(
+        transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={174,190})));

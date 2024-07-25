@@ -23,7 +23,7 @@ model CS_TES_VN2
     offset=200,
     startTime=5e3)
     annotation (Placement(transformation(extent={{-110,50},{-98,62}})));
-  BalanceOfPlant.ReHeatCycle.ControlSystems.MinMaxFilter
+  BalanceOfPlant.ReHeatCycle.SupportComponent.MinMaxFilter
     Discharging_Valve_Position(min=1e-4) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,
