@@ -1,5 +1,5 @@
-within NHES.Systems.ExperimentalSystems.TEDS.Examples.OldExamples;
-model Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete
+within NHES.Systems.ExperimentalSystems.TEDS.Examples.TES;
+model Thermocline_UQ_Test_Partial_Insulation_v2
   "Ensuring the system operates properly and with the right time constants."
   extends Modelica.Icons.Example;
   SI.Temperature TES_Tf_1;
@@ -139,8 +139,7 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
     annotation (Placement(transformation(extent={{-82,-78},{-62,-58}})));
-  Models.ThermoclineTankwithWall_Insulation.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v2
-    TES_Tank(
+  Models.ThermoclineTank.Thermocline_Partial_Insulation_UQVV TES_Tank(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     redeclare package InsulationMaterial =
@@ -149,13 +148,11 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete
     geometry(
       Radius_Tank=0.438,
       Porosity=0.36,
-      nodes=71,
+      Porosity_2=0.30,
       dr=0.00317,
       Insulation_thickness=3*0.051,
-      Wall_Thickness=0.009525,
-      Height_TankTop=0.8,
+      Wall_Thickness=0.019,
       Height_Tank=3.55,
-      Height_TankBottom=0.44,
       T_amb=293.15))
     annotation (Placement(transformation(extent={{-6,-22},{30,20}})));
 
@@ -1779,7 +1776,6 @@ equation
   TES_Tf_58 = TES_Tank.TES.Tf[58];
   TES_Tf_64 = TES_Tank.TES.Tf[64];
   TES_Tf_70 = TES_Tank.TES.Tf[70];
-
   connect(FM_202_Exp.y, boundary.m_flow_in)
     annotation (Line(points={{-63,82},{-42,82},{-42,46}}, color={0,0,127}));
   connect(TC_201_Exp.y, boundary.T_in)
@@ -1807,4 +1803,4 @@ equation
 <p>Insulation = 0.204m; ~8in</p>
 <p>Wall thickness = 0.051 m</p>
 </html>"));
-end Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete;
+end Thermocline_UQ_Test_Partial_Insulation_v2;

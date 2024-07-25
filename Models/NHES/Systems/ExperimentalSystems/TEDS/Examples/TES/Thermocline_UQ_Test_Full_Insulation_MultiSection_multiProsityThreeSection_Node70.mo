@@ -1,20 +1,30 @@
-within NHES.Systems.ExperimentalSystems.TEDS.Examples.OldExamples;
-model Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete
+within NHES.Systems.ExperimentalSystems.TEDS.Examples.TES;
+model
+  Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsityThreeSection_Node70
   "Ensuring the system operates properly and with the right time constants."
   extends Modelica.Icons.Example;
   SI.Temperature TES_Tf_1;
-  SI.Temperature TES_Tf_7;
-  SI.Temperature TES_Tf_13;
-  SI.Temperature TES_Tf_18;
-  SI.Temperature TES_Tf_24;
-  SI.Temperature TES_Tf_30;
-  SI.Temperature TES_Tf_36;
-  SI.Temperature TES_Tf_41;
-  SI.Temperature TES_Tf_47;
-  SI.Temperature TES_Tf_53;
-  SI.Temperature TES_Tf_58;
-  SI.Temperature TES_Tf_64;
-  SI.Temperature TES_Tf_70;
+  SI.Temperature TES_Tf_6;
+  SI.Temperature TES_Tf_11;
+  SI.Temperature TES_Tf_17;
+  SI.Temperature TES_Tf_23;
+  SI.Temperature TES_Tf_29;
+  SI.Temperature TES_Tf_34;
+  SI.Temperature TES_Tf_40;
+  SI.Temperature TES_Tf_46;
+  SI.Temperature TES_Tf_51;
+  SI.Temperature TES_Tf_57;
+  SI.Temperature TES_Tf_63;
+  SI.Temperature TES_Tf_69;
+  SI.Temperature TES_Tf_74;
+  SI.Temperature TES_Tf_80;
+  SI.Temperature TES_Tf_85;
+  SI.Temperature TES_Tf_90;
+
+  parameter Real SF  = 3;
+
+  parameter Real poro_empty  = 0.000000001;
+  parameter Real poro_fill   = 0.40;
 
   Modelica.Fluid.Sources.MassFlowSource_T boundary(
     redeclare package Medium =
@@ -27,9 +37,9 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete
   Modelica.Fluid.Sources.Boundary_pT boundary1(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
-    use_T_in=false,
+    use_T_in=true,
     p(displayUnit="Pa") = 1e5,
-    T=498.15,
+    T(displayUnit="K") = 292.08,
     nPorts=1) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=270,
         origin={12,-68})));
@@ -138,25 +148,69 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete
         394.7; 31140,393.16; 31200,391.47; 31260,389.66; 31320,388.04; 31380,
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
-    annotation (Placement(transformation(extent={{-82,-78},{-62,-58}})));
-  Models.ThermoclineTankwithWall_Insulation.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_v2
+    annotation (Placement(transformation(extent={{-96,-98},{-76,-78}})));
+  Models.ThermoclineTankwithWall_Insulation.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosityy_v13_Working
     TES_Tank(
+    T_Init={312.08,313,314,315,316,317,317,317,317,317,317.51,317,317,317,317,
+        317,318.36,318,318,318,318,318,317.26,317,317,317,317,316,316.06,316,
+        316,316,316,314.36,314,313,312,311,311,311.72,311,311,311,310,310,
+        309.14,309,309,308,307,307.24,307,306,305,304,304,304.03,304,303,302,
+        301,301,301.52,301,301,300,299,299,299.07,299,299,299,298,297.32,292,
+        297,297,297,297,297.32,292,292,292,292,292,292,292,292,292,292},
+    insRout_1=0.0001,
+    insRout_2=0.0001,
+    insRout_3=0.0001,
+    insRout_4=0.0001,
+    insRout_5=0.0001,
+    insRout_6=0.0001,
+    insRout_7=0.0001,
+    insRout_8=0.0001,
+    insRout_9=0.0001,
+    insRout_10=0.0001,
+    geometry(
+      Radius_Tank=0.438,
+      Porosity={poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,
+          poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,
+          poro_empty,poro_empty,poro_empty,poro_empty},
+      nodes=90,
+      shapeFactor=SF,
+      dr=0.00317,
+      Insulation_thickness=3*0.051,
+      Wall_Thickness=0.019,
+      Height_Tank=3.55,
+      XS_Fluid={poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,
+          poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,poro_fill,
+          poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,poro_empty,
+          poro_empty,poro_empty,poro_empty,poro_empty}*Modelica.Constants.pi*(
+          0.438^2.0),
+      T_amb=293.15,
+      T_ground=273.15),
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     redeclare package InsulationMaterial =
         TRANSFORM.Media.Solids.FiberGlassGeneric,
-    redeclare package WallMaterial = TRANSFORM.Media.Solids.SS316,
-    geometry(
-      Radius_Tank=0.438,
-      Porosity=0.36,
-      nodes=71,
-      dr=0.00317,
-      Insulation_thickness=3*0.051,
-      Wall_Thickness=0.009525,
-      Height_TankTop=0.8,
-      Height_Tank=3.55,
-      Height_TankBottom=0.44,
-      T_amb=293.15))
+    redeclare package WallMaterial = TRANSFORM.Media.Solids.SS316)
     annotation (Placement(transformation(extent={{-6,-22},{30,20}})));
 
   Modelica.Blocks.Sources.TimeTable FM_202_Exp(table=[0,0.001187; 60,0.001196;
@@ -1755,6 +1809,7 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete
     annotation (Placement(transformation(extent={{70,-84},{62,-76}})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_202_Sim(redeclare package
       Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+    T_start(displayUnit="K") = 292.08,
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=-90,
@@ -1765,20 +1820,89 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete
         extent={{-9,8},{9,-8}},
         rotation=0,
         origin={-1,38})));
+  Modelica.Blocks.Sources.RealExpression MSE_TN_1_1(y=(TN_1_1_Exp.y - TES_Tank.TES.Tf[
+        11])^2)
+    annotation (Placement(transformation(extent={{-150,86},{-122,104}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TN_1_2(y=(TN_1_2_Exp.y - TES_Tank.TES.Tf[
+        17])^2)
+    annotation (Placement(transformation(extent={{-150,70},{-122,88}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TN_1_3(y=(TN_1_3_Exp.y - TES_Tank.TES.Tf[
+        23])^2)
+    annotation (Placement(transformation(extent={{-150,54},{-122,72}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TS_1(y=(TS_1_avg_Exp.y - TES_Tank.TES.Tf[
+        29])^2)
+    annotation (Placement(transformation(extent={{-150,38},{-122,56}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TS_2(y=(TS_2_avg_Exp.y - TES_Tank.TES.Tf[
+        34])^2)
+    annotation (Placement(transformation(extent={{-150,22},{-122,40}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TS_3(y=(TS_3_avg_Exp.y - TES_Tank.TES.Tf[
+        40])^2)
+    annotation (Placement(transformation(extent={{-150,6},{-122,24}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TW_1(y=(TW_1_avg_Exp.y - TES_Tank.TES.Tf[
+        46])^2)
+    annotation (Placement(transformation(extent={{-150,-10},{-122,8}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TW_2(y=(TW_2_avg_Exp.y - TES_Tank.TES.Tf[
+        51])^2)
+    annotation (Placement(transformation(extent={{-150,-26},{-122,-8}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TW_3(y=(TW_3_avg_Exp.y - TES_Tank.TES.Tf[
+        57])^2)
+    annotation (Placement(transformation(extent={{-150,-42},{-122,-24}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TE_1(y=(TE_1_avg_Exp.y - TES_Tank.TES.Tf[
+        63])^2)
+    annotation (Placement(transformation(extent={{-150,-58},{-122,-40}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TE_2(y=(TE_2_avg_Exp.y - TES_Tank.TES.Tf[
+        69])^2)
+    annotation (Placement(transformation(extent={{-150,-74},{-122,-56}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TE_3(y=(TE_3_avg_Exp.y - TES_Tank.TES.Tf[
+        74])^2)
+    annotation (Placement(transformation(extent={{-150,-90},{-122,-72}})));
+  Modelica.Blocks.Sources.RealExpression MSE_TE_4(y=(TE_4_avg_Exp.y - TES_Tank.TES.Tf[
+        80])^2)
+    annotation (Placement(transformation(extent={{-150,-106},{-122,-88}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TN_1_1
+    annotation (Placement(transformation(extent={{-116,90},{-106,100}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TN_1_2
+    annotation (Placement(transformation(extent={{-116,74},{-106,84}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TN_1_3
+    annotation (Placement(transformation(extent={{-116,58},{-106,68}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TS_1
+    annotation (Placement(transformation(extent={{-116,42},{-106,52}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TS_2
+    annotation (Placement(transformation(extent={{-116,26},{-106,36}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TW_2
+    annotation (Placement(transformation(extent={{-116,-22},{-106,-12}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TW_3
+    annotation (Placement(transformation(extent={{-116,-38},{-106,-28}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TW_1
+    annotation (Placement(transformation(extent={{-116,-6},{-106,4}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TS_3
+    annotation (Placement(transformation(extent={{-116,10},{-106,20}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TE_3
+    annotation (Placement(transformation(extent={{-116,-86},{-106,-76}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TE_4
+    annotation (Placement(transformation(extent={{-116,-102},{-106,-92}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TE_2
+    annotation (Placement(transformation(extent={{-116,-70},{-106,-60}})));
+  Modelica.Blocks.Continuous.Integrator sum_MSE_TE_1
+    annotation (Placement(transformation(extent={{-116,-54},{-106,-44}})));
 equation
-  TES_Tf_1 = TES_Tank.TES.Tf[1];
-  TES_Tf_7 = TES_Tank.TES.Tf[7];
-  TES_Tf_13 = TES_Tank.TES.Tf[13];
-  TES_Tf_18 = TES_Tank.TES.Tf[18];
-  TES_Tf_24 = TES_Tank.TES.Tf[24];
-  TES_Tf_30 = TES_Tank.TES.Tf[30];
-  TES_Tf_36 = TES_Tank.TES.Tf[36];
-  TES_Tf_41 = TES_Tank.TES.Tf[41];
-  TES_Tf_47 = TES_Tank.TES.Tf[47];
-  TES_Tf_53 = TES_Tank.TES.Tf[53];
-  TES_Tf_58 = TES_Tank.TES.Tf[58];
-  TES_Tf_64 = TES_Tank.TES.Tf[64];
-  TES_Tf_70 = TES_Tank.TES.Tf[70];
+  TES_Tf_1  = TES_Tank.TES.Tf[1]*0.9999999;
+  TES_Tf_6  = TES_Tank.TES.Tf[6]*0.9999999;
+  TES_Tf_11 = TES_Tank.TES.Tf[11]*0.9999999;
+  TES_Tf_17 = TES_Tank.TES.Tf[17]*0.9999999;
+  TES_Tf_23 = TES_Tank.TES.Tf[23]*0.9999999;
+  TES_Tf_29 = TES_Tank.TES.Tf[29]*0.9999999;
+  TES_Tf_34 = TES_Tank.TES.Tf[34]*0.9999999;
+  TES_Tf_40 = TES_Tank.TES.Tf[40]*0.9999999;
+  TES_Tf_46 = TES_Tank.TES.Tf[46]*0.9999999;
+  TES_Tf_51 = TES_Tank.TES.Tf[51]*0.9999999;
+  TES_Tf_57 = TES_Tank.TES.Tf[57]*0.9999999;
+  TES_Tf_63 = TES_Tank.TES.Tf[63]*0.9999999;
+  TES_Tf_69 = TES_Tank.TES.Tf[69]*0.9999999;
+  TES_Tf_74 = TES_Tank.TES.Tf[74]*0.9999999;
+  TES_Tf_80 = TES_Tank.TES.Tf[80]*0.9999999;
+  TES_Tf_85 = TES_Tank.TES.Tf[85]*0.9999999;
+  TES_Tf_90 = TES_Tank.TES.Tf[90]*0.9999999;
 
   connect(FM_202_Exp.y, boundary.m_flow_in)
     annotation (Line(points={{-63,82},{-42,82},{-42,46}}, color={0,0,127}));
@@ -1792,6 +1916,35 @@ equation
     annotation (Line(points={{-22,38},{-10,38}}, color={0,127,255}));
   connect(TC_201_Sim.port_b, TES_Tank.port_a)
     annotation (Line(points={{8,38},{12,38},{12,20}}, color={0,127,255}));
+  connect(TC_202_Exp.y, boundary1.T_in)
+    annotation (Line(points={{-75,-88},{16,-88},{16,-80}}, color={0,0,127}));
+  connect(MSE_TN_1_1.y,sum_MSE_TN_1_1. u)
+    annotation (Line(points={{-120.6,95},{-117,95}},   color={0,0,127}));
+  connect(MSE_TW_2.y,sum_MSE_TW_2. u)
+    annotation (Line(points={{-120.6,-17},{-117,-17}}, color={0,0,127}));
+  connect(MSE_TW_3.y,sum_MSE_TW_3. u)
+    annotation (Line(points={{-120.6,-33},{-117,-33}}, color={0,0,127}));
+  connect(MSE_TN_1_2.y,sum_MSE_TN_1_2. u)
+    annotation (Line(points={{-120.6,79},{-117,79}}, color={0,0,127}));
+  connect(MSE_TN_1_3.y,sum_MSE_TN_1_3. u)
+    annotation (Line(points={{-120.6,63},{-117,63}}, color={0,0,127}));
+  connect(MSE_TS_1.y,sum_MSE_TS_1. u)
+    annotation (Line(points={{-120.6,47},{-117,47}}, color={0,0,127}));
+  connect(MSE_TS_2.y,sum_MSE_TS_2. u)
+    annotation (Line(points={{-120.6,31},{-117,31}}, color={0,0,127}));
+  connect(MSE_TS_3.y,sum_MSE_TS_3. u)
+    annotation (Line(points={{-120.6,15},{-117,15}}, color={0,0,127}));
+  connect(MSE_TW_1.y,sum_MSE_TW_1. u)
+    annotation (Line(points={{-120.6,-1},{-117,-1}},
+                                                   color={0,0,127}));
+  connect(MSE_TE_1.y,sum_MSE_TE_1. u)
+    annotation (Line(points={{-120.6,-49},{-117,-49}}, color={0,0,127}));
+  connect(MSE_TE_2.y,sum_MSE_TE_2. u)
+    annotation (Line(points={{-120.6,-65},{-117,-65}}, color={0,0,127}));
+  connect(MSE_TE_3.y,sum_MSE_TE_3. u)
+    annotation (Line(points={{-120.6,-81},{-117,-81}}, color={0,0,127}));
+  connect(MSE_TE_4.y,sum_MSE_TE_4. u)
+    annotation (Line(points={{-120.6,-97},{-117,-97}}, color={0,0,127}));
   annotation (
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
             100,100}})),
@@ -1807,4 +1960,5 @@ equation
 <p>Insulation = 0.204m; ~8in</p>
 <p>Wall thickness = 0.051 m</p>
 </html>"));
-end Thermocline_UQ_Test_Full_Insulation_MultiSection_Obsolete;
+end
+  Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsityThreeSection_Node70;
