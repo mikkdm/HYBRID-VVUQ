@@ -1,10 +1,10 @@
-within NHES.Systems.EnergyStorage.SHS_Two_Tank.Components;
+within NHES.Systems.EnergyStorage.SHS_Two_Tank.Models;
 model SHS2Tank_VN_SaltOut3
   extends
     NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses.Partial_SubSystem_A(
     redeclare replaceable
       ControlSystems.CS_TES_VN2                                        CS,
-    redeclare replaceable NHES.Systems.EnergyStorage.SHS_Two_Tank.ED_Dummy ED,
+    redeclare replaceable ControlSystems.ED_Dummy                          ED,
     redeclare replaceable NHES.Systems.EnergyStorage.SHS_Two_Tank.Data.Data_SHS
       data(hot_tank_init_temp=763.15,
            DHX_v_shell=1.0));
@@ -43,7 +43,7 @@ model SHS2Tank_VN_SaltOut3
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={74,0})));
-  NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses.DumpTank_Init_T hot_tank(
+  SupportComponent.DumpTank_Init_T                                    hot_tank(
     redeclare package Medium = Storage_Medium,
     A=data.ht_area,
     V0=data.ht_zero_level_volume,
@@ -83,7 +83,7 @@ model SHS2Tank_VN_SaltOut3
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={12,44})));
-  NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses.DumpTank_Init_T cold_tank(
+  SupportComponent.DumpTank_Init_T                                    cold_tank(
     redeclare package Medium = Storage_Medium,
     A=data.cold_tank_area,
     V0=data.ct_zero_level_volume,

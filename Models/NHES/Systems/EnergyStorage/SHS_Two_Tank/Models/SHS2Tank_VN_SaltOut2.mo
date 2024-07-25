@@ -1,10 +1,10 @@
-within NHES.Systems.EnergyStorage.SHS_Two_Tank.Components;
+within NHES.Systems.EnergyStorage.SHS_Two_Tank.Models;
 model SHS2Tank_VN_SaltOut2
   extends
     NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses.Partial_SubSystem_A(
     redeclare replaceable
       ControlSystems.CS_TES_VN2                                        CS,
-    redeclare replaceable NHES.Systems.EnergyStorage.SHS_Two_Tank.ED_Dummy ED,
+    redeclare replaceable ControlSystems.ED_Dummy                          ED,
     redeclare replaceable NHES.Systems.EnergyStorage.SHS_Two_Tank.Data.Data_SHS
       data(hot_tank_init_temp=763.15,
            DHX_v_shell=1.0));
@@ -43,7 +43,7 @@ model SHS2Tank_VN_SaltOut2
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={74,0})));
-  NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses.DumpTank_Init_T hot_tank(
+  SupportComponent.DumpTank_Init_T                                    hot_tank(
     redeclare package Medium = Storage_Medium,
     A=data.ht_area,
     V0=data.ht_zero_level_volume,
@@ -83,7 +83,7 @@ model SHS2Tank_VN_SaltOut2
         extent={{10,10},{-10,-10}},
         rotation=0,
         origin={12,44})));
-  NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses.DumpTank_Init_T cold_tank(
+  SupportComponent.DumpTank_Init_T                                    cold_tank(
     redeclare package Medium = Storage_Medium,
     A=data.cold_tank_area,
     V0=data.ct_zero_level_volume,
@@ -160,18 +160,16 @@ model SHS2Tank_VN_SaltOut2
         rotation=270,
         origin={-44,-54})));
 
-  TRANSFORM.Fluid.Interfaces.FluidPort_Flow port_ch_a(redeclare package
-      Medium =
-        Charging_Medium)                                                                           annotation (Placement(
+  TRANSFORM.Fluid.Interfaces.FluidPort_Flow port_ch_a(redeclare package Medium
+      = Charging_Medium)                                                                           annotation (Placement(
         transformation(extent={{-108,-72},{-88,-52}}), iconTransformation(
           extent={{-108,-72},{-88,-52}})));
-  TRANSFORM.Fluid.Interfaces.FluidPort_State port_ch_b(redeclare package
-      Medium =
-        Charging_Medium)                                                                            annotation (Placement(
+  TRANSFORM.Fluid.Interfaces.FluidPort_State port_ch_b(redeclare package Medium
+      = Charging_Medium)                                                                            annotation (Placement(
         transformation(extent={{-108,44},{-88,64}}), iconTransformation(extent={
             {-108,44},{-88,64}})));
-  TRANSFORM.Fluid.Interfaces.FluidPort_Flow port_dch_a(redeclare package
-      Medium = Storage_Medium)                                                                         annotation (Placement(
+  TRANSFORM.Fluid.Interfaces.FluidPort_Flow port_dch_a(redeclare package Medium
+      =        Storage_Medium)                                                                         annotation (Placement(
         transformation(extent={{88,48},{108,68}}), iconTransformation(extent={{88,
             48},{108,68}})));
   TRANSFORM.Fluid.Interfaces.FluidPort_State port_dch_b(redeclare package
@@ -182,25 +180,21 @@ model SHS2Tank_VN_SaltOut2
       redeclare package Medium =
         Storage_Medium, R=100)
     annotation (Placement(transformation(extent={{-4,-86},{16,-66}})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort sensor_T(redeclare package
-      Medium =
-        Storage_Medium)
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort sensor_T(redeclare package Medium
+      = Storage_Medium)
     annotation (Placement(transformation(extent={{-34,-86},{-14,-66}})));
   Modelica.Blocks.Sources.RealExpression Coolant_Water_temp(y=sensor_T1.T)
     annotation (Placement(transformation(extent={{-68,76},{-48,96}})));
   Modelica.Blocks.Sources.RealExpression Hot_Tank_Temp(y=hot_tank.T)
     annotation (Placement(transformation(extent={{-68,96},{-48,116}})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort sensor_T1(redeclare package
-      Medium =
-        Charging_Medium)
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort sensor_T1(redeclare package Medium
+      = Charging_Medium)
     annotation (Placement(transformation(extent={{-78,-40},{-58,-20}})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort sensor_T2(redeclare package
-      Medium =
-        Storage_Medium)
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort sensor_T2(redeclare package Medium
+      = Storage_Medium)
     annotation (Placement(transformation(extent={{36,34},{56,54}})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow(redeclare package
-      Medium =
-        Charging_Medium) annotation (Placement(
+  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow(redeclare package Medium
+      = Charging_Medium) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
