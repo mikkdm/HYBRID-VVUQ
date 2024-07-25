@@ -1,4 +1,4 @@
-within NHES.Systems.BalanceOfPlant.StagebyStageTurbineSecondary.Control_and_Distribution;
+within NHES.Systems.BalanceOfPlant.ReHeatCycle.ControlSystems;
 block MinMaxFilter "Delays an input or output signal"
   parameter Real min = 0 "Minimum output value";
   parameter Real max = 1 "Maximum output value";

@@ -23,7 +23,7 @@ model CS_TES_VN2
     offset=200,
     startTime=5e3)
     annotation (Placement(transformation(extent={{-110,50},{-98,62}})));
-  NHES.Systems.BalanceOfPlant.StagebyStageTurbineSecondary.Control_and_Distribution.MinMaxFilter
+  BalanceOfPlant.ReHeatCycle.ControlSystems.MinMaxFilter
     Discharging_Valve_Position(min=1e-4) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=180,

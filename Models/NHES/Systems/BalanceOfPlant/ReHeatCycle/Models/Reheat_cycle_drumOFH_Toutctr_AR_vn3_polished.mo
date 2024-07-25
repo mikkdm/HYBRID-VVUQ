@@ -1,4 +1,4 @@
-within NHES.Systems.BalanceOfPlant.Turbine;
+within NHES.Systems.BalanceOfPlant.ReHeatCycle.Models;
 model Reheat_cycle_drumOFH_Toutctr_AR_vn3_polished
 
   replaceable package LT_HTF =
