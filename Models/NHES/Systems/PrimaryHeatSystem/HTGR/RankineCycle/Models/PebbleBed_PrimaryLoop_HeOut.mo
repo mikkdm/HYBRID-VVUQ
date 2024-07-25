@@ -1,6 +1,6 @@
-within NHES.Systems.PrimaryHeatSystem.HTGR.HTGR_Rankine.Components;
-model HTGR_PebbleBed_Primary_Loop_HeOut
-  extends BaseClasses.Partial_SubSystem_A(
+within NHES.Systems.PrimaryHeatSystem.HTGR.RankineCycle.Models;
+class PebbleBed_PrimaryLoop_HeOut
+    extends BaseClasses.Partial_SubSystem_A(
     redeclare replaceable ControlSystems.CS_Rankine_Primary CS,
     redeclare replaceable ED_Dummy ED,
     redeclare replaceable Data.Data_HTGR_Pebble data(
@@ -208,4 +208,4 @@ equation
 <p>The primary side of a HTGR reactor with a heat exchanger set up to send heat to a Rankine cycle to produce electricity. The pebble bed reactor core used is the same as in the Brayton cycle reactor style. </p>
 <p>This model is used in the third example in this package. As it is taken from the Rankine_Complex model, that model should be used as a reference. </p>
 </html>"));
-end HTGR_PebbleBed_Primary_Loop_HeOut;
+end PebbleBed_PrimaryLoop_HeOut;

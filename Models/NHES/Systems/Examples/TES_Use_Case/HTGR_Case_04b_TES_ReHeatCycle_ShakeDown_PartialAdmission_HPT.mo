@@ -35,7 +35,7 @@ class HTGR_Case_04b_TES_ReHeatCycle_ShakeDown_PartialAdmission_HPT
     annotation (Placement(transformation(extent={{-28,-30},{40,32}})));
   parameter Modelica.Units.SI.Temperature T_start=350+273.15
     "Temperature";
-  NHES.Systems.PrimaryHeatSystem.HTGR.HTGR_Rankine.Components.HTGR_PebbleBed_Primary_Loop_HeOut
+  PrimaryHeatSystem.HTGR.RankineCycle.Models.PebbleBed_PrimaryLoop_HeOut
     hTGR_PebbleBed_Primary_Loop(
     redeclare
       NHES.Systems.PrimaryHeatSystem.HTGR.HTGR_Rankine.ControlSystems.CS_VN CS(
