@@ -1,6 +1,6 @@
 within NHES.Systems.BalanceOfPlant.ReHeatCycle.ControlSystems;
 model CS_ReheatOFWH_f_delaypump
-  extends NHES.Systems.BalanceOfPlant.Turbine.BaseClasses.Partial_ControlSystem;
+  extends NHES.Systems.BalanceOfPlant.ReHeatCycle.BaseClasses.Partial_ControlSystem;
 
   extends NHES.Icons.DummyIcon;
 
@@ -37,7 +37,7 @@ model CS_ReheatOFWH_f_delaypump
     xi_start=0,
     y_start=0.01)
     annotation (Placement(transformation(extent={{-150,-26},{-136,-12}})));
-  StagebyStageTurbineSecondary.Control_and_Distribution.Timer             timer1(
+  SupportComponent.Timer                                                  timer1(
       Start_Time=100)
     annotation (Placement(transformation(extent={{-110,-24},{-102,-16}})));
   TRANSFORM.Controls.LimPID FWH_Valve(
@@ -55,7 +55,7 @@ model CS_ReheatOFWH_f_delaypump
     annotation (Placement(transformation(extent={{-150,8},{-130,28}})));
   Modelica.Blocks.Sources.Constant const9(k=273.15 + 165)
     annotation (Placement(transformation(extent={{-184,10},{-164,30}})));
-  StagebyStageTurbineSecondary.Control_and_Distribution.Delay delay3(Ti=5)
+  SupportComponent.Delay                                      delay3(Ti=5)
     annotation (Placement(transformation(extent={{-94,12},{-80,24}})));
   Modelica.Blocks.Sources.Constant const7(k=18e6)
     annotation (Placement(transformation(extent={{-176,70},{-156,90}})));
@@ -69,9 +69,9 @@ model CS_ReheatOFWH_f_delaypump
     initType=Modelica.Blocks.Types.Init.NoInit,
     xi_start=0.98)
     annotation (Placement(transformation(extent={{-148,70},{-134,84}})));
-  StagebyStageTurbineSecondary.Control_and_Distribution.Delay delay1(Ti=50)
+  SupportComponent.Delay                                      delay1(Ti=50)
     annotation (Placement(transformation(extent={{-126,72},{-112,84}})));
-  StagebyStageTurbineSecondary.Control_and_Distribution.Delay delay4(Ti=0.1)
+  SupportComponent.Delay                                      delay4(Ti=0.1)
     annotation (Placement(transformation(extent={{-160,50},{-146,62}})));
   TRANSFORM.Controls.LimPID SH_mflow(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
@@ -88,7 +88,7 @@ model CS_ReheatOFWH_f_delaypump
     annotation (Placement(transformation(extent={{-138,128},{-118,148}})));
   Modelica.Blocks.Sources.Constant const5(k=565 + 273.15)
     annotation (Placement(transformation(extent={{-176,126},{-156,146}})));
-  StagebyStageTurbineSecondary.Control_and_Distribution.Delay delay2(Ti=20)
+  SupportComponent.Delay                                      delay2(Ti=20)
     annotation (Placement(transformation(extent={{-152,104},{-138,116}})));
   TRANSFORM.Controls.LimPID PID2(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
@@ -117,7 +117,7 @@ model CS_ReheatOFWH_f_delaypump
     initType=Modelica.Blocks.Types.Init.NoInit,
     xi_start=0.98)
     annotation (Placement(transformation(extent={{-134,208},{-120,222}})));
-  StagebyStageTurbineSecondary.Control_and_Distribution.Delay delay5(Ti=50)
+  SupportComponent.Delay                                      delay5(Ti=50)
     annotation (Placement(transformation(extent={{-66,-62},{-52,-50}})));
 equation
   connect(const.y,PID. u_s)

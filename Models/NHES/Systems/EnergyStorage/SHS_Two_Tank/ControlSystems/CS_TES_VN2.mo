@@ -5,7 +5,7 @@ model CS_TES_VN2
     NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses.Partial_ControlSystem;
 
   NHES.Systems.EnergyStorage.SHS_Two_Tank.Data.Data_Default data
-    annotation (Placement(transformation(extent={{-50,136},{-30,156}})));
+    annotation (Placement(transformation(extent={{76,78},{96,98}})));
   TRANSFORM.Controls.LimPID PID3(
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=2e-2,
