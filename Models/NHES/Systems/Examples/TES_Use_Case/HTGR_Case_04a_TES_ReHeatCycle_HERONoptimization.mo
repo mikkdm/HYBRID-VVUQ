@@ -38,7 +38,7 @@ class HTGR_Case_04a_TES_ReHeatCycle_HERONoptimization
   PrimaryHeatSystem.HTGR.RankineCycle.Models.PebbleBed_PrimaryLoop_HeOut
     hTGR_PebbleBed_Primary_Loop(
     redeclare
-      NHES.Systems.PrimaryHeatSystem.HTGR.HTGR_Rankine.ControlSystems.CS_VN CS(
+      PrimaryHeatSystem.HTGR.RankineCycle.ControlSystems.CS_VN              CS(
       PID(
         controllerType=Modelica.Blocks.Types.SimpleController.PI,
         k=-0.000001,
@@ -590,6 +590,15 @@ equation
       Interval=1,
       __Dymola_Algorithm="Esdirk45a"),
     Diagram(coordinateSystem(extent={{-180,-100},{320,260}})),
-    Icon(coordinateSystem(extent={{-180,-100},{320,260}})),
+    Icon(coordinateSystem(extent={{-180,-100},{320,260}}), graphics={
+        Ellipse(lineColor = {75,138,73},
+                fillColor={255,255,255},
+                fillPattern = FillPattern.Solid,
+                extent={{-46,-38},{210,216}}),
+        Polygon(lineColor = {0,0,255},
+                fillColor = {75,138,73},
+                pattern = LinePattern.None,
+                fillPattern = FillPattern.Solid,
+                points={{50,148},{150,88},{50,28},{50,148}})}),
     conversion(noneFromVersion=""));
 end HTGR_Case_04a_TES_ReHeatCycle_HERONoptimization;

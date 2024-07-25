@@ -1,4 +1,4 @@
-within NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses;
+within NHES.Systems.EnergyStorage.SHS_Two_Tank.SupportComponent;
 model DumpTank_Init_T "Expansion tank with cover gas"
   import Modelica.Fluid.Types.Dynamics;
   extends TRANSFORM.Fluid.Interfaces.Records.Medium_fluid;

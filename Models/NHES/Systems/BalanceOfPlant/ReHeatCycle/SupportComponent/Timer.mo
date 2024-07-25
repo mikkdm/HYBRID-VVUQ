@@ -1,4 +1,4 @@
-within NHES.Systems.BalanceOfPlant.StagebyStageTurbineSecondary.Control_and_Distribution;
+within NHES.Systems.BalanceOfPlant.ReHeatCycle.SupportComponent;
 block Timer "Delays a real signal until start time is established. Output=Input*multiplication_factor, which can be initially set to anything. Nominally, factor should be between 0 and 1"
   parameter Modelica.Units.SI.Time Start_Time=2700 "Time to allow multiplication rate change";
   parameter Real init_mult=0 "Initial multiplication rate";

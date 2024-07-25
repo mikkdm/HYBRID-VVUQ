@@ -1,4 +1,4 @@
-within NHES.Systems.EnergyStorage.SHS_Two_Tank.Components;
+within NHES.Systems.EnergyStorage.SHS_Two_Tank.Models;
 model SHS2Tank_VNWorking
   extends
     NHES.Systems.EnergyStorage.SHS_Two_Tank.BaseClasses.Partial_SubSystem_A(

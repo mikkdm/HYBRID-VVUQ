@@ -14,5 +14,6 @@ CS_DirectCoupling_HTGR
 ObseleteControlSystems
 CS_TES_HT_Power_ANL
 CS_TES_VN2
+CS_TES_VN2b
 CS_Dummy
 ED_Dummy

@@ -124,7 +124,7 @@ class HTGR_Case_04d_TES_ReHeatCycle_ShakeDown_PartialAdmission_None
   PrimaryHeatSystem.HTGR.RankineCycle.Models.PebbleBed_PrimaryLoop_HeOut
     hTGR_PebbleBed_Primary_Loop(
     redeclare
-      NHES.Systems.PrimaryHeatSystem.HTGR.HTGR_Rankine.ControlSystems.CS_VN CS(
+      PrimaryHeatSystem.HTGR.RankineCycle.ControlSystems.CS_VN              CS(
       PID(
         controllerType=Modelica.Blocks.Types.SimpleController.PI,
         k=-0.000001,
@@ -603,6 +603,15 @@ equation
       Interval=1,
       __Dymola_Algorithm="Esdirk45a"),
     Diagram(coordinateSystem(extent={{-180,-100},{320,260}})),
-    Icon(coordinateSystem(extent={{-180,-100},{320,260}})),
+    Icon(coordinateSystem(extent={{-180,-100},{320,260}}), graphics={
+        Ellipse(lineColor = {75,138,73},
+                fillColor={255,255,255},
+                fillPattern = FillPattern.Solid,
+                extent={{-56,-50},{200,204}}),
+        Polygon(lineColor = {0,0,255},
+                fillColor = {75,138,73},
+                pattern = LinePattern.None,
+                fillPattern = FillPattern.Solid,
+                points={{40,137},{140,77},{40,17},{40,137}})}),
     conversion(noneFromVersion=""));
 end HTGR_Case_04d_TES_ReHeatCycle_ShakeDown_PartialAdmission_None;
