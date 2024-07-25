@@ -4,7 +4,8 @@ class PebbleBed_PrimaryLoop_HeOut
     redeclare replaceable ControlSystems.CS_Rankine_Primary CS,
     redeclare replaceable ControlSystems.ED_Dummy
                                    ED,
-    redeclare replaceable Data.Data_HTGR_Pebble data(
+    redeclare replaceable Data.Model_HTGR_Pebble_RankineCycle
+                                                data(
       Q_total=600000000,
       Q_total_el=300000000,
       K_P_Release=10000,
@@ -36,7 +37,7 @@ class PebbleBed_PrimaryLoop_HeOut
 
   //Modelica.Units.SI.Power Q_Recup;
 
-  replaceable Data.DataInitial_HTGR_Pebble
+  replaceable Data.Model_HTGR_Pebble_RankineCycle_Init
                       dataInitial(P_LP_Comp_Ref=4000000)
     annotation (Placement(transformation(extent={{78,120},{98,140}})));
 
