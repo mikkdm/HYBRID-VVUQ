@@ -1,6 +1,6 @@
 within NHES.Systems.Examples.TES_Use_Case;
-model HTGR_TES_RhC_6a4new_AR_vn1_uprate200MWth_176MWe___polished_PAstudy_1
-  EnergyStorage.SHS_Two_Tank.Components.SHS2Tank_VN_SaltOuta
+class HTGR_Case_04b_TES_ReHeatCycle_ShakeDown_PartialAdmission_HPT
+    EnergyStorage.SHS_Two_Tank.Components.SHS2Tank_VN_SaltOuta
     sHS2Tank_VN_SaltOuta(
     redeclare package Storage_Medium =
         NHES.Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit,
@@ -481,11 +481,11 @@ equation
         points={{54,30},{50,30},{50,18.98},{39.32,18.98}}, color={0,127,255}));
   connect(sHS2Tank_VN_SaltOuta.port_dch_b,
     reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.LT_in) annotation (Line(
-        points={{40,-18.22},{40,-18},{176,-18},{176,14},{194.634,14},{194.634,
-          15.025}}, color={0,127,255}));
+        points={{40,-18.22},{40,-18},{176,-18},{176,14},{194.634,14},{194.634,15.025}},
+                    color={0,127,255}));
   connect(reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.LT_out,
-    sHS2Tank_VN_SaltOuta.port_dch_a) annotation (Line(points={{194.634,-0.7},{
-          194.634,0},{98,0},{98,18.98},{39.32,18.98}}, color={0,127,255}));
+    sHS2Tank_VN_SaltOuta.port_dch_a) annotation (Line(points={{194.634,-0.7},{194.634,
+          0},{98,0},{98,18.98},{39.32,18.98}},         color={0,127,255}));
   connect(hTGR_PebbleBed_Primary_Loop.port_a, sensor_pT4.port) annotation (Line(
         points={{-95.05,-12.57},{-76.525,-12.57},{-76.525,-12},{-58,-12}},
         color={0,127,255}));
@@ -493,8 +493,8 @@ equation
         points={{-95.05,11.21},{-96,11.21},{-96,48}}, color={0,127,255}));
   connect(sHS2Tank_VN_SaltOut3_1.port_dch_b,
     reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.HT_RH_in) annotation (
-      Line(points={{56,77.78},{56,76},{150,76},{150,66},{194,66},{194,66.45},{
-          195.062,66.45}}, color={0,127,255}));
+      Line(points={{56,77.78},{56,76},{150,76},{150,66},{194,66},{194,66.45},{195.062,
+          66.45}},         color={0,127,255}));
   connect(sHS2Tank_VN_SaltOut3_1.port_dch_b, sensor_pT6.port) annotation (Line(
         points={{56,77.78},{61,77.78},{61,76},{70,76}}, color={0,127,255}));
   connect(reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.HT_SH_in,
@@ -634,4 +634,4 @@ equation
     Diagram(coordinateSystem(extent={{-180,-100},{320,260}})),
     Icon(coordinateSystem(extent={{-180,-100},{320,260}})),
     conversion(noneFromVersion=""));
-end HTGR_TES_RhC_6a4new_AR_vn1_uprate200MWth_176MWe___polished_PAstudy_1;
+end HTGR_Case_04b_TES_ReHeatCycle_ShakeDown_PartialAdmission_HPT;
