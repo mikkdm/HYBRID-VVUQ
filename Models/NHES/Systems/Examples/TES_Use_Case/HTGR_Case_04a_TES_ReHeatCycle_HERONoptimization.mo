@@ -1,6 +1,6 @@
 within NHES.Systems.Examples.TES_Use_Case;
 class HTGR_Case_04a_TES_ReHeatCycle_HERONoptimization
-  EnergyStorage.SHS_Two_Tank.Components.SHS2Tank_VN_SaltOuta
+  EnergyStorage.SHS_Two_Tank.Models.SHS2Tank_VN_SaltOuta
     sHS2Tank_VN_SaltOuta(
     redeclare package Storage_Medium =
         NHES.Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit,
@@ -79,7 +79,7 @@ class HTGR_Case_04a_TES_ReHeatCycle_HERONoptimization
   TRANSFORM.Fluid.Sensors.PressureTemperature sensor_pT2(redeclare package
       Medium = NHES.Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit)
     annotation (Placement(transformation(extent={{78,-12},{98,8}})));
-  BalanceOfPlant.Turbine.Reheat_cycle_drumOFH_Toutctr_AR_vn3_polished
+  BalanceOfPlant.ReHeatCycle.Models.Reheat_cycle_drumOFH_Toutctr_AR_vn3_polished
     reheat_cycle_drumOFH_Toutctr_AR_vn3_polished(
     pump(m_flow_nominal=200),
     steam_Drum(
@@ -177,7 +177,7 @@ class HTGR_Case_04a_TES_ReHeatCycle_HERONoptimization
   TRANSFORM.Fluid.Sensors.PressureTemperature sensor_pT6(redeclare package
       Medium = NHES.Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit)
     annotation (Placement(transformation(extent={{60,76},{80,96}})));
-  EnergyStorage.SHS_Two_Tank.Components.SHS2Tank_VN_SaltOut3
+  EnergyStorage.SHS_Two_Tank.Models.SHS2Tank_VN_SaltOut3
     sHS2Tank_VN_SaltOut3_1(
     redeclare package Storage_Medium =
         Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit,
@@ -442,8 +442,8 @@ equation
           -18.22},{40,-18},{176,-18},{176,14},{194.634,14},{194.634,15.025}},
         color={0,127,255}));
   connect(reheat_cycle_drumOFH_Toutctr_AR_vn3_polished.LT_out,
-    sHS2Tank_VN_SaltOuta.port_dch_a) annotation (Line(points={{194.634,-0.7},{194.634,
-          0},{98,0},{98,18.98},{39.32,18.98}},         color={0,127,255}));
+    sHS2Tank_VN_SaltOuta.port_dch_a) annotation (Line(points={{194.634,-0.7},{
+          194.634,0},{98,0},{98,18.98},{39.32,18.98}}, color={0,127,255}));
   connect(hTGR_PebbleBed_Primary_Loop.port_a, sensor_pT4.port) annotation (Line(
         points={{-95.05,-12.57},{-76.525,-12.57},{-76.525,-12},{-58,-12}},
         color={0,127,255}));
@@ -451,8 +451,8 @@ equation
         points={{-95.05,11.21},{-96,11.21},{-96,48}}, color={0,127,255}));
   connect(sHS2Tank_VN_SaltOut3_1.port_dch_b,
     reheat_cycle_drumOFH_Toutctr_AR_vn3_polished.HT_RH_in) annotation (Line(
-        points={{56,77.78},{56,76},{150,76},{150,66},{194,66},{194,66.45},{195.062,
-          66.45}},         color={0,127,255}));
+        points={{56,77.78},{56,76},{150,76},{150,66},{194,66},{194,66.45},{
+          195.062,66.45}}, color={0,127,255}));
   connect(sHS2Tank_VN_SaltOut3_1.port_dch_b, sensor_pT6.port) annotation (Line(
         points={{56,77.78},{61,77.78},{61,76},{70,76}}, color={0,127,255}));
   connect(reheat_cycle_drumOFH_Toutctr_AR_vn3_polished.HT_SH_in,

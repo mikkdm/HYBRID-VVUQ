@@ -1,6 +1,6 @@
 within NHES.Systems.Examples.TES_Use_Case;
 class HTGR_Case_04b_TES_ReHeatCycle_ShakeDown_PartialAdmission_HPT
-    EnergyStorage.SHS_Two_Tank.Components.SHS2Tank_VN_SaltOuta
+    EnergyStorage.SHS_Two_Tank.Models.SHS2Tank_VN_SaltOuta
     sHS2Tank_VN_SaltOuta(
     redeclare package Storage_Medium =
         NHES.Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit,
@@ -79,7 +79,7 @@ class HTGR_Case_04b_TES_ReHeatCycle_ShakeDown_PartialAdmission_HPT
   TRANSFORM.Fluid.Sensors.PressureTemperature sensor_pT2(redeclare package
       Medium = NHES.Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit)
     annotation (Placement(transformation(extent={{78,-12},{98,8}})));
-  BalanceOfPlant.Turbine.Reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1
+  BalanceOfPlant.ReHeatCycle.Models.Reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1
     reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1(
     pump(m_flow_nominal=200),
     steam_Drum(
@@ -177,7 +177,7 @@ class HTGR_Case_04b_TES_ReHeatCycle_ShakeDown_PartialAdmission_HPT
   TRANSFORM.Fluid.Sensors.PressureTemperature sensor_pT6(redeclare package
       Medium = NHES.Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit)
     annotation (Placement(transformation(extent={{60,76},{80,96}})));
-  EnergyStorage.SHS_Two_Tank.Components.SHS2Tank_VN_SaltOut3
+  EnergyStorage.SHS_Two_Tank.Models.SHS2Tank_VN_SaltOut3
     sHS2Tank_VN_SaltOut3_1(
     redeclare package Storage_Medium =
         Media.SolarSalt.ConstPropLiquidSolarSalt_NoLimit,
@@ -325,12 +325,6 @@ class HTGR_Case_04b_TES_ReHeatCycle_ShakeDown_PartialAdmission_HPT
         origin={174,190})));
   Modelica.Blocks.Sources.Constant MinLoad(k=15000000)
     annotation (Placement(transformation(extent={{-38,176},{-32,182}})));
-  Modelica.Blocks.Sources.Ramp ramp(
-    height=-50,
-    duration=500,
-    offset=200,
-    startTime=5000)
-    annotation (Placement(transformation(extent={{234,308},{246,320}})));
   Modelica.Blocks.Sources.RealExpression Power(y=
         reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.powerSensor.power -
         reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.pump_SimpleMassFlow1.W
@@ -377,29 +371,6 @@ class HTGR_Case_04b_TES_ReHeatCycle_ShakeDown_PartialAdmission_HPT
     annotation (Placement(transformation(extent={{-12,250},{-6,256}})));
   Modelica.Blocks.Math.Product product1
     annotation (Placement(transformation(extent={{40,244},{48,236}})));
-  Modelica.Blocks.Sources.CombiTimeTable demand_BOP(
-    tableOnFile=false,
-    table=[0,30544557.89; 2700,30544557.89; 3600,19544557.89; 6300,19544557.89;
-        7200,16260259.26; 9900,16260259.26; 10800,62000000; 13500,62000000;
-        14400,32046919.05; 17100,32046919.05; 18000,16260259.26; 20700,
-        16260259.26; 21600,16260259.26; 24300,16260259.26; 25200,30339037.58;
-        27900,30339037.58; 28800,32046919.05; 31500,32046919.05; 32400,62000000;
-        35100,62000000; 36000,16260259.26; 38700,16260259.26; 39600,16260259.26;
-        42300,16260259.26; 43200,60462906.67; 45900,60462906.67; 46800,
-        30339037.57; 49500,30339037.57; 50400,16260259.26; 53100,16260259.26;
-        54000,16260259.26; 56700,16260259.26; 57600,32046919.05; 60300,
-        32046919.05; 61200,32046919.05; 63900,32046919.05; 64800,62000000;
-        67500,62000000; 68400,16260259.26; 71100,16260259.26; 72000,16260259.26;
-        74700,16260259.26; 75600,60462906.67; 78300,60462906.67; 79200,
-        32046919.05; 81900,32046919.05; 82800,16260259.26; 85500,16260259.26;
-        86400,46254912.86; 89100,46254912.86; 90000,46254912.86; 140000,
-        46254912.86; 140500,20000000.00; 150000,20000000.00],
-    startTime=0,
-    tableName="BOP",
-    timeScale=1,
-    fileName="C:/Users/NOVOV/projects/HYBRID/Models/NHES/Resources/Data/RAVEN/timeSeriesDataVN.txt",
-    shiftTime=0)
-    annotation (Placement(transformation(extent={{-196,268},{-176,288}})));
 
   Modelica.Blocks.Sources.CombiTimeTable demand_BOP1(
     tableOnFile=false,
@@ -481,11 +452,11 @@ equation
         points={{54,30},{50,30},{50,18.98},{39.32,18.98}}, color={0,127,255}));
   connect(sHS2Tank_VN_SaltOuta.port_dch_b,
     reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.LT_in) annotation (Line(
-        points={{40,-18.22},{40,-18},{176,-18},{176,14},{194.634,14},{194.634,15.025}},
-                    color={0,127,255}));
+        points={{40,-18.22},{40,-18},{176,-18},{176,14},{194.634,14},{194.634,
+          15.025}}, color={0,127,255}));
   connect(reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.LT_out,
-    sHS2Tank_VN_SaltOuta.port_dch_a) annotation (Line(points={{194.634,-0.7},{194.634,
-          0},{98,0},{98,18.98},{39.32,18.98}},         color={0,127,255}));
+    sHS2Tank_VN_SaltOuta.port_dch_a) annotation (Line(points={{194.634,-0.7},{
+          194.634,0},{98,0},{98,18.98},{39.32,18.98}}, color={0,127,255}));
   connect(hTGR_PebbleBed_Primary_Loop.port_a, sensor_pT4.port) annotation (Line(
         points={{-95.05,-12.57},{-76.525,-12.57},{-76.525,-12},{-58,-12}},
         color={0,127,255}));
@@ -493,8 +464,8 @@ equation
         points={{-95.05,11.21},{-96,11.21},{-96,48}}, color={0,127,255}));
   connect(sHS2Tank_VN_SaltOut3_1.port_dch_b,
     reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.HT_RH_in) annotation (
-      Line(points={{56,77.78},{56,76},{150,76},{150,66},{194,66},{194,66.45},{195.062,
-          66.45}},         color={0,127,255}));
+      Line(points={{56,77.78},{56,76},{150,76},{150,66},{194,66},{194,66.45},{
+          195.062,66.45}}, color={0,127,255}));
   connect(sHS2Tank_VN_SaltOut3_1.port_dch_b, sensor_pT6.port) annotation (Line(
         points={{56,77.78},{61,77.78},{61,76},{70,76}}, color={0,127,255}));
   connect(reheat_cycle_drumOFH_Toutctr_AR_vn3_polished_PA1_1.HT_SH_in,
