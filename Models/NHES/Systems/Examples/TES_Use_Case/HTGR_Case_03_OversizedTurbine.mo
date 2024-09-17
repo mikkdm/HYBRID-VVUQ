@@ -85,7 +85,7 @@ model HTGR_Case_03_OversizedTurbine
       53303300, BOP_capacity(displayUnit="MW") = 1165000000)
     annotation (Placement(transformation(extent={{-100,82},{-80,102}})));
   Modelica.Blocks.Sources.Constant delayStart(k=0)
-    annotation (Placement(transformation(extent={{-60,80},{-40,100}})));
+    annotation (Placement(transformation(extent={{-60,108},{-40,128}})));
   SupervisoryControl.InputSetpointData SC(delayStart=delayStart.k,
     W_nominal_BOP(displayUnit="MW") = 50000000,
     fileName=Modelica.Utilities.Files.loadResource(
@@ -165,7 +165,7 @@ model HTGR_Case_03_OversizedTurbine
     f=1/20000,
     offset=48e6,
     startTime=12000)
-    annotation (Placement(transformation(extent={{-26,72},{-6,92}})));
+    annotation (Placement(transformation(extent={{-60,78},{-40,98}})));
   Modelica.Blocks.Sources.Trapezoid trapezoid(
     amplitude=41e6,
     rising=100,
@@ -203,7 +203,7 @@ model HTGR_Case_03_OversizedTurbine
     tableName="BOP",
     timeScale=timeScale,
     fileName=fileName)
-    annotation (Placement(transformation(extent={{-80,62},{-60,82}})));
+    annotation (Placement(transformation(extent={{-100,52},{-80,72}})));
   PrimaryHeatSystem.HTGR.RankineCycle.Models.PebbleBed_PrimaryLoop_TESUC
     hTGR_PebbleBed_Primary_Loop_TESUC(redeclare
       PrimaryHeatSystem.HTGR.RankineCycle.ControlSystems.CS_Rankine_Primary CS(

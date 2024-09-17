@@ -28,17 +28,18 @@ model
     use_m_flow_in=true,
     use_T_in=true,
     T=598.15,
-    nPorts=1) annotation (Placement(transformation(extent={{-42,28},{-22,48}})));
+    nPorts=1) annotation (Placement(transformation(extent={{-42,78},{-22,58}})));
 
-  Modelica.Fluid.Sources.Boundary_pT boundary1(
+  Modelica.Fluid.Sources.Boundary_pT boundaryCon(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     use_T_in=true,
     p(displayUnit="Pa") = 1e5,
     T(displayUnit="K") = 292.08,
-    nPorts=1) annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+    nPorts=1) annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={10,-68})));
+        origin={10,-38})));
 
   Modelica.Blocks.Sources.TimeTable TC_202_Exp(table=[0,292.08; 60,292.03; 120,
         291.98; 180,291.93; 240,291.91; 300,291.88; 360,291.84; 420,291.8; 480,
@@ -144,7 +145,7 @@ model
         394.7; 31140,393.16; 31200,391.47; 31260,389.66; 31320,388.04; 31380,
         386.45; 31440,384.9; 31500,382.98; 31560,380.72; 31620,378.41; 31680,
         376.74; 31740,373.61; 31800,370.36])
-    annotation (Placement(transformation(extent={{-96,-98},{-76,-78}})));
+    annotation (Placement(transformation(extent={{-84,-68},{-64,-48}})));
   Models.ThermoclineTankwithWall_Insulation.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosity_v16_working
     TES_Tank(
     T_Init(displayUnit="K") = {317.51,317,317,317,317,317,318.36,318,318,318,
@@ -213,7 +214,7 @@ model
     redeclare package InsulationMaterial =
         TRANSFORM.Media.Solids.FiberGlassGeneric,
     redeclare package WallMaterial = TRANSFORM.Media.Solids.SS316)
-    annotation (Placement(transformation(extent={{-8,-24},{28,18}})));
+    annotation (Placement(transformation(extent={{-8,6},{28,48}})));
 
   Modelica.Blocks.Sources.TimeTable FM_202_Exp(table=[0,0.001187; 60,0.001196;
         120,0.00121; 180,0.001219; 240,0.001188; 300,0.001204; 360,0.001182;
@@ -338,7 +339,7 @@ model
         31140,0.00538; 31200,0.014552; 31260,0.007289; 31320,0.005373; 31380,
         0.014857; 31440,0.008318; 31500,0.005878; 31560,0.013711; 31620,
         0.009049; 31680,0.005569; 31740,0.01266; 31800,0.001352])
-    annotation (Placement(transformation(extent={{-84,72},{-64,92}})));
+    annotation (Placement(transformation(extent={{-84,22},{-64,42}})));
   Modelica.Blocks.Sources.TimeTable TC_201_Exp(table=[0,294.54; 60,294.52; 120,
         294.49; 180,294.44; 240,294.43; 300,294.41; 360,294.37; 420,294.38; 480,
         294.35; 540,294.34; 600,294.34; 660,294.33; 720,294.31; 780,294.31; 840,
@@ -443,7 +444,7 @@ model
         473.27; 31140,464.94; 31200,456.66; 31260,448.95; 31320,441.96; 31380,
         435.68; 31440,430.46; 31500,425.8; 31560,422.25; 31620,423.14; 31680,
         417.08; 31740,412.16; 31800,409.88])
-    annotation (Placement(transformation(extent={{-84,32},{-64,52}})));
+    annotation (Placement(transformation(extent={{-84,54},{-64,74}})));
   Modelica.Blocks.Sources.TimeTable TN_1_1_Exp(table=[0,312.08; 60,312.05; 120,
         312; 180,311.96; 240,311.98; 300,311.95; 360,311.93; 420,311.93; 480,
         311.91; 540,311.89; 600,311.9; 660,311.89; 720,311.89; 780,311.89; 840,
@@ -1815,13 +1816,13 @@ model
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=-90,
-        origin={10,-41})));
+        origin={10,-11})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_201_Sim(redeclare package
       Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
-        extent={{-9,8},{9,-8}},
+        extent={{-9,-8},{9,8}},
         rotation=0,
-        origin={-1,38})));
+        origin={-1,68})));
   Modelica.Blocks.Sources.RealExpression MSE_TN_1_1(y=(TN_1_1_Exp.y - TES_Tank.TES.Tf[
         1])^2)
     annotation (Placement(transformation(extent={{-150,86},{-122,104}})));
@@ -1903,19 +1904,19 @@ equation
   TES_Tf_70 = TES_Tank.TES.Tf[70]*0.9999999;
 
   connect(FM_202_Exp.y, boundary.m_flow_in)
-    annotation (Line(points={{-63,82},{-42,82},{-42,46}}, color={0,0,127}));
+    annotation (Line(points={{-63,32},{-42,32},{-42,60}}, color={0,0,127}));
   connect(TC_201_Exp.y, boundary.T_in)
-    annotation (Line(points={{-63,42},{-44,42}}, color={0,0,127}));
+    annotation (Line(points={{-63,64},{-44,64}}, color={0,0,127}));
   connect(TES_Tank.port_b, TC_202_Sim.port_a)
-    annotation (Line(points={{10,-24},{10,-29}}, color={0,127,255}));
-  connect(TC_202_Sim.port_b, boundary1.ports[1])
-    annotation (Line(points={{10,-53},{10,-58}}, color={0,127,255}));
+    annotation (Line(points={{10,6},{10,1}},     color={0,127,255}));
+  connect(TC_202_Sim.port_b, boundaryCon.ports[1])
+    annotation (Line(points={{10,-23},{10,-28}}, color={0,127,255}));
   connect(boundary.ports[1], TC_201_Sim.port_a)
-    annotation (Line(points={{-22,38},{-10,38}}, color={0,127,255}));
+    annotation (Line(points={{-22,68},{-10,68}}, color={0,127,255}));
   connect(TC_201_Sim.port_b, TES_Tank.port_a)
-    annotation (Line(points={{8,38},{10,38},{10,18}}, color={0,127,255}));
-  connect(TC_202_Exp.y, boundary1.T_in)
-    annotation (Line(points={{-75,-88},{14,-88},{14,-80}}, color={0,0,127}));
+    annotation (Line(points={{8,68},{10,68},{10,48}}, color={0,127,255}));
+  connect(TC_202_Exp.y, boundaryCon.T_in)
+    annotation (Line(points={{-63,-58},{14,-58},{14,-50}}, color={0,0,127}));
   connect(MSE_TN_1_1.y,sum_MSE_TN_1_1. u)
     annotation (Line(points={{-120.6,95},{-117,95}},   color={0,0,127}));
   connect(MSE_TW_2.y,sum_MSE_TW_2. u)

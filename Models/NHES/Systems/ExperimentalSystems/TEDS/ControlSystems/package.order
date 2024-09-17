@@ -1,5 +1,6 @@
-CS_Setpoint
+CS_Dummy
 ED_Dummy
+CS_Setpoint
 Control_System_TEDS_ExpTest
 Control_System_Therminol_4_element_all_modes_ExpTest2
 Control_System_Therminol_4_element_all_modes_v1
@@ -20,3 +21,11 @@ Control_System_Therminol_3_element_all_modes
 Control_System_Therminol_3_element
 Control_System_TEDS_ExpTest_Oct2024
 Control_System_TEDS_ExpTest_Oct2024_PV012toPV009
+CS_GlycolHX_v1
+CS_GlycolHX_v2
+CS_GlycolHX_v3
+CS_GlycolHX_v4
+CS_GlycolHX_v5
+CS_GlycolHX_v6
+CS_GlycolHX_simpleProfile
+CS_GlycolHX_complexProfile

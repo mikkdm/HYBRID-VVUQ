@@ -62,13 +62,13 @@ model CS_L3_HTGR_extraction_Turbine
                            product1
     annotation (Placement(transformation(extent={{96,-172},{116,-152}})));
   Modelica.Blocks.Sources.RealExpression T_in_set1(y=data.mdot_total)
-    annotation (Placement(transformation(extent={{2,64},{22,84}})));
+    annotation (Placement(transformation(extent={{8,64},{22,76}})));
   Modelica.Blocks.Logical.Switch switch2
     annotation (Placement(transformation(extent={{38,72},{58,92}})));
   Modelica.Blocks.Sources.BooleanStep booleanStep(startTime=4000)
     annotation (Placement(transformation(extent={{-10,114},{10,134}})));
   Modelica.Blocks.Logical.Switch switch3
-    annotation (Placement(transformation(extent={{-54,60},{-34,80}})));
+    annotation (Placement(transformation(extent={{-42,58},{-28,72}})));
   Modelica.Blocks.Logical.Switch switch4
     annotation (Placement(transformation(extent={{42,20},{62,40}})));
   Modelica.Blocks.Sources.BooleanStep booleanStep1(startTime=1200000)
@@ -154,7 +154,8 @@ equation
   connect(FeedPump_PID.y, switch2.u1)
     annotation (Line(points={{11,90},{36,90}}, color={0,0,127}));
   connect(switch2.u3, T_in_set1.y)
-    annotation (Line(points={{36,74},{23,74}}, color={0,0,127}));
+    annotation (Line(points={{36,74},{28,74},{28,72},{32,72},{32,54},{34,54},{
+          34,70},{22.7,70}},                   color={0,0,127}));
   connect(booleanStep.y, switch2.u2) annotation (Line(points={{11,124},{36,
           124},{36,82}}, color={255,0,255}));
   connect(actuatorBus.Feed_Pump_Speed, switch2.y) annotation (Line(
@@ -166,13 +167,14 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(booleanStep.y, switch3.u2) annotation (Line(points={{11,124},{16,
-          124},{16,106},{-28,106},{-28,82},{-62,82},{-62,70},{-56,70}},
+  connect(booleanStep.y, switch3.u2) annotation (Line(points={{11,124},{16,124},
+          {16,106},{-26,106},{-26,74},{-48,74},{-48,65},{-43.4,65}},
         color={255,0,255}));
-  connect(switch3.y, FeedPump_PID.u_m) annotation (Line(points={{-33,70},{
-          -18,70},{-18,78},{0,78}}, color={0,0,127}));
+  connect(switch3.y, FeedPump_PID.u_m) annotation (Line(points={{-27.3,65},{-2,
+          65},{-2,70},{0,70},{0,78}},
+                                    color={0,0,127}));
   connect(sensorBus.Steam_Temperature, switch3.u1) annotation (Line(
-      points={{-30,-100},{-30,44},{-72,44},{-72,80},{-56,80},{-56,78}},
+      points={{-30,-100},{-30,54},{-56,54},{-56,70.6},{-43.4,70.6}},
       color={239,82,82},
       pattern=LinePattern.Dash,
       thickness=0.5), Text(
@@ -180,8 +182,9 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(T_in_set.y, switch3.u3) annotation (Line(points={{-79,90},{-64,90},
-          {-64,62},{-56,62}}, color={0,0,127}));
+  connect(T_in_set.y, switch3.u3) annotation (Line(points={{-79,90},{-54,90},{
+          -54,59.4},{-43.4,59.4}},
+                              color={0,0,127}));
   connect(booleanStep1.y,switch5. u2)
     annotation (Line(points={{107,84},{132,84},{132,42}}, color={255,0,255}));
   connect(booleanStep1.y,switch4. u2) annotation (Line(points={{107,84},{112,84},
