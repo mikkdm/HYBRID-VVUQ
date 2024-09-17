@@ -166,9 +166,7 @@ model
         origin={-88,14})));
   TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[90](
     length=fill(geometry.Height_System/geometry.nodesTotal, geometry.nodesTotal),
-
     r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodesTotal),
-
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodesTotal)
          + {insRout_1,insRout_2,insRout_3,insRout_4,insRout_5,insRout_6,
         insRout_7,insRout_8,insRout_9,insRout_10,insRout_11,insRout_12,

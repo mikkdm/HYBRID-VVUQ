@@ -106,7 +106,7 @@ parameter SI.Temperature T_hot_design = 300;
     annotation (Placement(transformation(extent={{-198,124},{-182,140}})));
   Modelica.Blocks.Math.Add add1
     annotation (Placement(transformation(extent={{-94,112},{-76,130}})));
-  Modelica.Blocks.Sources.Constant const2(k=12.6)
+  Modelica.Blocks.Sources.Constant const2(k=2.1) "originall 12.6"
     annotation (Placement(transformation(
         extent={{12,-12},{-12,12}},
         rotation=0,

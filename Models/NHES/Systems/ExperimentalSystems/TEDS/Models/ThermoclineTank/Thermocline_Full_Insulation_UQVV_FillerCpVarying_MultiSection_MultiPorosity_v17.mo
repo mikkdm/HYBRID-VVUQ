@@ -1,7 +1,7 @@
 within NHES.Systems.ExperimentalSystems.TEDS.Models.ThermoclineTank;
 model
-  Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosity_v15_working
-  "v8 + modification"
+  Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosity_v17
+  "v15 + modification"
 
   replaceable package Medium =
       TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C constrainedby
@@ -32,98 +32,106 @@ model
                                                 299.07, 299, 299, 299, 298, 297,
                                                 297.32, 292}       "Initial temperature of thermocline medium and wall";
   parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
-  parameter Real insulationRouter_1 = 0.61;
-  parameter Real insulationRouter_2 = 0.61;
-  parameter Real insulationRouter_3 = 0.61;
-  parameter Real insulationRouter_4 = 0.61;
-  parameter Real insulationRouter_5 = 0.61;
-  parameter Real insulationRouter_6 = 0.61;
-  parameter Real insulationRouter_7 = 0.61;
-  parameter Real insulationRouter_8 = 0.61;
-  parameter Real insulationRouter_9 = 0.61;
-  parameter Real insulationRouter_10 = 0.61;
-  parameter Real insulationRouter_11 = 0.61;
-  parameter Real insulationRouter_12 = 0.61;
-  parameter Real insulationRouter_13 = 0.61;
-  parameter Real insulationRouter_14 = 0.61;
-  parameter Real insulationRouter_15 = 0.61;
-  parameter Real insulationRouter_16 = 0.61;
-  parameter Real insulationRouter_17 = 0.61;
-  parameter Real insulationRouter_18 = 0.61;
-  parameter Real insulationRouter_19 = 0.61;
-  parameter Real insulationRouter_20 = 0.61;
-  parameter Real insulationRouter_21 = 0.61;
-  parameter Real insulationRouter_22 = 0.61;
-  parameter Real insulationRouter_23 = 0.61;
-  parameter Real insulationRouter_24 = 0.61;
-  parameter Real insulationRouter_25 = 0.61;
-  parameter Real insulationRouter_26 = 0.61;
-  parameter Real insulationRouter_27 = 0.61;
-  parameter Real insulationRouter_28 = 0.61;
-  parameter Real insulationRouter_29 = 0.61;
-  parameter Real insulationRouter_30 = 0.61;
-  parameter Real insulationRouter_31 = 0.61;
-  parameter Real insulationRouter_32 = 0.61;
-  parameter Real insulationRouter_33 = 0.61;
-  parameter Real insulationRouter_34 = 0.61;
-  parameter Real insulationRouter_35 = 0.61;
-  parameter Real insulationRouter_36 = 0.61;
-  parameter Real insulationRouter_37 = 0.61;
-  parameter Real insulationRouter_38 = 0.61;
-  parameter Real insulationRouter_39 = 0.61;
-  parameter Real insulationRouter_40 = 0.61;
-  parameter Real insulationRouter_41 = 0.61;
-  parameter Real insulationRouter_42 = 0.61;
-  parameter Real insulationRouter_43 = 0.61;
-  parameter Real insulationRouter_44 = 0.61;
-  parameter Real insulationRouter_45 = 0.61;
-  parameter Real insulationRouter_46 = 0.61;
-  parameter Real insulationRouter_47 = 0.61;
-  parameter Real insulationRouter_48 = 0.61;
-  parameter Real insulationRouter_49 = 0.61;
-  parameter Real insulationRouter_50 = 0.61;
-  parameter Real insulationRouter_51 = 0.61;
-  parameter Real insulationRouter_52 = 0.61;
-  parameter Real insulationRouter_53 = 0.61;
-  parameter Real insulationRouter_54 = 0.61;
-  parameter Real insulationRouter_55 = 0.61;
-  parameter Real insulationRouter_56 = 0.61;
-  parameter Real insulationRouter_57 = 0.61;
-  parameter Real insulationRouter_58 = 0.61;
-  parameter Real insulationRouter_59 = 0.61;
-  parameter Real insulationRouter_60 = 0.61;
-  parameter Real insulationRouter_61 = 0.61;
-  parameter Real insulationRouter_62 = 0.61;
-  parameter Real insulationRouter_63 = 0.61;
-  parameter Real insulationRouter_64 = 0.61;
-  parameter Real insulationRouter_65 = 0.61;
-  parameter Real insulationRouter_66 = 0.61;
-  parameter Real insulationRouter_67 = 0.61;
-  parameter Real insulationRouter_68 = 0.61;
-  parameter Real insulationRouter_69 = 0.61;
-  parameter Real insulationRouter_70 = 0.61;
-  parameter Real insulationRouter_71 = 0.61;
-  parameter Real insulationRouter_72 = 0.61;
-  parameter Real insulationRouter_73 = 0.61;
-  parameter Real insulationRouter_74 = 0.61;
-  parameter Real insulationRouter_75 = 0.61;
-  parameter Real insulationRouter_76 = 0.61;
-  parameter Real insulationRouter_77 = 0.61;
-  parameter Real insulationRouter_78 = 0.61;
-  parameter Real insulationRouter_79 = 0.61;
-  parameter Real insulationRouter_80 = 0.61;
-  parameter Real insulationRouter_81 = 0.61;
-  parameter Real insulationRouter_82 = 0.61;
-  parameter Real insulationRouter_83 = 0.61;
-  parameter Real insulationRouter_84 = 0.61;
-  parameter Real insulationRouter_85 = 0.61;
-  parameter Real insulationRouter_86 = 0.61;
-  parameter Real insulationRouter_87 = 0.61;
-  parameter Real insulationRouter_88 = 0.61;
-  parameter Real insulationRouter_89 = 0.61;
-  parameter Real insulationRouter_90 = 0.61;
+  parameter Real insulationRouter_1 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_2 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_3 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_4 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_5 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_6 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_7 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_8 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_9 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_10 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_11 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_12 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_13 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_14 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_15 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_16 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_17 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_18 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_19 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_20 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_21 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_22 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_23 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_24 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_25 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_26 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_27 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_28 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_29 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_30 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_31 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_32 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_33 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_34 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_35 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_36 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_37 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_38 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_39 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_40 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_41 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_42 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_43 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_44 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_45 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_46 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_47 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_48 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_49 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_50 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_51 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_52 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_53 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_54 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_55 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_56 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_57 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_58 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_59 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_60 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_61 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_62 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_63 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_64 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_65 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_66 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_67 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_68 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_69 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_70 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_71 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_72 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_73 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_74 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_75 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_76 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_77 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_78 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_79 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_80 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_81 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_82 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_83 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_84 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_85 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_86 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_87 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_88 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_89 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Real insulationRouter_90 = 0.61 annotation(dialog(tab = "Insulation Geometry"));
+  parameter Modelica.Units.SI.CoefficientOfHeatTransfer hc_air = 15.0;
 
-  Thermocline_UQVV_test3_multiplePorosity_initialT_Working TES(
+  SI.Power Q_conduction[geometry.nodes];
+  SI.Power Q_cond_UP;
+  SI.Power Q_cond_LP;
+  SI.Power Q_loss_UP;
+  SI.Power Q_loss_LP;
+
+  Thermocline_UQVV_test3_multiplePorosity_initialT_Conduction
+                                                           TES(
     redeclare package Medium = Medium,
     Radius_Tank=geometry.Radius_Tank,
     Porosity=geometry.Porosity,
@@ -131,9 +139,12 @@ model
     Height_Tank=geometry.Height_Tank,
     nodes=geometry.nodes,
     dz=geometry.dz,
+    Q_conduction=Q_conduction,
     filler_density(displayUnit="kg/m3") = Density_Filler,
-    kr=16.181,
+    Cr=1100,
+    kr=15359.16,
     dr=geometry.dr,
+    fs=geometry.shapeFactor,
     T_Init={312.08,313,314,315,316,317,317,317,317,317,317.51,317,317,317,317,
         317,318.36,318,318,318,318,318,317.26,317,317,317,317,316,316.06,316,
         316,316,316,314.36,314,313,312,311,311,311.72,311,311,311,310,310,
@@ -150,21 +161,20 @@ model
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodesTotal),
     redeclare package Material = WallMaterial,
     T_start=T_Init[TES.nodes])
-    annotation (Placement(transformation(extent={{-78,6},{-62,22}})));
+    annotation (Placement(transformation(extent={{-58,6},{-42,22}})));
 
-  Modelica.Blocks.Sources.RealExpression boundaryT[geometry.nodesTotal](y=fill(
-        geometry.T_amb, geometry.nodesTotal)) annotation (Placement(
-        transformation(
+  Modelica.Blocks.Sources.RealExpression boundaryT[89](y=fill(geometry.T_amb,
+        89)) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=270,
-        origin={-124,2})));
+        origin={-112,-4})));
   TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
-    boundary2(nPorts=geometry.nodesTotal,
+    boundary2(nPorts=(geometry.nodesTotal - 1),
                                      use_port=true) annotation (Placement(
         transformation(
         extent={{6,-6},{-6,6}},
         rotation=180,
-        origin={-110,14})));
+        origin={-102,14})));
   TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[geometry.nodesTotal](
     length=fill(geometry.Height_System/geometry.nodesTotal, geometry.nodesTotal),
     r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodesTotal),
@@ -200,7 +210,7 @@ model
         insulationRouter_88,insulationRouter_89,insulationRouter_90},
     redeclare package Material = InsulationMaterial,
     T_start=303.15)
-    annotation (Placement(transformation(extent={{-100,6},{-84,22}})));
+    annotation (Placement(transformation(extent={{-80,6},{-64,22}})));
 
   Modelica.Fluid.Interfaces.FluidPort_a port_a(redeclare package Medium =
         Medium)
@@ -224,7 +234,9 @@ model
         0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
         0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,0.36,
         0.36,0.36}*Modelica.Constants.pi*(geometry.Radius_Tank^2.0),
-    T_amb=293.15) annotation (Dialog(group="Geometry"), Placement(
+    T_amb=293.15,
+    T_ground=273.15)
+                  annotation (Dialog(group="Geometry"), Placement(
         transformation(extent={{-98,76},{-76,98}})));
 
   TRANSFORM.Fluid.Volumes.MixingVolume TES_Top(
@@ -237,6 +249,7 @@ model
         (length=geometry.Height_Tank_OilOnly, crossArea=Modelica.Constants.pi*(
             geometry.Radius_Tank^2.0)),
     use_HeatPort=true,
+    Q_gen=Q_cond_UP + Q_loss_UP,
     nPorts_a=1,
     nPorts_b=1)
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
@@ -252,43 +265,76 @@ model
         (length=geometry.Height_Tank_OilOnly, crossArea=Modelica.Constants.pi*(
             geometry.Radius_Tank^2.0)),
     use_HeatPort=true,
+    Q_gen=Q_cond_LP + Q_loss_LP,
     nPorts_b=1,
     nPorts_a=1) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={0,-30})));
   TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Collector collector(n=
-        10) annotation (Placement(transformation(extent={{-32,42},{-12,62}})));
+        10) annotation (Placement(transformation(extent={{-32,44},{-12,64}})));
   TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Collector collector1(n=
         10) annotation (Placement(transformation(extent={{-32,-40},{-12,-20}})));
+  Modelica.Blocks.Sources.RealExpression boundaryT1[1](y=fill(geometry.T_ground,
+        1)) annotation (Placement(transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=270,
+        origin={-112,-46})));
+  TRANSFORM.HeatAndMassTransfer.BoundaryConditions.Heat.Temperature_multi
+    boundary1(nPorts=1, use_port=true)              annotation (Placement(
+        transformation(
+        extent={{6,-6},{-6,6}},
+        rotation=180,
+        origin={-102,-20})));
 equation
+  for i in 1:geometry.nodes loop
+    if i ==1 then
+    Q_conduction[i] = TES.kf[i]*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*TES.Porosity[i]/TES.dz*(TES.Tf[i+1]-TES.Tf[i]) + TES.kf[i]*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*TES.Porosity[i]/(geometry.Height_Tank_OilOnly/2)*(TES_Top.medium.T-TES.Tf[i]);
+    elseif i==geometry.nodes then
+  Q_conduction[i] = TES.kf[i]*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*TES.Porosity[i]/TES.dz*(TES.Tf[i-1]-TES.Tf[i]) + TES.kf[i]*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*TES.Porosity[i]/(geometry.Height_Tank_OilOnly/2)*(TES_Bottom.medium.T-TES.Tf[i]);
+    else
+      Q_conduction[i] = TES.kf[i]*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*TES.Porosity[i]/TES.dz*(-TES.Tf[i]*2+TES.Tf[i-1]+TES.Tf[i+1]);
+    end if;
+
+  end for;
+    Q_cond_UP =  -1.0*TES.kf[1]*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*TES.Porosity[1]/(geometry.Height_Tank_OilOnly/2)*(TES_Top.medium.T-TES.Tf[1]);
+    Q_cond_LP =  -1.0*TES.kf[geometry.nodes]*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*TES.Porosity[geometry.nodes]/(geometry.Height_Tank_OilOnly/2)*(TES_Bottom.medium.T-TES.Tf[geometry.nodes]);
+    Q_loss_UP = -1.0*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*(hc_air)*(TES_Top.medium.T-(273.15+20.0));
+    Q_loss_LP = -1.0*Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank*(hc_air)*(TES_Bottom.medium.T-(273.15+20.0));
+ //   Q_loss_UP = -1.0*(Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank)*(10.0)*(TES_Top.medium.T-(273.l5+20));
+//    Q_loss_LP = -1.0*(Modelica.Constants.pi*TES.Radius_Tank*TES.Radius_Tank)*(10.0)*(TES_Bottom.medium.T-(273.l5+20));
+
 
   connect(simpleWall.port_a, Insulation.port_b)
-    annotation (Line(points={{-78,14},{-84,14}},
+    annotation (Line(points={{-58,14},{-64,14}},
                                                color={191,0,0}));
-  connect(boundary2.port, Insulation.port_a)
-    annotation (Line(points={{-104,14},{-100,14}},       color={191,0,0}));
   connect(boundaryT.y, boundary2.T_ext)
-    annotation (Line(points={{-124,13},{-124,14},{-112.4,14}},
+    annotation (Line(points={{-112,7},{-112,14},{-104.4,14}},
                                                    color={0,0,127}));
   connect(TES_Top.port_a[1], TES.port_a) annotation (Line(points={{-4.44089e-16,
           48},{0,48},{0,38}}, color={0,127,255}));
   connect(TES.port_b, TES_Bottom.port_b[1]) annotation (Line(points={{0,-10},{0,
           -9},{3.88578e-16,-9},{3.88578e-16,-24}}, color={0,127,255}));
   connect(simpleWall[11:80].port_b, TES.heatPorts[:, 1])
-    annotation (Line(points={{-62,14},{-24.48,14}}, color={191,0,0}));
+    annotation (Line(points={{-42,14},{-24.48,14}}, color={191,0,0}));
   connect(port_a, TES_Top.port_b[1]) annotation (Line(points={{0,100},{0,80},{
           3.88578e-16,80},{3.88578e-16,60}}, color={0,127,255}));
   connect(TES_Bottom.port_a[1], port_b) annotation (Line(points={{-3.88578e-16,
           -36},{-3.88578e-16,-68},{0,-68},{0,-100}}, color={0,127,255}));
-  connect(simpleWall[1:10].port_b, collector.port_a) annotation (Line(points={{
-          -62,14},{-42,14},{-42,52},{-32,52}}, color={191,0,0}));
-  connect(simpleWall[81:90].port_b, collector1.port_a) annotation (Line(points=
-          {{-62,14},{-42,14},{-42,-30},{-32,-30}}, color={191,0,0}));
+  connect(simpleWall[1:10].port_b, collector.port_a)
+    annotation (Line(points={{-42,14},{-32,14},{-32,54}}, color={191,0,0}));
+  connect(simpleWall[81:90].port_b, collector1.port_a)
+    annotation (Line(points={{-42,14},{-32,14},{-32,-30}}, color={191,0,0}));
   connect(collector1.port_b, TES_Bottom.heatPort)
     annotation (Line(points={{-12,-30},{-6,-30}}, color={191,0,0}));
   connect(collector.port_b, TES_Top.heatPort)
-    annotation (Line(points={{-12,52},{-12,54},{-6,54}}, color={191,0,0}));
+    annotation (Line(points={{-12,54},{-6,54}}, color={191,0,0}));
+  connect(boundary2.port, Insulation[1:89].port_a)
+    annotation (Line(points={{-96,14},{-80,14}}, color={191,0,0}));
+  connect(boundaryT1[1:1].y, boundary1.T_ext[1:1]) annotation (Line(points={{
+          -112,-35},{-112,-20},{-104.4,-20}}, color={0,0,127}));
+  connect(boundary1.port, Insulation[90:90].port_a)
+    annotation (Line(points={{-96,-20},{-80,-20},{-80,14}}, color={191,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-60,90},{60,0}},
@@ -2709,4 +2755,4 @@ Thermocline System"),
 <p><span style=\"font-family: Courier New; color: #0000ff;\">parameter&nbsp;</span><span style=\"color: #ff0000;\">SI.ThermalConductivity</span>&nbsp; kr &nbsp; <span style=\"font-family: Courier New; color: #006400;\">&quot;W/m*K&nbsp;of&nbsp;filler&quot;</span>;</p>
 </html>"));
 end
-  Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosity_v15_working;
+  Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosity_v17;

@@ -132,7 +132,7 @@ model
     nodes=geometry.nodes,
     dz=geometry.dz,
     filler_density(displayUnit="kg/m3") = Density_Filler,
-    Cr=1500,
+    Cr=1100,
     kr=15359.16,
     dr=geometry.dr,
     fs=geometry.shapeFactor,
@@ -146,13 +146,10 @@ model
     // SpecificHeatCapacity Cr   "J/kg*K of HTF (or concrete)";
     // ThermalConductivity  kr   "W/m*K  of filler";
 
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[geometry.nodesTotal]
-    (
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder simpleWall[geometry.nodesTotal](
     length=fill(geometry.Height_System/geometry.nodesTotal, geometry.nodesTotal),
-
     r_inner=fill(geometry.Radius_Tank, geometry.nodesTotal),
     r_outer=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodesTotal),
-
     redeclare package Material = WallMaterial,
     T_start=T_Init[TES.nodes])
     annotation (Placement(transformation(extent={{-58,6},{-42,22}})));
@@ -169,12 +166,9 @@ model
         extent={{6,-6},{-6,6}},
         rotation=180,
         origin={-102,14})));
-  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[geometry.nodesTotal]
-    (
+  TRANSFORM.HeatAndMassTransfer.Volumes.SimpleWall_Cylinder Insulation[geometry.nodesTotal](
     length=fill(geometry.Height_System/geometry.nodesTotal, geometry.nodesTotal),
-
     r_inner=fill(geometry.Radius_Tank + geometry.Wall_Thickness, geometry.nodesTotal),
-
     r_outer={insulationRouter_1,insulationRouter_2,insulationRouter_3,
         insulationRouter_4,insulationRouter_5,insulationRouter_6,
         insulationRouter_7,insulationRouter_8,insulationRouter_9,
