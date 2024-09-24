@@ -132,7 +132,7 @@ model
     nodes=geometry.nodes,
     dz=geometry.dz,
     filler_density(displayUnit="kg/m3") = Density_Filler,
-    Cr=1500,
+    Cr=1100,
     kr=15359.16,
     dr=geometry.dr,
     fs=geometry.shapeFactor,

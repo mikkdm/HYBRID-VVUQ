@@ -1,3 +1,0 @@
-within NHES.Systems.ExperimentalSystems.TEDS.Models;
-package ThermoclineTankwithWall_Insulation
-end ThermoclineTankwithWall_Insulation;

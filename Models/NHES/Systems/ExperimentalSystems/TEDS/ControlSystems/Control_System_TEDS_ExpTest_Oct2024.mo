@@ -1,6 +1,6 @@
 within NHES.Systems.ExperimentalSystems.TEDS.ControlSystems;
 model Control_System_TEDS_ExpTest_Oct2024
-  "Runs all Modes of the TEDS system with Milestone controllers (Manual inputs for load, hence why there are two controllers)"
+  "Runs all Modes of the TEDS system with Milestone controllers (Manual inputs for load, hence why there are two controllers)."
 
   parameter Real FV_opening=0.00250;
 
@@ -68,11 +68,11 @@ parameter SI.Temperature T_hot_design = 300;
     annotation (Placement(transformation(extent={{-208,68},{-180,94}})));
   Modelica.Blocks.Math.Product FM_1
     annotation (Placement(transformation(extent={{-94,60},{-76,78}})));
-  Modelica.Blocks.Sources.CombiTimeTable PV006(table=[0,0.0001; 24098,0.0001;
-        24099,1; 25000,1],             startTime=0)
+  Modelica.Blocks.Sources.CombiTimeTable PV006(table=[0,0.0001; 37098,0.0001;
+        37099,1; 38000,1],             startTime=0)
     annotation (Placement(transformation(extent={{192,86},{164,114}})));
   Modelica.Blocks.Sources.CombiTimeTable PV049_PV052(table=[0,0.001; 973,0.001;
-        974,1; 24106,1; 24107,0; 25000,0],                            startTime=
+        974,1; 37106,1; 37107,0; 38000,0],                            startTime=
        0) annotation (Placement(transformation(extent={{196,-32},{172,-8}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder5(
     T=5,
@@ -106,7 +106,7 @@ parameter SI.Temperature T_hot_design = 300;
     annotation (Placement(transformation(extent={{-198,124},{-182,140}})));
   Modelica.Blocks.Math.Add add1
     annotation (Placement(transformation(extent={{-94,112},{-76,130}})));
-  Modelica.Blocks.Sources.Constant const2(k=12.6)
+  Modelica.Blocks.Sources.Constant const2(k=2.1) "originall 12.6"
     annotation (Placement(transformation(
         extent={{12,-12},{-12,12}},
         rotation=0,
