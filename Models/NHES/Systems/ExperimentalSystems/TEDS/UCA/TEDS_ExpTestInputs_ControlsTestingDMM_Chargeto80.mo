@@ -96,8 +96,8 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,46})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow2(redeclare package Medium
-      = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow2(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
@@ -186,34 +186,33 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
         extent={{9,-8},{-9,8}},
         rotation=270,
         origin={-103,-98})));
-  Controls.Control_System_TEDS_ExpTest_Oct2024_chargeto80percent
-    control_System_Therminol_4_element_all_modes_ExpTest3_1(T_hot_design=523.15)
+  Controls.Control_System_TEDS_ExpTest_Oct2024_AlteringInputsTables Control_System(
+      T_hot_design=523.15)
     annotation (Placement(transformation(extent={{0,154},{40,190}})));
   BaseClasses_1.SignalSubBus_ActuatorInput Sen
     annotation (Placement(transformation(extent={{-72,130},{-50,154}})));
   BaseClasses_1.SignalSubBus_SensorOutput Ac
     annotation (Placement(transformation(extent={{-30,130},{-8,154}})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow3(redeclare package Medium
-      = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow3(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{11,-11},{-11,11}},
         rotation=180,
         origin={157,47})));
   Models.ThermoclineTank.Thermocline_Full_Insulation_UQVV_FillerCpVarying_MultiSection_MultiPorosity_v17
-                                                   thermocline_Insulation(
+    thermocline(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     redeclare package InsulationMaterial = NHES.Media.Solids.FoamGlass,
-    T_Init=(293.15 + 45)*ones(thermocline_Insulation.TES.nodes),
+    T_Init=(293.15 + 45)*ones(thermocline.TES.nodes),
     geometry(
       Radius_Tank=0.438,
-      Porosity=(0.36)*ones(thermocline_Insulation.TES.nodes),
+      Porosity=(0.36)*ones(thermocline.TES.nodes),
       dr=0.00317,
       Insulation_thickness=3*0.051,
       Wall_Thickness=0.019,
       Height_Tank=4.435,
-      XS_Fluid=(0.36)*ones(thermocline_Insulation.TES.nodes)*Modelica.Constants.pi
-          *(0.438)))
+      XS_Fluid=(0.36)*ones(thermocline.TES.nodes)*Modelica.Constants.pi*(0.438)))
     annotation (Placement(transformation(extent={{22,-46},{54,-2}})));
   Modelica.Fluid.Sources.MassFlowSource_T Chiller_Mass_Flow(
     redeclare package Medium =
@@ -309,8 +308,8 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
         extent={{-12,-13},{12,13}},
         rotation=90,
         origin={38,-69})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate BOP_Mass_flow(redeclare package Medium
-      = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+  TRANSFORM.Fluid.Sensors.MassFlowRate BOP_Mass_flow(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -335,8 +334,8 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
         extent={{-12,12},{12,-12}},
         rotation=270,
         origin={214,-64})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_003a(redeclare package Medium
-      = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_003a(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(extent={{18,64},{42,88}})));
   TRANSFORM.Fluid.Machines.Pump_PressureBooster pump(
     redeclare package Medium =
@@ -544,13 +543,13 @@ equation
   connect(m_thot.port_b, TC_201.port_a)
     annotation (Line(points={{40,46},{38,46},{38,33}},
                                                color={0,127,255}));
-  connect(TC_201.port_b, thermocline_Insulation.port_a)
-    annotation (Line(points={{38,9},{38,-2}},           color={0,127,255}));
+  connect(TC_201.port_b, thermocline.port_a)
+    annotation (Line(points={{38,9},{38,-2}}, color={0,127,255}));
   connect(FM_202.port_a, T_ch_o.port_a)
     annotation (Line(points={{149,-105},{138,-105}},
                                                    color={0,127,255}));
-  connect(TC_202.port_b, thermocline_Insulation.port_b)
-    annotation (Line(points={{38,-57},{38,-46}},           color={0,127,255}));
+  connect(TC_202.port_b, thermocline.port_b)
+    annotation (Line(points={{38,-57},{38,-46}}, color={0,127,255}));
   connect(pipe2.port_b, BOP_Mass_flow.port_a)
     annotation (Line(points={{62,76},{96,76}}, color={0,127,255}));
   connect(BOP_Mass_flow.port_b,PV_006. port_a)
@@ -637,8 +636,7 @@ equation
           {112,48},{106,48}},                    color={0,127,255}));
   connect(pipe10.port_a, pipe5.port_a) annotation (Line(points={{94,48},{94,47},
           {80,47}},           color={0,127,255}));
-  connect(Ac, control_System_Therminol_4_element_all_modes_ExpTest3_1.SensorSubBus)
-    annotation (Line(
+  connect(Ac, Control_System.SensorSubBus) annotation (Line(
       points={{-19,142},{29.3333,142},{29.3333,154.15}},
       color={239,82,82},
       pattern=LinePattern.Dash,
@@ -647,8 +645,7 @@ equation
       index=-1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(Sen, control_System_Therminol_4_element_all_modes_ExpTest3_1.ActuatorSubBus)
-    annotation (Line(
+  connect(Sen, Control_System.ActuatorSubBus) annotation (Line(
       points={{-61,142},{19.4667,142},{19.4667,154.15}},
       color={111,216,99},
       pattern=LinePattern.Dash,
