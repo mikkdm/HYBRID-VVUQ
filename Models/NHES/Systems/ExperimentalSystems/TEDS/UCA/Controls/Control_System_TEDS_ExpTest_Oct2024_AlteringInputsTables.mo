@@ -28,15 +28,7 @@ parameter SI.Temperature T_hot_design = 300;
     y_start=0.5)
     annotation (Placement(transformation(extent={{-98,-66},{-80,-48}})));
   Modelica.Blocks.Sources.CombiTimeTable T_GHXout(
-    tableOnFile=true,                             table=[0,21; 104,21; 105,20;
-        9497,20; 9498,21; 9514,21; 9515,22; 9833,40; 9834,41; 10307,48; 10308,
-        49; 10514,49; 10515,50; 12254,50; 12255,51; 14125,51; 14126,52; 15046,
-        52; 15047,51; 16593,51; 16594,52; 21712,52; 21713,53; 22227,53; 22228,
-        54; 22688,54; 22689,55; 22943,55; 22944,56; 23120,56; 23121,57; 23266,
-        57; 23267,58; 23360,58; 23361,59; 23423,59; 23424,60; 23480,60; 23481,
-        61; 23528,61; 23529,62; 23576,62; 23577,63; 23610,63; 23611,64; 24145,
-        84; 24146,85; 24155,85; 24156,84; 24245,80; 24246,81; 24795,115; 24796,
-        116; 25000,116],
+    tableOnFile=true,
     tableName="T_GHX",
     fileName=ModelicaServices.ExternalReferences.loadResource(
         "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/T_GHX.txt"),
@@ -57,9 +49,6 @@ parameter SI.Temperature T_hot_design = 300;
     annotation (Placement(transformation(extent={{-134,-6},{-116,12}})));
   Modelica.Blocks.Sources.CombiTimeTable Flow(
     tableOnFile=true,
-    table=[0,0.0135; 1059,0.0135; 1074,61; 1127,61; 1128,36; 1386,36; 3325,40;
-        3328,45; 3840,45; 3940,50; 6065,50; 6066,45; 8028,45; 8171,8; 9024,8;
-        9036,6; 10333,5; 24489,6; 25000,6],
     tableName="Flow",
     fileName=ModelicaServices.ExternalReferences.loadResource(
         "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/Flow.txt"),
@@ -89,20 +78,18 @@ parameter SI.Temperature T_hot_design = 300;
     annotation (Placement(transformation(extent={{192,88},{164,116}})));
   Modelica.Blocks.Sources.CombiTimeTable PV049_PV052(
     tableOnFile=true,
-    table=[0,0.001; 973,0.001; 974,1; 37106,1; 37107,0; 38000,0],
     tableName="table_049_052",
     fileName=ModelicaServices.ExternalReferences.loadResource(
         "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV049_PV052.txt"),
                                                                       startTime=
-       0) annotation (Placement(transformation(extent={{196,-34},{172,-10}})));
+       0) annotation (Placement(transformation(extent={{196,-32},{172,-8}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder5(
     T=5,
     initType=Modelica.Blocks.Types.Init.NoInit,
     y_start=1)
     annotation (Placement(transformation(extent={{138,-86},{120,-68}})));
   Modelica.Blocks.Sources.CombiTimeTable PV050_PV051(
-    tableOnFile=true,                                table=[0,0.0001; 25000,
-        0.0001],
+    tableOnFile=true,
     tableName="table_050_051",
     fileName=ModelicaServices.ExternalReferences.loadResource(
         "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV050_PV051.txt"),
@@ -125,9 +112,7 @@ parameter SI.Temperature T_hot_design = 300;
         rotation=0,
         origin={-190,110})));
   Modelica.Blocks.Sources.CombiTimeTable THeater(
-    tableOnFile=true,                            table=[0,75; 2900,75; 2901,100;
-        11039,100; 11040,300; 12587,300; 12588,285; 12687,285; 12688,275; 12750,
-        275; 12751,280; 12979,280; 12980,275; 13215,275; 13216,276; 25000,276],
+    tableOnFile=true,
     tableName="THeater",
     fileName=ModelicaServices.ExternalReferences.loadResource(
         "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/THeater.txt"),
@@ -157,15 +142,11 @@ parameter SI.Temperature T_hot_design = 300;
     annotation (Placement(transformation(extent={{-4,158},{16,138}})));
   Modelica.Blocks.Sources.CombiTimeTable Qheater(
     tableOnFile=true,
-    table=[0,0; 2900,0; 2901,1500; 11039,1500; 11040,2500; 12587,2500; 12588,
-        2500; 12687,2500; 12688,1750; 12750,1750; 12751,2500; 12979,2500; 12980,
-        3000; 13215,3000; 13216,1000; 25000,1000],
     tableName="Q_Heater",
-    fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/Q_Heater.txt"),
-
+    fileName=ModelicaServices.ExternalReferences.loadResource("modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/Q_Heater.txt"),
     startTime=0)
     annotation (Placement(transformation(extent={{-58,154},{-42,170}})));
+
   Modelica.Blocks.Sources.BooleanExpression booleanExpression(y=
         auto_control_heater)
     annotation (Placement(transformation(extent={{-70,134},{-50,154}})));
@@ -174,32 +155,18 @@ parameter SI.Temperature T_hot_design = 300;
     annotation (Placement(transformation(extent={{-108,-28},{-88,-8}})));
   Modelica.Blocks.Sources.CombiTimeTable Flow_ValvePosition(
     tableOnFile=true,
-    table=[0,0.027; 1059,0.027; 1074,0.82; 1127,0.82; 1128,0.72; 1386,0.72;
-        3325,0.8; 3328,0.9; 3840,0.9; 3940,1; 6065,1; 6066,0.9; 8028,0.9; 8171,
-        0.4; 9024,0.4; 9036,0.3; 10333,0.25; 24489,0.3; 25000,0.3],
     tableName="Flow_Valve",
-    fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/Flow_Valve.txt"),
-
+    fileName=ModelicaServices.ExternalReferences.loadResource("modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/Flow_Valve.txt"),
     startTime=0)
     annotation (Placement(transformation(extent={{-56,28},{-38,46}})));
+
   Modelica.Blocks.Sources.CombiTimeTable PV_012Position(
     tableOnFile=true,
-    table=[0,0.5; 104,0.5; 105,0.5; 9497,0.5; 9498,0.5; 9514,0.5; 9515,0.5;
-        9833,0.5; 9834,0.5; 10307,0.5; 10308,0.5; 10514,0.5; 10515,0.5; 12254,
-        0.54; 12255,0.54; 14125,0.53; 14126,0.53; 15046,0.52; 15047,0.52; 16593,
-        0.51; 16594,0.51; 21712,0.5; 21713,0.5; 22227,0.5; 22228,0.48; 22688,
-        0.48; 22689,0.47; 22943,0.47; 22944,0.46; 23120,0.46; 23121,0.45; 23266,
-        0.45; 23267,0.44; 23360,0.44; 23361,0.43; 23423,0.43; 23424,0.42; 23480,
-        0.42; 23481,0.41; 23528,0.41; 23529,0.4; 23576,0.4; 23577,0.39; 23610,
-        0.39; 23611,0.39; 24145,0.34; 24146,0.34; 24155,0.34; 24156,0.34; 24245,
-        0.34; 24246,0.34; 24795,0.2; 24796,0.2; 25000,0.2],
     tableName="PV_012",
-    fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV012.txt"),
-
+    fileName=ModelicaServices.ExternalReferences.loadResource("modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV012.txt"),
     startTime=0)
     annotation (Placement(transformation(extent={{-98,-50},{-76,-28}})));
+
 equation
 
   connect(SensorSubBus.PV008, PV008.y) annotation (Line(
@@ -313,8 +280,8 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(PV049_PV052.y[1], Gain2.u) annotation (Line(points={{170.8,-22},{156,-22},
-          {156,-20},{139.6,-20}},             color={0,0,127}));
+  connect(PV049_PV052.y[1], Gain2.u) annotation (Line(points={{170.8,-20},{
+          139.6,-20}},                        color={0,0,127}));
   connect(SensorSubBus.PV049, Gain2.y) annotation (Line(
       points={{40,-99},{40,-20},{121.2,-20}},
       color={239,82,82},
@@ -340,10 +307,10 @@ equation
     annotation (Line(points={{-99.8,-57},{-115.1,-57}}, color={0,0,127}));
   connect(switch2.u2,booleanExpression1. y)
     annotation (Line(points={{-20,58},{-37,58}}, color={255,0,255}));
-  connect(switch3.u1, PV012.y) annotation (Line(points={{-24,-10},{-38,-10},{
-          -38,-57},{-79.1,-57}},    color={0,0,127}));
-  connect(booleanExpression.y,switch1. u2) annotation (Line(points={{-49,144},{
-          -16,144},{-16,148},{-6,148}},                  color={255,0,255}));
+  connect(switch3.u1, PV012.y) annotation (Line(points={{-24,-10},{-38,-10},{-38,
+          -57},{-79.1,-57}},        color={0,0,127}));
+  connect(booleanExpression.y,switch1. u2) annotation (Line(points={{-49,144},{-16,
+          144},{-16,148},{-6,148}},                      color={255,0,255}));
   connect(Chromolox_Heater_Control.y,switch1. u1) annotation (Line(points={{-25.1,
           121},{-6,121},{-6,140}},             color={0,0,127}));
   connect(switch1.u3, Qheater.y[1]) annotation (Line(points={{-6,156},{-36,156},
@@ -377,12 +344,12 @@ equation
       index=-1,
       extent={{-3,-6},{-3,-6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(Flow_ValvePosition.y[1], switch2.u3) annotation (Line(points={{-37.1,
-          37},{-28,37},{-28,50},{-20,50}}, color={0,0,127}));
+  connect(Flow_ValvePosition.y[1], switch2.u3) annotation (Line(points={{-37.1,37},
+          {-28,37},{-28,50},{-20,50}}, color={0,0,127}));
   connect(PV_012Position.y[1], switch3.u3) annotation (Line(points={{-74.9,-39},
           {-74.9,-40},{-32,-40},{-32,-26},{-24,-26}}, color={0,0,127}));
-  connect(VolFlow_Control.y, switch2.u1) annotation (Line(points={{-77.1,33},{
-          -68,33},{-68,66},{-20,66}}, color={0,0,127}));
+  connect(VolFlow_Control.y, switch2.u1) annotation (Line(points={{-77.1,33},{-68,
+          33},{-68,66},{-20,66}}, color={0,0,127}));
  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-100},
             {120,140}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-180,-100},{120,140}})));

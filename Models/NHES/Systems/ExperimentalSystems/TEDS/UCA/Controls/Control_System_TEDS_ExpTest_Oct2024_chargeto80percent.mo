@@ -36,7 +36,7 @@ parameter SI.Temperature T_hot_design = 300;
         116; 25000,116],
     tableName="T_GHX",
     fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/T_GHX.txt"),
+        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/T_GHXto80per.txt"),
       startTime=0)
     annotation (Placement(transformation(extent={{-210,-52},{-188,-30}})));
   Modelica.Blocks.Math.Add add
@@ -59,7 +59,7 @@ parameter SI.Temperature T_hot_design = 300;
         9036,6; 10333,5; 24489,6; 25000,6],
     tableName="Flow",
     fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/Flow.txt"),
+        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/Flowto80per.txt"),
       startTime=0)
     annotation (Placement(transformation(extent={{-200,48},{-182,66}})));
   TRANSFORM.Controls.LimPID VolFlow_Control(
@@ -81,7 +81,7 @@ parameter SI.Temperature T_hot_design = 300;
     table=[0,0.0001; 37098,0.0001; 37099,1; 38000,1],
     tableName="table_006",
     fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV006.txt"),
+        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV006to80per.txt"),
                                        startTime=0)
     annotation (Placement(transformation(extent={{192,88},{164,116}})));
   Modelica.Blocks.Sources.CombiTimeTable PV049_PV052(
@@ -89,7 +89,7 @@ parameter SI.Temperature T_hot_design = 300;
     table=[0,0.001; 973,0.001; 974,1; 37106,1; 37107,0; 38000,0],
     tableName="table_049_052",
     fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV049_PV052.txt"),
+        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV049_PV052to80per.txt"),
                                                                       startTime=
        0) annotation (Placement(transformation(extent={{196,-34},{172,-10}})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder5(
@@ -102,7 +102,7 @@ parameter SI.Temperature T_hot_design = 300;
         0.0001],
     tableName="table_050_051",
     fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV050_PV051.txt"),
+        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/PV050_PV051to80per.txt"),
       startTime=0)
     annotation (Placement(transformation(extent={{198,-78},{172,-52}})));
   TRANSFORM.Controls.LimPID Chromolox_Heater_Control(
@@ -127,7 +127,7 @@ parameter SI.Temperature T_hot_design = 300;
         275; 12751,280; 12979,280; 12980,275; 13215,275; 13216,276; 25000,276],
     tableName="THeater",
     fileName=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/THeater.txt"),
+        "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/THeaterto80per.txt"),
                                         startTime=0)
     annotation (Placement(transformation(extent={{-198,124},{-182,140}})));
   Modelica.Blocks.Math.Add add1
