@@ -148,31 +148,35 @@ equation
   connect(EM.port_a2, BOP.port_b)
     annotation (Line(points={{-42,98.8},{-18,98.8}}, color={0,127,255}));
   connect(BOP.portElec_b, SY.port_a[1]) annotation (Line(points={{38,110},{60,
-          110},{60,27.9},{82,27.9}}, color={255,0,0}));
+          110},{60,28.95},{82,28.95}},
+                                     color={255,0,0}));
   connect(ES.portElec_b, SY.port_a[2]) annotation (Line(points={{38,30},{60,30},
-          {60,29.3},{82,29.3}}, color={255,0,0}));
+          {60,29.65},{82,29.65}},
+                                color={255,0,0}));
   connect(SES.portElec_b, SY.port_a[3]) annotation (Line(points={{38,-50},{60,
-          -50},{60,30.7},{82,30.7}}, color={255,0,0}));
+          -50},{60,30.35},{82,30.35}},
+                                     color={255,0,0}));
   connect(SY.port_Grid, EG.portElec_a)
     annotation (Line(points={{138,30},{162,30}}, color={255,0,0}));
   connect(IP.portElec, SY.port_a[4]) annotation (Line(points={{-42,30},{-30,30},
-          {-30,-90},{60,-90},{60,32.1},{82,32.1}}, color={255,0,0}));
+          {-30,-90},{60,-90},{60,31.05},{82,31.05}},
+                                                   color={255,0,0}));
   connect(volume1.port_a[1], EM.port_b1) annotation (Line(points={{-110,96},{
           -104,96},{-104,98.8},{-98,98.8}}, color={0,127,255}));
   connect(volume.port_b[1], EM.port_a1) annotation (Line(points={{-110,124},{
           -106,124},{-106,121.2},{-98,121.2}}, color={0,127,255}));
   connect(PHS.port_b, volume.port_a[1]) annotation (Line(points={{-142,121.2},{
-          -128,121.2},{-128,123.333},{-122,123.333}}, color={0,127,255}));
+          -128,121.2},{-128,123.667},{-122,123.667}}, color={0,127,255}));
   connect(PHS1.port_b, volume.port_a[2]) annotation (Line(points={{-142,61.2},{
           -128,61.2},{-128,124},{-122,124}}, color={0,127,255}));
   connect(PHS2.port_b, volume.port_a[3]) annotation (Line(points={{-142,1.2},{
-          -128,1.2},{-128,124.667},{-122,124.667}}, color={0,127,255}));
+          -128,1.2},{-128,124.333},{-122,124.333}}, color={0,127,255}));
   connect(PHS.port_a, volume1.port_b[1]) annotation (Line(points={{-142,98.8},{
-          -134,98.8},{-134,95.3333},{-122,95.3333}}, color={0,127,255}));
+          -134,98.8},{-134,95.6667},{-122,95.6667}}, color={0,127,255}));
   connect(PHS1.port_a, volume1.port_b[2]) annotation (Line(points={{-142,38.8},
           {-134,38.8},{-134,96},{-122,96}}, color={0,127,255}));
   connect(PHS2.port_a, volume1.port_b[3]) annotation (Line(points={{-142,-21.2},
-          {-134,-21.2},{-134,96.6667},{-122,96.6667}}, color={0,127,255}));
+          {-134,-21.2},{-134,96.3333},{-122,96.3333}}, color={0,127,255}));
   connect(IP.port_a, EM.port_b3[1]) annotation (Line(points={{-98,41.2},{-110,
           41.2},{-110,74},{-58.8,74},{-58.8,82}}, color={0,127,255}));
   connect(IP.port_b, BOP.port_a3[1]) annotation (Line(points={{-98,18.24},{-106,

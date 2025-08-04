@@ -2,7 +2,7 @@ within NHES.Systems.ExperimentalSystems.TEDS.Data;
 model Geometry_Old
 
 parameter SI.Length Radius_Tank = 7.3                            "Radius of the Thermocline Tank";
-parameter Real Porosity   = 0.25                                 "Porosity_up";
+parameter Real Porosity =   0.25                                 "Porosity_up";
 parameter Real Porosity_2 = 0.50                                 "Porosity_down";
 parameter Integer nodesTop = 31                                  "Number of nodes in the thermocline tank Top";
 parameter Integer nodes = 146                                    "Number of nodes in the thermocline";

@@ -720,7 +720,7 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(Ac.PV006[1], PV_006.opening) annotation (Line(
+  connect(Ac.PV006, PV_006.opening) annotation (Line(
       points={{-19,142},{132,142},{132,80.8}},
       color={239,82,82},
       pattern=LinePattern.Dash,
@@ -747,7 +747,7 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(Ac.PV050[1], PV_050.opening) annotation (Line(
+  connect(Ac.PV050, PV_050.opening) annotation (Line(
       points={{-19,142},{208,142},{208,66},{180.8,66}},
       color={239,82,82},
       pattern=LinePattern.Dash,

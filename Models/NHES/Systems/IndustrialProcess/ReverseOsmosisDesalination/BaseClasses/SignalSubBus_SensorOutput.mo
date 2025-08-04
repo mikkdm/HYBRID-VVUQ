@@ -5,11 +5,11 @@ expandable connector SignalSubBus_SensorOutput
 
   SI.Power W_RO_per_pump( displayUnit="MW")
     "Power consumption for the RO per pump"
-                                           annotation ();
+                                           annotation();
   SI.Power W_Desal( displayUnit="MW")
     "Total power consumption in the RO desalination plant"
-                                                          annotation ();
-  SI.MassFlowRate m_flow_permeate "Water produced via the RO desalination" annotation ();
+                                                          annotation();
+  SI.MassFlowRate m_flow_permeate "Water produced via the RO desalination" annotation();
   NHES.Desalination.Types.Salinity Sp_avg "Salinity of the permeate";
 
   SI.Power Q_balance

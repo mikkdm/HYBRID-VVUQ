@@ -507,7 +507,8 @@ public
         rotation=-90,
         origin={586,-94})));
   TRANSFORM.Fluid.Sensors.MassFlowRate Chiller_Mass_flow_T66(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3)
     annotation (Placement(transformation(extent={{490,-274},{464,-294}})));
   TRANSFORM.Fluid.Valves.ValveLinear Valve1(
@@ -668,13 +669,15 @@ public
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(extent={{382,-274},{408,-302}})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_charge_outlet(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=90,
         origin={512,-205})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Charge_Inlet(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=-90,
@@ -711,19 +714,22 @@ public
         rotation=0,
         origin={464,-66})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_inlet_HX(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-10,12},{10,-12}},
         rotation=0,
         origin={504,-284})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_chiller_before(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-13,12},{13,-12}},
         rotation=270,
         origin={586,-127})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_chiller_after(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-13,13},{13,-13}},
         rotation=270,

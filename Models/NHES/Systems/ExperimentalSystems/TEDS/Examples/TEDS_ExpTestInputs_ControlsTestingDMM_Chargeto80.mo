@@ -22,20 +22,28 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
   Modelica.Fluid.Pipes.DynamicPipe pipe2(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
-    length=1,
+    length=1.79,
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=600, m_flow_nominal=0.689))
+          dp_nominal=600, m_flow_nominal=0.689),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
     annotation (Placement(transformation(extent={{46,68},{62,84}})));
   Modelica.Fluid.Pipes.DynamicPipe pipe4(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
-    length=1,
+    length=14,
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=600, m_flow_nominal=0.689))
+          dp_nominal=600, m_flow_nominal=0.689),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
                     annotation (Placement(transformation(
         extent={{-9,-9},{9,9}},
         rotation=90,
@@ -44,11 +52,15 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     allowFlowReversal=true,
-    length=0.1,
+    length=4.8,
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=600, m_flow_nominal=0.84))
+          dp_nominal=600, m_flow_nominal=0.84),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
                     annotation (Placement(transformation(
         extent={{-8,-8},{8,8}},
         rotation=270,
@@ -81,11 +93,15 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
   Modelica.Fluid.Pipes.DynamicPipe pipe3(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
-    length=1,
+    length=4,
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=700, m_flow_nominal=0.84))
+          dp_nominal=700, m_flow_nominal=0.84),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
                     annotation (Placement(transformation(
         extent={{6,6},{-6,-6}},
         rotation=0,
@@ -204,7 +220,10 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     redeclare package InsulationMaterial = NHES.Media.Solids.FoamGlass,
-    T_Init=(293.15 + 45)*ones(thermocline_Insulation.TES.nodes),
+    T_Init(displayUnit="K") = TRANSFORM.Math.linspace_1D(
+      525,
+      400,
+      70),
     geometry(
       Radius_Tank=0.438,
       Porosity=(0.36)*ones(thermocline_Insulation.TES.nodes),
@@ -214,7 +233,7 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
       Height_Tank=4.435,
       XS_Fluid=(0.36)*ones(thermocline_Insulation.TES.nodes)*Modelica.Constants.pi
           *(0.438)))
-    annotation (Placement(transformation(extent={{22,-46},{54,-2}})));
+    annotation (Placement(transformation(extent={{20,-48},{52,-4}})));
   Modelica.Fluid.Sources.MassFlowSource_T Chiller_Mass_Flow(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.EthyleneGlycol.LinearEthyleneGlycol_50_Water,
@@ -345,7 +364,7 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
     p_nominal=system.p_ambient + 1e4)
     annotation (Placement(transformation(extent={{-4,-154},{-20,-138}})));
   Modelica.Blocks.Sources.RealExpression Heater_BOP_Demand(y=pump.port_a.p +
-        2.0e4)
+        8.0e4)
     annotation (Placement(transformation(extent={{24,-140},{-2,-116}})));
   TRANSFORM.Fluid.Valves.ValveLinear PV_012(
     redeclare package Medium =
@@ -425,16 +444,24 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=600, m_flow_nominal=0.689))
+          dp_nominal=600, m_flow_nominal=0.689),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
     annotation (Placement(transformation(extent={{-26,-114},{-10,-98}})));
   Modelica.Fluid.Pipes.DynamicPipe pipe5(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
-    length=4,
+    length=3.16,
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=600, m_flow_nominal=0.689))
+          dp_nominal=600, m_flow_nominal=0.689),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
     annotation (Placement(transformation(extent={{80,40},{66,54}})));
   Modelica.Fluid.Pipes.DynamicPipe pipe6(
     redeclare package Medium =
@@ -443,7 +470,11 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=600, m_flow_nominal=0.689))
+          dp_nominal=600, m_flow_nominal=0.689),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
     annotation (Placement(transformation(extent={{-6,-6},{6,6}},
         rotation=180,
         origin={68,-88})));
@@ -463,7 +494,11 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=10, m_flow_nominal=0.84))
+          dp_nominal=10, m_flow_nominal=0.84),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
                     annotation (Placement(transformation(
         extent={{6,6},{-6,-6}},
         rotation=0,
@@ -471,11 +506,15 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
   Modelica.Fluid.Pipes.DynamicPipe pipe9(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
-    length=1,
+    length=4,
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=100, m_flow_nominal=0.84))
+          dp_nominal=100, m_flow_nominal=0.84),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
                     annotation (Placement(transformation(
         extent={{-6,6},{6,-6}},
         rotation=0,
@@ -487,7 +526,11 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
     diameter=0.051,
     redeclare model FlowModel =
         Modelica.Fluid.Pipes.BaseClasses.FlowModels.NominalLaminarFlow (
-          dp_nominal=100, m_flow_nominal=0.84))
+          dp_nominal=100, m_flow_nominal=0.84),
+    use_HeatTransfer=true,
+    redeclare model HeatTransfer =
+        Modelica.Fluid.Pipes.BaseClasses.HeatTransfer.IdealFlowHeatTransfer (k=
+            20, T_ambient=293.15))
                     annotation (Placement(transformation(
         extent={{-6,6},{6,-6}},
         rotation=0,
@@ -545,12 +588,12 @@ equation
     annotation (Line(points={{40,46},{38,46},{38,33}},
                                                color={0,127,255}));
   connect(TC_201.port_b, thermocline_Insulation.port_a)
-    annotation (Line(points={{38,9},{38,-2}},           color={0,127,255}));
+    annotation (Line(points={{38,9},{38,-4},{36,-4}},   color={0,127,255}));
   connect(FM_202.port_a, T_ch_o.port_a)
     annotation (Line(points={{149,-105},{138,-105}},
                                                    color={0,127,255}));
   connect(TC_202.port_b, thermocline_Insulation.port_b)
-    annotation (Line(points={{38,-57},{38,-46}},           color={0,127,255}));
+    annotation (Line(points={{38,-57},{38,-48},{36,-48}},  color={0,127,255}));
   connect(pipe2.port_b, BOP_Mass_flow.port_a)
     annotation (Line(points={{62,76},{96,76}}, color={0,127,255}));
   connect(BOP_Mass_flow.port_b,PV_006. port_a)
@@ -723,7 +766,7 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(Ac.PV006[1], PV_006.opening) annotation (Line(
+  connect(Ac.PV006, PV_006.opening) annotation (Line(
       points={{-19,142},{132,142},{132,80.8}},
       color={239,82,82},
       pattern=LinePattern.Dash,
@@ -750,7 +793,7 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(Ac.PV050[1], PV_050.opening) annotation (Line(
+  connect(Ac.PV050, PV_050.opening) annotation (Line(
       points={{-19,142},{208,142},{208,66},{180.8,66}},
       color={239,82,82},
       pattern=LinePattern.Dash,

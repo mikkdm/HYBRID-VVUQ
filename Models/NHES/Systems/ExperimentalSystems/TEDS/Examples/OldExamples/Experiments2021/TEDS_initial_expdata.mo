@@ -65,9 +65,9 @@ model TEDS_initial_expdata "IC thermocline 70C, charge to 200F"
     T_ambient=293.65,
     m_flow_start=0.84)
     annotation (Placement(transformation(extent={{220,120},{240,140}})));
-  Data.Data_TEDS data(T_hot_side(displayUnit="K") =
-      Modelica.Units.Conversions.from_degF(200), T_cold_side(displayUnit="degC")
-       = 293.65)
+  Data.Data_TEDS data(T_hot_side(displayUnit="K")=
+      Modelica.Units.Conversions.from_degF(200), T_cold_side(displayUnit="degC")=
+         293.65)
     annotation (Placement(transformation(extent={{-100,124},{-80,144}})));
 
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC002(redeclare package Medium =

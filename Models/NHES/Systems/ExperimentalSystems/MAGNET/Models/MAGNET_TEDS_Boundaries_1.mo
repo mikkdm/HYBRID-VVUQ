@@ -509,10 +509,11 @@ public
     T_start=data.T_co_rp,
     precision=3)
     annotation (Placement(transformation(extent={{-10,-248},{10,-228}})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TM_HX_Tin(redeclare package Medium
-      =        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TM_HX_Tin(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3)
     annotation (Placement(transformation(extent={{26,-66},{46,-46}})));
+
 equation
   connect(MAGNET_TEDS_simpleHX.port_b2, TM_HX_exit_Temp.port_b) annotation (
      Line(points={{-30,-56},{-52,-56},{-52,-36},{-58,-36}},

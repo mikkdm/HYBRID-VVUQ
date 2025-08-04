@@ -437,8 +437,8 @@ model TEDSloop_allmodes_test_3WV_exp2023TTAdjTime2
         9280,0; 10980,0; 11080,1; 14640,1; 14740,0; 15740,0],  startTime=0)
     annotation (Placement(transformation(extent={{134,158},{148,172}})));
   TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow1(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(extent={{-24,-154},{-42,-138}})));
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(extent={{-24,-154},{-42,-138}})));
   TRANSFORM.Fluid.Valves.ValveLinear ValveFl(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,

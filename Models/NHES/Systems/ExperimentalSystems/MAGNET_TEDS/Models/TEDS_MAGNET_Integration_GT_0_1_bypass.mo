@@ -605,12 +605,13 @@ public
     precision=3)
     annotation (Placement(transformation(extent={{290,-98},{316,-74}})));
   TRANSFORM.Fluid.Sensors.MassFlowRate m_Chg_In(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={418,-84})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow2(redeclare package Medium =
+  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow2(redeclare package
+      Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -664,14 +665,14 @@ public
         rotation=0,
         origin={466,-52})));
   TRANSFORM.Fluid.Sensors.MassFlowRate FM_201(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-9,9},{9,-9}},
         rotation=-90,
         origin={419,-239})));
   TRANSFORM.Fluid.Sensors.MassFlowRate FM_202(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-9,-10},{9,10}},
         rotation=-90,
         origin={488,-255})));
@@ -692,32 +693,36 @@ public
     precision=3)
     annotation (Placement(transformation(extent={{302,-298},{284,-282}})));
   TRANSFORM.Fluid.Sensors.MassFlowRate m_Dch_Out(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=-90,
         origin={488,-84})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Chg_Out(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Chg_Out(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-9,10},{9,-10}},
         rotation=90,
         origin={488,-219})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Chg_In(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Chg_In(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=-90,
         origin={418,-110})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Dch_Out(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Dch_Out(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=90,
         origin={488,-110})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Dch_In(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_Dch_In(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-9.5,-8.5},{9.5,8.5}},
         rotation=90,
         origin={419,-219.5})));
@@ -731,17 +736,21 @@ public
         rotation=0,
         origin={440,-52})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_chiller_before(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+              Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-13,12},{13,-12}},
         rotation=270,
         origin={562,-113})));
+
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_chiller_after(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+              Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-13,13},{13,-13}},
         rotation=270,
         origin={561,-193})));
+
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_003a(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
@@ -795,15 +804,17 @@ public
     annotation (Placement(transformation(extent={{282,-186},{296,-172}})));
   Modelica.Blocks.Math.Gain PCU_Elec_Demand_W(k=1000)
     annotation (Placement(transformation(extent={{306,-184},{316,-174}})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_201(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_201(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-9,10},{9,-10}},
         rotation=-90,
         origin={454,-135})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_202(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_202(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-9,-10},{9,10}},
         rotation=90,
         origin={454,-191})));
@@ -820,8 +831,8 @@ public
         rotation=0,
         origin={532,-290})));
   TRANSFORM.Fluid.Sensors.MassFlowRate FM_002(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{10.5,11},{-10.5,-11}},
         rotation=0,
         origin={485.5,-329})));
@@ -880,12 +891,14 @@ public
         TRANSFORM.Media.Fluids.EthyleneGlycol.LinearEthyleneGlycol_50_Water,
       precision=3)
     annotation (Placement(transformation(extent={{460,-368},{484,-344}})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_006(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(extent={{358,-302},{382,-278}})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_004(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_006(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(extent={{358,-302},{382,-278}})));
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_004(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-9,12},{9,-12}},
         rotation=0,
         origin={460,-329})));
@@ -919,9 +932,10 @@ public
     annotation (Placement(transformation(extent={{6,-8},{-6,8}},
         rotation=0,
         origin={350,-290})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_005(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_005(redeclare package
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(
         extent={{-10,12},{10,-12}},
         rotation=0,
         origin={376,-330})));
@@ -1193,8 +1207,8 @@ equation
   connect(MAGNET_TEDS_simpleHX1.port_b1, valve_TEDS_rp.port_a) annotation (Line(
         points={{246,-78},{0,-78},{0,-72},{4.44089e-16,-72},{4.44089e-16,-84}},
         color={0,127,255}));
-  connect(TC_002.port_b, MAGNET_TEDS_simpleHX1.port_a2) annotation (Line(points
-        ={{236,-155},{236,-86},{246,-86}}, color={0,127,255}));
+  connect(TC_002.port_b, MAGNET_TEDS_simpleHX1.port_a2) annotation (Line(points=
+         {{236,-155},{236,-86},{246,-86}}, color={0,127,255}));
   connect(MAGNET_TEDS_simpleHX1.port_b2, TC_003.port_a)
     annotation (Line(points={{266,-86},{290,-86}}, color={0,127,255}));
   connect(sensorSubBus.mflow_inside_MAGNET, mflow_inside_MAGNET.y) annotation (

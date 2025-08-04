@@ -1,5 +1,5 @@
 within NHES.Systems.PrimaryHeatSystem;
 package PrismaticHTGR
 
-  annotation ();
+  annotation();
 end PrismaticHTGR;

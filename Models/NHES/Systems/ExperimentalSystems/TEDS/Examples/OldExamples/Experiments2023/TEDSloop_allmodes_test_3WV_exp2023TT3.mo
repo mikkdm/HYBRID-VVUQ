@@ -436,8 +436,8 @@ model TEDSloop_allmodes_test_3WV_exp2023TT3
         12580,0; 17800,0; 17980,1; 23300,1; 23480,0; 23580,0], startTime=0)
     annotation (Placement(transformation(extent={{134,158},{148,172}})));
   TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow1(redeclare package Medium =
-        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision
-      =3) annotation (Placement(transformation(extent={{-24,-154},{-42,-138}})));
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+       3) annotation (Placement(transformation(extent={{-24,-154},{-42,-138}})));
   TRANSFORM.Fluid.Valves.ValveLinear ValveFl(
     redeclare package Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
@@ -722,8 +722,8 @@ equation
     annotation (Line(points={{-48,-146},{-42,-146}}, color={0,127,255}));
   connect(Flow.y[1], MassFlow_Control2.u_s) annotation (Line(points={{-61.3,-73},
           {-61.3,-74},{-48,-74},{-48,-92},{-41.2,-92}}, color={0,0,127}));
-  connect(sensor_m_flow1.m_flow, MassFlow_Control2.u_m) annotation (Line(points
-        ={{-33,-143.12},{-34,-143.12},{-34,-99.2}}, color={0,0,127}));
+  connect(sensor_m_flow1.m_flow, MassFlow_Control2.u_m) annotation (Line(points=
+         {{-33,-143.12},{-34,-143.12},{-34,-99.2}}, color={0,0,127}));
   connect(MassFlow_Control2.y, ValveFl.opening) annotation (Line(points={{-27.4,
           -92},{-20,-92},{-20,-98},{-16,-98},{-16,-116},{-54,-116},{-54,-141.2}},
         color={0,0,127}));

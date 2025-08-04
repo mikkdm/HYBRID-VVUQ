@@ -537,7 +537,8 @@ protected
     T_a_start=data.T_vc_rp,
     m_flow_a_start=data.m_flow,
     redeclare package Material = TRANSFORM.Media.Solids.SS316,
-    redeclare package Material_2 = TRANSFORM.Media.Solids.FiberGlassGeneric)
+    redeclare package Material_2 =
+        TRANSFORM.Media.Solids.FiberGlassGeneric)
     annotation (Placement(transformation(extent={{152,60},{172,80}})));
   TRANSFORM.Fluid.Pipes.GenericPipe_withWallx2 ins_rp_vc(
     redeclare model Geometry =
@@ -548,7 +549,8 @@ protected
     T_a_start=data.T_rp_vc,
     m_flow_a_start=data.m_flow,
     redeclare package Material = TRANSFORM.Media.Solids.SS316,
-    redeclare package Material_2 = TRANSFORM.Media.Solids.FiberGlassGeneric)
+    redeclare package Material_2 =
+        TRANSFORM.Media.Solids.FiberGlassGeneric)
     annotation (Placement(transformation(extent={{192,38},{172,58}})));
   TRANSFORM.Fluid.Pipes.GenericPipe_withWallx2 ins_rp_hx(
     redeclare model Geometry =
@@ -559,7 +561,8 @@ protected
     T_a_start=data.T_rp_hx,
     m_flow_a_start=data.m_flow,
     redeclare package Material = TRANSFORM.Media.Solids.SS316,
-    redeclare package Material_2 = TRANSFORM.Media.Solids.FiberGlassGeneric)
+    redeclare package Material_2 =
+        TRANSFORM.Media.Solids.FiberGlassGeneric)
     annotation (Placement(transformation(extent={{204,60},{184,80}})));
   TRANSFORM.Fluid.Pipes.GenericPipe_withWallAndInsulation pipe_ins_vc_rp(
     ths_wall=fill(data.th_4in_sch40, pipe_ins_vc_rp.geometry.nV),

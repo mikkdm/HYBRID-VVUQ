@@ -21,7 +21,7 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_singlePorosity
   SI.Temperature TES_Tf_90;
 
   parameter Real Var_Poro = 0.39000000;
-  parameter Real SF  = 4;
+  parameter Real SF =  4;
 
   Modelica.Fluid.Sources.MassFlowSource_T boundary(
     redeclare package Medium =
@@ -1769,13 +1769,15 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_singlePorosity
         388.06; 31740,385.78; 31800,383.48])
     annotation (Placement(transformation(extent={{70,-84},{62,-76}})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_202_Sim(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=-90,
         origin={12,-41})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_201_Sim(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-9,8},{9,-8}},
         rotation=0,

@@ -22,8 +22,7 @@ model SFR_Individual_Geometries
   parameter Integer nAssembliesReg2=1 "Number of identical parallel assemblies in the inner fuel region, min = 1" annotation(Dialog(group = "Region 2"));
   parameter Integer nAssembliesReg3=1 "Number of identical parallel assemblies in the inner reflector region, min = 1" annotation(Dialog(group = "Region 3"));
   parameter Integer nAssembliesReg4=1 "Number of identical parallel assemblies in the outer reflector region, min = 1" annotation(Dialog(group = "Region 4"));
-protected
-            parameter Integer nTotalAssemblies = nAssembliesReg1+nAssembliesReg2+nAssembliesReg3+nAssembliesReg4 annotation(Dialog(enable = false));
+protected   parameter Integer nTotalAssemblies = nAssembliesReg1+nAssembliesReg2+nAssembliesReg3+nAssembliesReg4 annotation(Dialog(enable = false));
 public
   parameter Modelica.Units.SI.Length r_outer_fuel_R1 = 0.0039 annotation(Dialog( group = "Region 1"));
   parameter Modelica.Units.SI.Length r_outer_gap_R1 =  0.0041 annotation(Dialog( group = "Region 1"));

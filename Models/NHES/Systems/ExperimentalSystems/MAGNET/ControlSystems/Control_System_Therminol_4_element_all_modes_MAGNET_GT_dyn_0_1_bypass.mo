@@ -1,5 +1,6 @@
 within NHES.Systems.ExperimentalSystems.MAGNET.ControlSystems;
-model Control_System_Therminol_4_element_all_modes_MAGNET_GT_dyn_0_1_bypass
+model
+  Control_System_Therminol_4_element_all_modes_MAGNET_GT_dyn_0_1_bypass
   "Runs all Modes of the TEDS system with Milestone controllers (Manual inputs for load, hence why there are two controllers)"
 
   replaceable package Medium =

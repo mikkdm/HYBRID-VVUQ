@@ -49,7 +49,7 @@ parameter SI.Temperature T_hot_design = 300;
   Modelica.Blocks.Math.Product FM_001_gpm
     annotation (Placement(transformation(extent={{-134,-6},{-116,12}})));
   Modelica.Blocks.Sources.CombiTimeTable Flow(table=[0,0.0135; 1059,0.0135;
-        1074,41; 1127,41; 1128,36; 1386,36; 3325,40; 3328,45; 3840,45; 3940,50;
+        1074,35; 1127,37; 1128,37; 1386,37; 3325,39; 3328,39; 3840,45; 3940,50;
         6065,50; 6066,45; 8028,45; 8171,8; 9024,8; 9036,6; 10333,5; 24489,6;
         25000,6],
       startTime=0)
@@ -58,10 +58,10 @@ parameter SI.Temperature T_hot_design = 300;
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     k=0.04,
     Ti=50,
-    yMax=0.99,
-    yMin=0.01,
+    yMax=1.0,
+    yMin=0.001,
     initType=Modelica.Blocks.Types.Init.InitialOutput,
-    y_start=0.5)
+    y_start=0.01)
     annotation (Placement(transformation(extent={{-96,24},{-78,42}})));
   Modelica.Blocks.Sources.RealExpression Conversion_lpm(y=1/15850.323140625002*1000
         *60)
@@ -100,9 +100,9 @@ parameter SI.Temperature T_hot_design = 300;
         rotation=0,
         origin={-190,110})));
   Modelica.Blocks.Sources.CombiTimeTable THeater(table=[0,75; 2900,75; 2901,100;
-        11039,100; 11040,300; 12587,300; 12588,285; 12687,285; 12688,275; 12750,
-        275; 12751,280; 12979,280; 12980,275; 13215,275; 13216,276; 25000,276],
-                                        startTime=0)
+        11039,100; 11040,300; 12587,307; 12588,307; 12687,307; 12688,307; 12750,
+        307; 12751,307; 12979,307; 12980,307; 13215,307; 13216,307; 25000,307;
+        25600,280; 25601,280],          startTime=0)
     annotation (Placement(transformation(extent={{-198,124},{-182,140}})));
   Modelica.Blocks.Math.Add add1
     annotation (Placement(transformation(extent={{-94,112},{-76,130}})));
@@ -230,7 +230,7 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(PV006.y[1], Gain.u) annotation (Line(points={{162.6,100},{137.6,100}},
                                       color={0,0,127}));
-  connect(SensorSubBus.PV006[1], Gain.y) annotation (Line(
+  connect(SensorSubBus.PV006, Gain.y) annotation (Line(
       points={{40,-99},{40,100},{119.2,100}},
       color={239,82,82},
       pattern=LinePattern.Dash,
@@ -250,7 +250,7 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(SensorSubBus.PV050[1], Gain1.y) annotation (Line(
+  connect(SensorSubBus.PV050, Gain1.y) annotation (Line(
       points={{40,-99},{40,-51},{119.1,-51}},
       color={239,82,82},
       pattern=LinePattern.Dash,

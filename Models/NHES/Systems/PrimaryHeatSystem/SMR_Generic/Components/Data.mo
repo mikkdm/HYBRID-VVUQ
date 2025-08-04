@@ -1,4 +1,4 @@
-﻿within NHES.Systems.PrimaryHeatSystem.SMR_Generic.Components;
+within NHES.Systems.PrimaryHeatSystem.SMR_Generic.Components;
 package Data
 
   model IRIS

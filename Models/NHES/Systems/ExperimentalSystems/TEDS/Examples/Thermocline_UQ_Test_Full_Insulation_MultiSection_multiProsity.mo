@@ -21,17 +21,17 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
   SI.Temperature TES_Tf_90;
 
 
-  parameter Real SF  = 3;
+  parameter Real SF =  3;
 
-  parameter Real poro_1  = 0.000000001;
-  parameter Real poro_2  = 0.000000001;
-  parameter Real poro_3  = 0.000000001;
-  parameter Real poro_4  = 0.000000001;
-  parameter Real poro_5  = 0.000000001;
-  parameter Real poro_6  = 0.000000001;
-  parameter Real poro_7  = 0.000000001;
-  parameter Real poro_8  = 0.000000001;
-  parameter Real poro_9  = 0.000000001;
+  parameter Real poro_1 =  0.000000001;
+  parameter Real poro_2 =  0.000000001;
+  parameter Real poro_3 =  0.000000001;
+  parameter Real poro_4 =  0.000000001;
+  parameter Real poro_5 =  0.000000001;
+  parameter Real poro_6 =  0.000000001;
+  parameter Real poro_7 =  0.000000001;
+  parameter Real poro_8 =  0.000000001;
+  parameter Real poro_9 =  0.000000001;
   parameter Real poro_10 = 0.40;
   parameter Real poro_11 = 0.40;
   parameter Real poro_12 = 0.40;
@@ -1883,14 +1883,16 @@ model Thermocline_UQ_Test_Full_Insulation_MultiSection_multiProsity
         388.06; 31740,385.78; 31800,383.48])
     annotation (Placement(transformation(extent={{70,-84},{62,-76}})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_202_Sim(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     T_start(displayUnit="K") = 292.08,
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=-90,
         origin={12,-41})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_201_Sim(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-9,8},{9,-8}},
         rotation=0,

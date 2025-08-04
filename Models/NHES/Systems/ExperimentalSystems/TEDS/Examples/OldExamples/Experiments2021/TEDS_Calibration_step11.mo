@@ -65,9 +65,9 @@ model TEDS_Calibration_step11 "Test from TEDS calibration experiment step 11"
     T_ambient=498.15,
     m_flow_start=0.84)
     annotation (Placement(transformation(extent={{220,120},{240,140}})));
-  Data.Data_TEDS data(T_hot_side(displayUnit="K") =
-      Modelica.Units.Conversions.from_degF(200), T_cold_side(displayUnit="K")
-       = Modelica.Units.Conversions.from_degF(70))
+  Data.Data_TEDS data(T_hot_side(displayUnit="K")=
+      Modelica.Units.Conversions.from_degF(200), T_cold_side(displayUnit="K")=
+         Modelica.Units.Conversions.from_degF(70))
     annotation (Placement(transformation(extent={{-100,124},{-80,144}})));
 
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC002(redeclare package Medium =

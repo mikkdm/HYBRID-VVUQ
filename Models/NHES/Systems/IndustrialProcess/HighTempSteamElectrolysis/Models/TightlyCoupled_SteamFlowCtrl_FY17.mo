@@ -113,7 +113,6 @@ model TightlyCoupled_SteamFlowCtrl_FY17
     redeclare package Medium = Medium,
     energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
     massDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
-    port_2(h_outflow(start=2.95398e6, fixed=true), p(start=5800000, fixed=true)),
     p_start=5800000,
     T_start=591.15) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -289,8 +288,8 @@ model TightlyCoupled_SteamFlowCtrl_FY17
     V=1,
     use_T_start=true,
     redeclare package Medium = Medium,
-    energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
-    massDynamics=Modelica.Fluid.Types.Dynamics.SteadyState,
+    energyDynamics=Modelica.Fluid.Types.Dynamics.SteadyStateInitial,
+    massDynamics=Modelica.Fluid.Types.Dynamics.SteadyStateInitial,
     p_start=5130420,
     T_start=497.15) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
@@ -341,7 +340,7 @@ model TightlyCoupled_SteamFlowCtrl_FY17
         rotation=180,
         origin={-20,-16})));
   Electrolysis.Separator.Temp_flashDrumVessel      flashDrum(redeclare package
-              Medium =
+      Medium =
         NHES.Electrolysis.Media.Electrolysis.CathodeGas)
     annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},

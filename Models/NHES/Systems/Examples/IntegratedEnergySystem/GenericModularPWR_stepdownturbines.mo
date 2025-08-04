@@ -103,32 +103,32 @@ equation
   connect(EM.port_a2, BOP.port_b)
     annotation (Line(points={{-42,98.8},{-18,98.8}}, color={0,127,255}));
   connect(BOP.portElec_b, SY.port_a[1]) annotation (Line(points={{38,110},{60,
-          110},{60,27.76},{82,27.76}},
+          110},{60,28.88},{82,28.88}},
                                      color={255,0,0}));
   connect(ES.portElec_b, SY.port_a[2]) annotation (Line(points={{38,30},{60,30},
-          {60,28.88},{82,28.88}},
+          {60,29.44},{82,29.44}},
                                 color={255,0,0}));
   connect(SES.portElec_b, SY.port_a[3]) annotation (Line(points={{38,-50},{60,
           -50},{60,30},{82,30}},     color={255,0,0}));
   connect(SY.port_Grid, EG.portElec_a)
     annotation (Line(points={{138,30},{162,30}}, color={255,0,0}));
   connect(PHS.port_a, volume1.port_b[1:3]) annotation (Line(points={{-142,98.8},
-          {-134,98.8},{-134,98.6667},{-126,98.6667}}, color={0,127,255}));
+          {-134,98.8},{-134,98.3333},{-126,98.3333}}, color={0,127,255}));
   connect(volume1.port_a[1], EM.port_b1) annotation (Line(points={{-114,98},{
           -106,98},{-106,98.8},{-98,98.8}}, color={0,127,255}));
   connect(volume.port_b[1], EM.port_a1) annotation (Line(points={{-114,120},{
           -106,120},{-106,121.2},{-98,121.2}}, color={0,127,255}));
   connect(PHS.port_b, volume.port_a[1:3]) annotation (Line(points={{-142,121.2},
-          {-134,121.2},{-134,120.667},{-126,120.667}}, color={0,127,255}));
+          {-134,121.2},{-134,120.333},{-126,120.333}}, color={0,127,255}));
   connect(IP.port_b, IP1.port_a) annotation (Line(points={{-150,18.24},{-160,
           18.24},{-160,-38.8},{-150,-38.8}}, color={0,127,255}));
   connect(IP1.port_b, BOP.port_a3[1]) annotation (Line(points={{-150,-61.76},{
           -154,-61.76},{-154,-62},{-166,-62},{-166,70},{-1.2,70},{-1.2,82}},
         color={0,127,255}));
   connect(IP.portElec, SY.port_a[4]) annotation (Line(points={{-94,30},{-60,30},
-          {-60,-90},{60,-90},{60,31.12},{82,31.12}}, color={255,0,0}));
+          {-60,-90},{60,-90},{60,30.56},{82,30.56}}, color={255,0,0}));
   connect(IP1.portElec, SY.port_a[5]) annotation (Line(points={{-94,-50},{-80,
-          -50},{-80,-90},{60,-90},{60,32.24},{82,32.24}}, color={255,0,0}));
+          -50},{-80,-90},{60,-90},{60,31.12},{82,31.12}}, color={255,0,0}));
   connect(EM.port_b3[1], pump_SimpleMassFlow.port_a) annotation (Line(points={{
           -58.8,82},{-58.8,74},{-210,74},{-210,40},{-206,40}}, color={0,127,255}));
   connect(pump_SimpleMassFlow.port_b, IP.port_a) annotation (Line(points={{-186,

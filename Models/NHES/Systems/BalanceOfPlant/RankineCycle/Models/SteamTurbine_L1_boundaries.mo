@@ -5,6 +5,7 @@ model SteamTurbine_L1_boundaries
     redeclare replaceable ControlSystems.CS_Dummy CS,
     redeclare replaceable ControlSystems.ED_Dummy ED,
     redeclare Data.IdealTurbine data);
+    parameter SI.Temperature T_Feed_Nominal = 148+273.15;
 
   parameter SI.Pressure p_condenser=1e4 "Condenser operating pressure";
   parameter SI.Pressure p_reservoir=port_b_nominal.p "Reservoir operating pressure";
@@ -77,10 +78,10 @@ model SteamTurbine_L1_boundaries
     controllerType=Modelica.Blocks.Types.SimpleController.PI,
     yb=1e8,
     k=1e8,
-    k_s=1/port_b_nominal.T,
-    k_m=1/port_b_nominal.T)
+    k_s=1/T_Feed_Nominal,
+    k_m=1/T_Feed_Nominal)
     annotation (Placement(transformation(extent={{-108,-96},{-100,-104}})));
-  Modelica.Blocks.Sources.RealExpression realExpression(y=port_b_nominal.T)
+  Modelica.Blocks.Sources.RealExpression realExpression(y=T_Feed_Nominal)
     annotation (Placement(transformation(extent={{-124,-106},{-114,-94}})));
   TRANSFORM.Fluid.Sensors.Temperature temperature(redeclare package Medium =
         Medium)

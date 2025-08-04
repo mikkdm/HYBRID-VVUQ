@@ -163,9 +163,6 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(T_GHXout.y[1], add.u1) annotation (Line(points={{-186.9,-41},{-156,
-          -41},{-156,-51.6},{-135.8,-51.6}},
-                        color={0,0,127}));
   connect(const3.y,add. u2) annotation (Line(points={{-187,-74},{-158,-74},{
           -158,-62.4},{-135.8,-62.4}},
                                  color={0,0,127}));
@@ -274,7 +271,7 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(PV006.y[1], Gain.u) annotation (Line(points={{162.6,102},{150,102},{
           150,100},{137.6,100}},      color={0,0,127}));
-  connect(SensorSubBus.PV006[1], Gain.y) annotation (Line(
+  connect(SensorSubBus.PV006, Gain.y) annotation (Line(
       points={{40,-99},{40,100},{119.2,100}},
       color={239,82,82},
       pattern=LinePattern.Dash,
@@ -294,20 +291,18 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(SensorSubBus.PV050[1], Gain1.y) annotation (Line(
-      points={{40,-99},{40,-51},{119.1,-51}},
-      color={239,82,82},
-      pattern=LinePattern.Dash,
-      thickness=0.5), Text(
-      string="%first",
-      index=-1,
-      extent={{6,3},{6,3}},
-      horizontalAlignment=TextAlignment.Left));
   connect(PV050_PV051.y[1], Gain1.u)
     annotation (Line(points={{170.7,-65},{170.7,-66},{144,-66},{144,-51},{139.8,
           -51}},                                         color={0,0,127}));
   connect(PV012.u_s, add.y)
     annotation (Line(points={{-99.8,-57},{-115.1,-57}}, color={0,0,127}));
+  connect(T_GHXout.y[1], add.u1) annotation (Line(points={{-186.9,-41},{-140,
+          -41},{-140,-51.6},{-135.8,-51.6}}, color={0,0,127}));
+  connect(SensorSubBus.PV050, Gain1.y) annotation (Line(
+      points={{40,-99},{40,-51},{119.1,-51}},
+      color={239,82,82},
+      pattern=LinePattern.Dash,
+      thickness=0.5));
  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-180,-100},
             {120,140}})), Diagram(coordinateSystem(preserveAspectRatio=false,
           extent={{-180,-100},{120,140}})));

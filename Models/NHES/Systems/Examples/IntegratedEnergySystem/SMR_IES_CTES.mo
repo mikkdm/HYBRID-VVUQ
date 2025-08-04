@@ -43,19 +43,17 @@ equation
     annotation (Line(points={{85.44,-30.6},{100,-30.6},{100,-30},{102,-30},{102,
           30},{192,30},{192,7.64},{185.2,7.64}}, color={0,127,255}));
   connect(SecSide.Arbitrage_Return, dual_Pipe_CTES_Controlled.port_discharge_b)
-    annotation (Line(points={{66,-46},{66,-56},{108,-56},{108,-48},{112,-48},
-          {112,-27.04},{116.043,-27.04}},
+    annotation (Line(points={{66,-46},{66,-56},{108,-56},{108,-48},{112,-48},{
+          112,-27.04},{116.043,-27.04}},
                                      color={0,127,255}));
   connect(SecSide.Arbitrage_Send, dual_Pipe_CTES_Controlled.port_discharge_a)
     annotation (Line(points={{41.52,-46.7},{41.52,-72},{220,-72},{220,-36},{
           183.186,-36},{183.186,-25.68}},
                                   color={0,127,255}));
-  connect(Reactor.port_b, SecSide.SG_Return) annotation (Line(points={{
-          -22.3692,7.71429},{-6.1846,7.71429},{-6.1846,5.8},{11.28,5.8}},
-                                                                 color={0,127,255}));
-  connect(Reactor.port_a, SecSide.Feedwater) annotation (Line(points={{
-          -22.3692,-14.9143},{0,-14.9143},{0,-29.9},{11.28,-29.9}},
-                                                           color={0,127,255}));
+  connect(Reactor.port_b, SecSide.SG_Return) annotation (Line(points={{-22.3692,
+          7.71429},{-6.1846,7.71429},{-6.1846,5.8},{11.28,5.8}}, color={0,127,255}));
+  connect(Reactor.port_a, SecSide.Feedwater) annotation (Line(points={{-22.3692,
+          -14.9143},{0,-14.9143},{0,-29.9},{11.28,-29.9}}, color={0,127,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{200,100}}), graphics={
         Ellipse(lineColor = {75,138,73},

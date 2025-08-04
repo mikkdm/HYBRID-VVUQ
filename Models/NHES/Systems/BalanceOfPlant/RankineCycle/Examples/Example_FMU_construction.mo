@@ -130,16 +130,18 @@ package Example_FMU_construction
     import NHES;
     extends Modelica.Icons.Example;
     replaceable package Medium=Modelica.Media.Water.StandardWater;
+    parameter Modelica.Units.SI.Temperature T_feed_nominal = 148+273.15;
     NHES.Systems.BalanceOfPlant.RankineCycle.Models.SteamTurbine_L1_boundaries
       BOP(
       redeclare package Medium = Medium,
+      T_Feed_Nominal=T_feed_nominal,
       nPorts_a3=1,
       port_a_nominal(
         m_flow=67,
         p=3470000,
         h=BOP.Medium.specificEnthalpy_pT(BOP.port_a_nominal.p, 591)),
       port_b_nominal(p=1000000, h=BOP.Medium.specificEnthalpy_pT(BOP.port_b_nominal.p,
-            318.95)),
+            T_feed_nominal)),
       redeclare
         NHES.Systems.BalanceOfPlant.RankineCycle.ControlSystems.CS_OTSG_TCV_Pressure_TBV_Power_Control
         CS(
@@ -147,10 +149,6 @@ package Example_FMU_construction
         p_nominal=3447400,
         W_totalSetpoint=BOP_Demand))
       annotation (Placement(transformation(extent={{-18,-30},{42,30}})));
-    TRANSFORM.Electrical.Sources.FrequencySource
-                                       sinkElec(use_port=false,
-                                                f=60)
-      annotation (Placement(transformation(extent={{90,-10},{70,10}})));
     Modelica.Fluid.Sources.MassFlowSource_h source1(
       redeclare package Medium = Medium,
       nPorts=1,
@@ -159,12 +157,8 @@ package Example_FMU_construction
       annotation (Placement(transformation(extent={{56,-66},{36,-46}})));
     Modelica.Blocks.Interfaces.RealOutput Power
       annotation (Placement(transformation(extent={{100,48},{124,72}})));
-    Modelica.Blocks.Interfaces.RealOutput freq
-      annotation (Placement(transformation(extent={{100,8},{124,32}})));
-    Modelica.Blocks.Sources.RealExpression realExpression2(y=BOP.portElec_b.W)
-      annotation (Placement(transformation(extent={{62,50},{82,70}})));
-    Modelica.Blocks.Sources.RealExpression realExpression3(y=BOP.portElec_b.f)
-      annotation (Placement(transformation(extent={{64,18},{84,38}})));
+    Modelica.Blocks.Interfaces.RealInput  freq
+      annotation (Placement(transformation(extent={{124,-40},{100,-16}})));
     Modelica.Blocks.Interfaces.RealInput BOP_Demand annotation (Placement(
           transformation(
           extent={{-20,-20},{20,20}},
@@ -272,16 +266,15 @@ package Example_FMU_construction
           extent={{12,-12},{-12,12}},
           rotation=90,
           origin={88,-112})));
+    NHES.Utilities.FMI_Templates.Adaptors.ElectricalAdaptors.GeneralFrequencyToPowerFlowAdaptor
+      temperatureToHeatFlowAdaptor
+      annotation (Placement(transformation(extent={{100,32},{40,-34}})));
+    Modelica.Blocks.Interfaces.RealInput  dfreq
+      annotation (Placement(transformation(extent={{126,-18},{102,6}})));
   equation
 
     connect(source1.ports[1], BOP.port_a3[1]) annotation (Line(points={{36,-56},{
             0,-56},{0,-30}},      color={0,127,255}));
-    connect(BOP.portElec_b, sinkElec.port)
-      annotation (Line(points={{42,0},{70,0}}, color={255,0,0}));
-    connect(realExpression2.y, Power)
-      annotation (Line(points={{83,60},{112,60}}, color={0,0,127}));
-    connect(realExpression3.y, freq) annotation (Line(points={{85,28},{88,28},{88,
-            20},{112,20}}, color={0,0,127}));
     connect(BOP.port_b, massFlowToPressure.fluidPort) annotation (Line(points={{-18,-12},
             {-34,-12},{-34,-44},{-18,-44},{-18,-58}},color={0,127,255}));
     connect(BOP.port_a, pressureToMassFlow.fluidPort) annotation (Line(points={{-18,12},
@@ -318,6 +311,16 @@ package Example_FMU_construction
             -112},{92,-94},{6,-94},{6,-80}}, color={0,0,127}));
     connect(pressureToMassFlow.X_out, X_out_port_a) annotation (Line(points={{-72,
             18},{-80,18},{-80,82},{-112,82}}, color={0,0,127}));
+    connect(temperatureToHeatFlowAdaptor.portElec_a, BOP.portElec_b)
+      annotation (Line(points={{64,-1},{64,0},{44,0},{44,2},{42,2},{42,0}},
+          color={255,0,0}));
+    connect(temperatureToHeatFlowAdaptor.f, Power)
+      annotation (Line(points={{79,25.4},{79,60},{112,60}}, color={0,0,127}));
+    connect(temperatureToHeatFlowAdaptor.p, freq) annotation (Line(points={{79,
+            -27.4},{95.5,-27.4},{95.5,-28},{112,-28}}, color={0,0,127}));
+    connect(temperatureToHeatFlowAdaptor.pder, dfreq) annotation (Line(points={
+            {79,-17.5},{79,-12},{92,-12},{92,-10},{94,-10},{94,-6},{114,-6}},
+          color={0,0,127}));
     annotation (experiment(
         StopTime=1000,
         __Dymola_NumberOfIntervals=1000,

@@ -3,7 +3,7 @@ model Geometry_singlePoro "Clensed Geometry"
 
 parameter SI.Length Radius_Tank = 7.3                                         "Radius of the Thermocline Tank";
 parameter Integer nodes = 146                                                 "Number of nodes in the thermocline";
-parameter Real Porosity   = 0.25                                              "Porosity";
+parameter Real Porosity =   0.25                                              "Porosity";
 parameter SI.Length dr = 0.04                                                 "Nominal Diameter of filler material";
 parameter SI.Length Insulation_thickness = 0.051*2                            "Thickness of the Insulation";
 parameter SI.Length Wall_Thickness = 0.051                                    "Thickness of the tank";
@@ -11,7 +11,7 @@ parameter SI.Length Height_Tank = 2.92                                        "H
 parameter SI.Length Height_Tank_OilOnly = 0.44                                "Height of Thermocline Tank section (Oil Only)";
 parameter Real weightFactorTop = 0.1                                          "Top TES Weight factor for heat loss through TES head cover";
 parameter Real weightFactorBottom = 0.1                                       "Bottom TES Weight factor for heat loss through TES Bottom cover";
-parameter Real shapeFactor   = 2                                              "ShapeFactor - Perfect sphere = 3";
+parameter Real shapeFactor =   2                                              "ShapeFactor - Perfect sphere = 3";
 
 parameter SI.Area XS_Fluid = Porosity*Modelica.Constants.pi*(Radius_Tank^2.0) "Cross Sectional Area of the Fluid";
 

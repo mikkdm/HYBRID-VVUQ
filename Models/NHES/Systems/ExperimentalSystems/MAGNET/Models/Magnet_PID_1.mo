@@ -176,7 +176,8 @@ protected
     T_a_start=data.T_vc_rp,
     m_flow_a_start=data.m_flow,
     redeclare package Material = TRANSFORM.Media.Solids.SS304,
-    redeclare package Material_2 = TRANSFORM.Media.Solids.FiberGlassGeneric)
+    redeclare package Material_2 =
+        TRANSFORM.Media.Solids.FiberGlassGeneric)
     annotation (Placement(transformation(extent={{-110,30},{-90,50}})));
   TRANSFORM.Fluid.Pipes.GenericPipe_withWallx2 ins_rp_vc(
     redeclare model Geometry =
@@ -187,7 +188,8 @@ protected
     T_a_start=data.T_rp_vc,
     m_flow_a_start=data.m_flow,
     redeclare package Material = TRANSFORM.Media.Solids.SS304,
-    redeclare package Material_2 = TRANSFORM.Media.Solids.FiberGlassGeneric)
+    redeclare package Material_2 =
+        TRANSFORM.Media.Solids.FiberGlassGeneric)
     annotation (Placement(transformation(extent={{-84,-10},{-104,10}})));
 equation
   connect(rp.port_b1, sensor_pT3.port_a) annotation (Line(points={{0,24},{6,24},

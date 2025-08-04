@@ -34,15 +34,15 @@ model
                                                 297.32,
                                                 292,292,292,292,292,292,292,292,292,292}       "Initial temperature of thermocline medium and wall";
   parameter SI.Density Density_Filler = 3982.54     "Filler (Silica + Alumina + Soda + Iron) density";
-  parameter Real insRout_1  = 0.153;
-  parameter Real insRout_2  = 0.153;
-  parameter Real insRout_3  = 0.153;
-  parameter Real insRout_4  = 0.153;
-  parameter Real insRout_5  = 0.153;
-  parameter Real insRout_6  = 0.153;
-  parameter Real insRout_7  = 0.153;
-  parameter Real insRout_8  = 0.153;
-  parameter Real insRout_9  = 0.153;
+  parameter Real insRout_1 =  0.153;
+  parameter Real insRout_2 =  0.153;
+  parameter Real insRout_3 =  0.153;
+  parameter Real insRout_4 =  0.153;
+  parameter Real insRout_5 =  0.153;
+  parameter Real insRout_6 =  0.153;
+  parameter Real insRout_7 =  0.153;
+  parameter Real insRout_8 =  0.153;
+  parameter Real insRout_9 =  0.153;
   parameter Real insRout_10 = 0.153;
   parameter Real insRout_11 = 0.153;
   parameter Real insRout_12 = 0.153;

@@ -13,7 +13,7 @@ parameter Real Porosity[nodes] = fill(0.25, nodes)               "Porosity";
 //poro_41,poro_42,poro_43,poro_44,poro_45,poro_46,poro_47,poro_48,poro_49,poro_50,
 //poro_51,poro_52,poro_53,poro_54,poro_55,poro_56,poro_57,poro_58,poro_59,poro_60,
 //poro_61,poro_62,poro_63,poro_64,poro_65,poro_66,poro_67,poro_68,poro_69,poro_70, poro_71}               "Porosity";
-parameter Real shapeFactor   = 2                                 "ShapeFactor - Perfect sphere = 3";
+parameter Real shapeFactor =   2                                 "ShapeFactor - Perfect sphere = 3";
 parameter SI.Length dr = 0.04                                    "Nominal Diameter of filler material";
 parameter SI.Length Insulation_thickness = 0.051*2               "Thickness of the Insulation";
 parameter SI.Length Wall_Thickness = 0.051                       "Thickness of the tank";

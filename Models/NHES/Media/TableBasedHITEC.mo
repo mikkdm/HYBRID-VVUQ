@@ -1,4 +1,4 @@
-﻿within NHES.Media;
+within NHES.Media;
 package TableBasedHITEC
 // “DOWTHERM A Heat Transfer Fluid Product Technical Data.” 1997. Dow Chemical Company. http://msdssearch.dow.com/PublishedLiteratureDOWCOM/dh_0030/0901b803800303cd.pdf.
 

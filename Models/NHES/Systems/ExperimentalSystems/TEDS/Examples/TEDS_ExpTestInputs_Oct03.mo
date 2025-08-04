@@ -96,14 +96,15 @@ model TEDS_ExpTestInputs_Oct03
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,46})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow2(redeclare package Medium =
+  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow2(redeclare package
+      Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={214,48})));
   TRANSFORM.Fluid.Sensors.MassFlowRate Chiller_Mass_flow_T66(redeclare package
-      Medium =
+              Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3)
     annotation (Placement(transformation(extent={{9.5,10.5},{-9.5,-10.5}},
@@ -193,7 +194,8 @@ model TEDS_ExpTestInputs_Oct03
     annotation (Placement(transformation(extent={{-72,130},{-50,154}})));
   BaseClasses_1.SignalSubBus_SensorOutput Ac
     annotation (Placement(transformation(extent={{-30,130},{-8,154}})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow3(redeclare package Medium =
+  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow3(redeclare package
+      Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{11,-11},{-11,11}},
@@ -319,14 +321,14 @@ model TEDS_ExpTestInputs_Oct03
         rotation=90,
         origin={124,-223})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_chiller_before(redeclare package
-      Medium =
+              Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-13,12},{13,-12}},
         rotation=270,
         origin={214,15})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort T_chiller_after(redeclare package
-      Medium =
+              Medium =
         TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-12,12},{12,-12}},
@@ -720,7 +722,7 @@ equation
       index=-1,
       extent={{-3,6},{-3,6}},
       horizontalAlignment=TextAlignment.Right));
-  connect(Ac.PV006[1], PV_006.opening) annotation (Line(
+  connect(Ac.PV006, PV_006.opening) annotation (Line(
       points={{-19,142},{132,142},{132,80.8}},
       color={239,82,82},
       pattern=LinePattern.Dash,
@@ -747,7 +749,7 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(Ac.PV050[1], PV_050.opening) annotation (Line(
+  connect(Ac.PV050, PV_050.opening) annotation (Line(
       points={{-19,142},{208,142},{208,66},{180.8,66}},
       color={239,82,82},
       pattern=LinePattern.Dash,

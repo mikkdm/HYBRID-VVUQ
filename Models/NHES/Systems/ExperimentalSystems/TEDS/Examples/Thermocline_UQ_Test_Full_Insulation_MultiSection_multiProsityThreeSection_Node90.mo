@@ -21,10 +21,10 @@ model
   SI.Temperature TES_Tf_85;
   SI.Temperature TES_Tf_90;
 
-  parameter Real SF  = 3;
+  parameter Real SF =  3;
 
-  parameter Real poro_empty  = 0.000000001;
-  parameter Real poro_fill   = 0.40;
+  parameter Real poro_empty =  0.000000001;
+  parameter Real poro_fill =   0.40;
 
   Modelica.Fluid.Sources.MassFlowSource_T boundary(
     redeclare package Medium =
@@ -1811,14 +1811,16 @@ model
         388.06; 31740,385.78; 31800,383.48])
     annotation (Placement(transformation(extent={{70,-84},{62,-76}})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_202_Sim(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
     T_start(displayUnit="K") = 292.08,
       precision=3) annotation (Placement(transformation(
         extent={{-12,13},{12,-13}},
         rotation=-90,
         origin={12,-41})));
   TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_201_Sim(redeclare package
-      Medium = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
+      Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C,
       precision=3) annotation (Placement(transformation(
         extent={{-9,8},{9,-8}},
         rotation=0,

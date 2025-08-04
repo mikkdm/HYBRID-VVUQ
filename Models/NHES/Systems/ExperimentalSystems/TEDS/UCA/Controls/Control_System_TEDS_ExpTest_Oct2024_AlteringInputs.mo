@@ -260,7 +260,7 @@ equation
       horizontalAlignment=TextAlignment.Left));
   connect(PV006.y[1], Gain.u) annotation (Line(points={{162.6,100},{137.6,100}},
                                       color={0,0,127}));
-  connect(SensorSubBus.PV006[1], Gain.y) annotation (Line(
+  connect(SensorSubBus.PV006, Gain.y) annotation (Line(
       points={{40,-99},{40,100},{119.2,100}},
       color={239,82,82},
       pattern=LinePattern.Dash,
@@ -280,7 +280,7 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(SensorSubBus.PV050[1], Gain1.y) annotation (Line(
+  connect(SensorSubBus.PV050, Gain1.y) annotation (Line(
       points={{40,-99},{40,-51},{119.1,-51}},
       color={239,82,82},
       pattern=LinePattern.Dash,

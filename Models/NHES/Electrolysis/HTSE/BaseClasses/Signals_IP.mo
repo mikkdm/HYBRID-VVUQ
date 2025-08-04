@@ -4,32 +4,32 @@ expandable connector Signals_IP "Data bus for IP signals"
 
   SI.Power c_We_SOEC( displayUnit="MW")
     "Total electrical load in the SOEC stacks"
-                                              annotation ();
+                                              annotation();
 
   SI.Power s_We_SOEC( displayUnit="MW")
     "Total power consumption in the SOEC stacks"
-                                                annotation ();
+                                                annotation();
   SI.Power s_We_HTSE( displayUnit="MW")
     "Total power consumption in the HTSE plant"
-                                               annotation ();
-  SI.MassFlowRate s_mH2_prod "H2 produced during electrolysis" annotation ();
-  SI.MassFlowRate s_mO2_prod "O2 produced during electrolysis" annotation ();
+                                               annotation();
+  SI.MassFlowRate s_mH2_prod "H2 produced during electrolysis" annotation();
+  SI.MassFlowRate s_mO2_prod "O2 produced during electrolysis" annotation();
 
   SI.MassFlowRate s_w_in
     "Mass flow rate of entering fluid (from the EM to the IP )"
-      annotation ();
+      annotation();
   SI.Temperature s_T_in( displayUnit="degC")
-    "Temperature of entering fluid (from the EM to the IP)"   annotation ();
+    "Temperature of entering fluid (from the EM to the IP)"   annotation();
   SI.Pressure s_p_in "Pressure of entering fluid (from the EM to the IP)"
-      annotation ();
+      annotation();
 
   SI.MassFlowRate s_w_out
     "Mass flow rate of fluid going out (from the IP to the EM)"
-      annotation ();
+      annotation();
   SI.Temperature s_T_out( displayUnit="degC")
-    "Temperature of fluid going out (from the IP to the EM)"   annotation ();
+    "Temperature of fluid going out (from the IP to the EM)"   annotation();
   SI.Pressure s_p_out "Pressure of fluid going out (from the IP to the EM)"
-      annotation ();
+      annotation();
 
   annotation (defaultComponentPrefixes="protected",
               Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
