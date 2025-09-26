@@ -78,7 +78,7 @@ parameter SI.Temperature T_hot_design = 300;
     fileName=ModelicaServices.ExternalReferences.loadResource(
         "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/JulyDisRestart/PV006.txt"),
                                        startTime=0)
-    annotation (Placement(transformation(extent={{188,84},{160,112}})));
+    annotation (Placement(transformation(extent={{188,82},{160,110}})));
   Modelica.Blocks.Sources.CombiTimeTable PV049_PV052(
     tableOnFile=true,
     tableName="table_049_052",
@@ -92,8 +92,22 @@ parameter SI.Temperature T_hot_design = 300;
     y_start=1)
     annotation (Placement(transformation(extent={{138,-86},{120,-68}})));
   Modelica.Blocks.Sources.CombiTimeTable PV050_PV051(
-    tableOnFile=true,
-    table=[0.0,0.0; 2006,0.0; 2010,1.0; 5532,1.0; 5540,0.0; 6000,0.0],
+    tableOnFile=false,
+    table=[0.0,0.0; 2006,0.0; 2010,1.0; 5532,1.0; 5540,0.0; 6000,0.0; 6001,0.0;
+        6002,0.0; 6003,0.0; 6004,0.0; 6005,0.0; 6006,0.0; 6007,0.0; 6008,0.0;
+        6009,0.0; 6010,0.0; 6111,0.0; 6222,0.0; 6333,0.0; 6444,0.0; 6555,0.0;
+        6666,0.0; 6777,0.0; 6888,0.0; 6999,0.0; 7000,0.0; 7001,0.0; 7002,0.0;
+        7003,0.0; 7004,0.0; 7005,0.0; 7006,0.0; 7007,0.0; 7080,0.0; 7111,0.0;
+        7222,0.0; 7333,0.0; 7444,0.0; 7555,0.0; 7666,0.0; 7777,0.0; 7888,0.0;
+        7999,0.0; 8000,0.0; 8008,0.0; 8111,0.0; 8222,0.0; 8333,0.0; 8444,0;
+        8555,0.0; 8666,0.0; 8777,0.0; 8888,0.0; 8999,0.0; 9000,0.0; 9001,0.0;
+        9005,0.0; 9009,0.0; 9010,0.0; 9100,0.0; 9111,0.0; 9121,0.0; 9161,0.0;
+        9222,0.0; 9255,0.0; 9333,0.0; 9354,0.0; 9444,0.0; 9484,0.0; 9499,0.0;
+        9555,0.0; 9569,0.0; 9599,0.0; 9699,0.0; 9799,0.0; 9888,0.0; 9898,0.0;
+        9899,0.0; 10000,0.0; 10200,0.0; 10400,0.0; 10600,0.0; 10800,0.0; 11000,
+        0.0; 11020,0.0; 11040,0.0; 11060,0.0; 11080,0.0; 11110,0.0; 11121,0.0;
+        12111,0.0; 12222,0.0; 12333,0.0; 12346,0.0; 12366,0.0; 12444,0.0; 12555,
+        0.0; 12666,0.0; 12777,0.0; 12888,0.0],
     tableName="table_050_051",
     fileName=ModelicaServices.ExternalReferences.loadResource(
         "modelica://NHES/Systems/ExperimentalSystems/TEDS/ControlTables/JulyDisRestart/PV050_PV051.txt"),
@@ -275,7 +289,7 @@ equation
       index=-1,
       extent={{6,3},{6,3}},
       horizontalAlignment=TextAlignment.Left));
-  connect(PV006.y[1], Gain.u) annotation (Line(points={{158.6,98},{148,98},{148,
+  connect(PV006.y[1], Gain.u) annotation (Line(points={{158.6,96},{148,96},{148,
           100},{137.6,100}},          color={0,0,127}));
   connect(SensorSubBus.PV006, Gain.y) annotation (Line(
       points={{40,-99},{40,100},{119.2,100}},

@@ -189,8 +189,8 @@ model TEDS_ExpTestInputs_ControlsTestingDMM_Chargeto80
         extent={{9,-8},{-9,8}},
         rotation=270,
         origin={-103,-98})));
-  Controls.Control_System_TEDS_ExpTest_Discharging_July_2023        Control_System(
-    T_hot_design=523.15)
+  Controls.Control_System_TEDS_ExpTest_Oct2024_chargeto80percent    Control_System(
+      T_hot_design=523.15)
     annotation (Placement(transformation(extent={{0,154},{40,190}})));
   BaseClasses_1.SignalSubBus_ActuatorInput Sen
     annotation (Placement(transformation(extent={{-72,130},{-50,154}})));

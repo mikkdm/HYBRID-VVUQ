@@ -33921,7 +33921,7 @@ double initialValue(28464,6)
   6  1282 # Control_System.PV050_PV051.tableID.id
  -2       1                       0                       0                
   6  1352 # Control_System.PV050_PV051.nextTimeEvent
- -2 	  1       0                       0                
+ -2 1.7976931348623157E+308       0                       0                
   6  1352 # Control_System.PV050_PV051.nextTimeEventScaled
  -2  1.0000000000000001E-05       0                       0                
   6  1280 # Control_System.PV050_PV051.timeScaled
@@ -37205,27 +37205,27 @@ double initialValue(28464,6)
   6   256 # thermocline.TES.Cf[70]
  -2  5.2209071515861581E+02       0                 1.0000000000000000E+100
   2   272 # thermocline.TES.Tf[1]
- -2 	  0		          0                       0                
+ -2 -2.2355288703950738E+00       0                       0                
   3   256 # thermocline.TES.der(Tf[1])
  -2  5.2207910200426591E+02       0                 1.0000000000000000E+100
   2   272 # thermocline.TES.Tf[2]
- -2 	  0		          0                       0             
+ -2  4.7232758849286824E-01       0                       0                
   3   256 # thermocline.TES.der(Tf[2])
  -2  5.2286996075362231E+02       0                 1.0000000000000000E+100
   2   272 # thermocline.TES.Tf[3]
- -2 	  0		          0                       0                 
+ -2  4.6479849631484740E-01       0                       0                
   3   256 # thermocline.TES.der(Tf[3])
  -2  5.2241159836693078E+02       0                 1.0000000000000000E+100
   2   272 # thermocline.TES.Tf[4]
- -2 	  0		          0                       0                  
+ -2  9.4165777799688239E-01       0                       0                
   3   256 # thermocline.TES.der(Tf[4])
  -2  5.2711315991007416E+02       0                 1.0000000000000000E+100
   2   272 # thermocline.TES.Tf[5]
- -2 	  0		          0                       0                    
+ -2 -1.1532470397600381E-01       0                       0                
   3   256 # thermocline.TES.der(Tf[5])
  -2  5.2284460941225041E+02       0                 1.0000000000000000E+100
   2   272 # thermocline.TES.Tf[6]
- -2 	  0		          0                       0                   
+ -2  9.7980066452303589E-01       0                       0                
   3   256 # thermocline.TES.der(Tf[6])
  -2  5.2188652701913338E+02       0                 1.0000000000000000E+100
   2   272 # thermocline.TES.Tf[7]
@@ -83767,7 +83767,7 @@ double initialValue(28464,6)
   6   256 # pipe1.mediums[2].p_bar
  -2       1                       0                       0                
   6   257 # pipe5.allowFlowReversal
- -2  0.000E+00 -9.9999999999999995E+59  100000                
+ -2  4.2662759365833116E+00 -9.9999999999999995E+59  100000                
   6   388 # pipe5.port_a.m_flow
  -2  6.1846094136706844E+05 -1.0000000000000000E+10  1.0000000000000000E+10
   6   260 # pipe5.port_a.h_outflow
