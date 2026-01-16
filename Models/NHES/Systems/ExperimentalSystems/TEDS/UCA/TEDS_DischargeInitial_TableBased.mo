@@ -96,8 +96,8 @@ model TEDS_DischargeInitial_TableBased
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={50,46})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow2(redeclare package Medium
-      = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow2(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=-90,
@@ -194,8 +194,8 @@ model TEDS_DischargeInitial_TableBased
     annotation (Placement(transformation(extent={{-72,130},{-50,154}})));
   BaseClasses_1.SignalSubBus_SensorOutput Ac
     annotation (Placement(transformation(extent={{-30,130},{-8,154}})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow3(redeclare package Medium
-      = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+  TRANSFORM.Fluid.Sensors.MassFlowRate sensor_m_flow3(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{11,-11},{-11,11}},
         rotation=180,
@@ -309,8 +309,8 @@ model TEDS_DischargeInitial_TableBased
         extent={{-12,-13},{12,13}},
         rotation=90,
         origin={38,-69})));
-  TRANSFORM.Fluid.Sensors.MassFlowRate BOP_Mass_flow(redeclare package Medium
-      = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+  TRANSFORM.Fluid.Sensors.MassFlowRate BOP_Mass_flow(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -335,8 +335,8 @@ model TEDS_DischargeInitial_TableBased
         extent={{-12,12},{12,-12}},
         rotation=270,
         origin={214,-64})));
-  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_003a(redeclare package Medium
-      = TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
+  TRANSFORM.Fluid.Sensors.TemperatureTwoPort TC_003a(redeclare package Medium =
+        TRANSFORM.Media.Fluids.Therminol_66.LinearTherminol66_A_250C, precision=
        3) annotation (Placement(transformation(extent={{18,64},{42,88}})));
   TRANSFORM.Fluid.Machines.Pump_PressureBooster pump(
     redeclare package Medium =
@@ -532,9 +532,8 @@ model TEDS_DischargeInitial_TableBased
         503.861827; 5433.112,503.169904; 5493.1,502.461925; 5553.032,501.767657;
         5613.072,501.300748; 5673.094,500.993908; 5733.002,500.751119; 5793.018,
         500.479838; 5853.105,500.1505; 5913.039,499.816815; 5976.019,499.46846;
-        6000,499.46846], offset=-273.15) annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-306,122},{-286,142}})));
+        6000,499.46846], offset=-273.15) annotation (Placement(transformation(extent={{-276,
+            166},{-256,186}})));
   Modelica.Blocks.Sources.TimeTable Tf_13_Exp(table=[0,521.041116; 60.05,
         521.192191; 120.089,521.323596; 180.096,521.477789; 240.018,521.620507;
         300.059,521.769181; 360.086,521.839858; 420.095,521.836535; 480.085,
@@ -566,9 +565,9 @@ model TEDS_DischargeInitial_TableBased
         497.885301; 5313.916,497.110081; 5373.03,496.33363; 5433.112,495.516632;
         5493.1,494.663249; 5553.032,493.78536; 5613.072,493.418429; 5673.094,
         493.291364; 5733.002,493.211802; 5793.018,493.185679; 5853.105,
-        493.149418; 5913.039,493.129046; 5976.019,493.126847; 6000,493.126847],
-      offset=-273.15) annotation (thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-304,86},{-284,106}})));
+        493.149418; 5913.039,493.129046; 5976.019,493.126847; 6000,493.126847], offset=
+        0.0)          annotation (Placement(transformation(extent={{-252,100},{-232,
+            120}})));
   Modelica.Blocks.Sources.TimeTable Tf_18_Exp(table=[0,519.611295; 60.05,
         519.881208; 120.089,520.139787; 180.096,520.41881; 240.018,520.687238;
         300.059,520.953332; 360.086,521.055266; 420.095,521.064046; 480.085,
@@ -600,9 +599,9 @@ model TEDS_DischargeInitial_TableBased
         490.250634; 5313.916,488.890137; 5373.03,487.438143; 5433.112,
         485.795097; 5493.1,484.03144; 5553.032,482.149492; 5613.072,481.323619;
         5673.094,481.050156; 5733.002,480.9074; 5793.018,480.834586; 5853.105,
-        480.773022; 5913.039,480.752442; 5976.019,480.754652; 6000,480.754652],
-      offset=-273.15) annotation (thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-304,54},{-284,74}})));
+        480.773022; 5913.039,480.752442; 5976.019,480.754652; 6000,480.754652], offset=
+        0.0)          annotation (Placement(transformation(extent={{-242,66},{-222,
+            86}})));
   Modelica.Blocks.Sources.TimeTable Tf_22pt5_Exp(table=[0,518.961136; 60.05,
         519.1722297; 120.089,519.3638707; 180.096,519.5675267; 240.018,
         519.7518967; 300.059,519.9814223; 360.086,520.0851723; 420.095,
@@ -636,9 +635,8 @@ model TEDS_DischargeInitial_TableBased
         469.1327683; 5433.112,465.7143143; 5493.1,462.087141; 5553.032,
         458.2732493; 5613.072,456.3848937; 5673.094,455.5991607; 5733.002,
         455.1262367; 5793.018,454.8502033; 5853.105,454.6794547; 5913.039,
-        454.571228; 5976.019,454.5028407; 6000,454.5028407], offset=-273.15)
-    annotation (thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-304,16},{-284,36}})));
+        454.571228; 5976.019,454.5028407; 6000,454.5028407], offset=0.0)
+    annotation (Placement(transformation(extent={{-278,6},{-258,26}})));
   Modelica.Blocks.Sources.TimeTable Tf_26_Exp(table=[0,516.9828843; 60.05,
         517.2225773; 120.089,517.4466897; 180.096,517.6623687; 240.018,
         517.8623407; 300.059,518.080252; 360.086,518.1818253; 420.095,
@@ -672,9 +670,8 @@ model TEDS_DischargeInitial_TableBased
         424.724368; 5433.112,418.8296327; 5493.1,412.9886073; 5553.032,
         407.4528387; 5613.072,404.904453; 5673.094,403.9200473; 5733.002,
         403.4145037; 5793.018,403.1422123; 5853.105,402.9958817; 5913.039,
-        402.9571627; 5976.019,402.9630133; 6000,402.9630133], offset=-273.15)
-    annotation (thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-304,-22},{-284,-2}})));
+        402.9571627; 5976.019,402.9630133; 6000,402.9630133], offset=0.0)
+    annotation (Placement(transformation(extent={{-240,-12},{-220,8}})));
   Modelica.Blocks.Sources.TimeTable Tf_30_Exp(table=[0,513.866171; 60.05,
         514.3398597; 120.089,514.7633743; 180.096,515.1552137; 240.018,
         515.5160867; 300.059,515.865381; 360.086,516.0304673; 420.095,
@@ -709,9 +706,8 @@ model TEDS_DischargeInitial_TableBased
         392.4412563; 5553.032,393.5525177; 5613.072,394.1263927; 5673.094,
         394.4210553; 5733.002,394.6181663; 5793.018,394.780265; 5853.105,
         394.9101957; 5913.039,395.0177643; 5976.019,395.1279857; 6000,
-        395.1279857], offset=-273.15) annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-304,-56},{-284,-36}})));
+        395.1279857], offset=0.0)     annotation (Placement(transformation(extent={{-246,
+            -46},{-226,-26}})));
   Modelica.Blocks.Sources.TimeTable Tf_35_Exp(table=[0,495.6569048; 60.05,
         496.817904; 120.089,497.8967055; 180.096,498.8974263; 240.018,
         499.8011245; 300.059,500.6586293; 360.086,501.0656433; 420.095,
@@ -746,9 +742,8 @@ model TEDS_DischargeInitial_TableBased
         398.385817; 5553.032,398.5766525; 5613.072,398.6659918; 5673.094,
         398.6867908; 5733.002,398.6628115; 5793.018,398.617067; 5853.105,
         398.557852; 5913.039,398.4942345; 5976.019,398.4155088; 6000,
-        398.4155088], offset=-273.15) annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-304,-90},{-284,-70}})));
+        398.4155088], offset=0.0)     annotation (Placement(transformation(extent={{-242,
+            -86},{-222,-66}})));
   Modelica.Blocks.Sources.TimeTable Tf_40_Exp(table=[0,484.0390265; 60.05,
         485.0126423; 120.089,485.9916515; 180.096,487.033179; 240.018,
         488.1397178; 300.059,489.2899055; 360.086,489.953096; 420.095,
@@ -783,10 +778,8 @@ model TEDS_DischargeInitial_TableBased
         396.9923498; 5553.032,396.8917103; 5613.072,396.829829; 5673.094,
         396.7942135; 5733.002,396.7660385; 5793.018,396.7434825; 5853.105,
         396.7157678; 5913.039,396.6973303; 5976.019,396.6793503; 6000,
-        396.6793503], offset=-273.15) annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-302,-124},{-282,
-            -104}})));
+        396.6793503], offset=0.0)     annotation (Placement(transformation(extent={{-244,
+            -106},{-224,-86}})));
   Modelica.Blocks.Sources.TimeTable Tf_45_Exp(table=[0,484.2035483; 60.05,
         487.864716; 120.089,490.7136147; 180.096,492.8423427; 240.018,
         494.4199117; 300.059,495.6145733; 360.086,496.182311; 420.095,
@@ -821,10 +814,8 @@ model TEDS_DischargeInitial_TableBased
         399.5679423; 5553.032,399.6662097; 5613.072,399.7276917; 5673.094,
         399.7834497; 5733.002,399.845989; 5793.018,399.9119933; 5853.105,
         399.9701067; 5913.039,400.033397; 5976.019,400.0957853; 6000,
-        400.0957853], offset=-273.15) annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-302,-158},{-282,
-            -138}})));
+        400.0957853], offset=0.0)     annotation (Placement(transformation(extent={{-246,
+            -158},{-226,-138}})));
   Modelica.Blocks.Sources.TimeTable Tf_54pt5_Exp(table=[0,422.5466835; 60.05,
         425.4132093; 120.089,428.9804293; 180.096,433.1641308; 240.018,
         437.8423135; 300.059,441.803456; 360.086,443.7828045; 420.095,
@@ -859,10 +850,8 @@ model TEDS_DischargeInitial_TableBased
         389.4465243; 5553.032,389.4928313; 5613.072,389.468177; 5673.094,
         389.452864; 5733.002,389.457556; 5793.018,389.4773818; 5853.105,
         389.4958103; 5913.039,389.5360788; 5976.019,389.5689705; 6000,
-        389.5689705], offset=-273.15) annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-300,-230},{-280,
-            -210}})));
+        389.5689705], offset=0.0)     annotation (Placement(transformation(extent={{-252,
+            -240},{-232,-220}})));
   Modelica.Blocks.Sources.TimeTable Tf_50_Exp(table=[0,461.5598403; 60.05,
         463.8523158; 120.089,466.069623; 180.096,468.2191513; 240.018,
         470.2589853; 300.059,472.2642473; 360.086,473.075735; 420.095,
@@ -896,10 +885,9 @@ model TEDS_DischargeInitial_TableBased
         392.3546728; 5373.03,392.4341888; 5433.112,392.536132; 5493.1,
         392.641049; 5553.032,392.7222903; 5613.072,392.7322633; 5673.094,
         392.727614; 5733.002,392.7170108; 5793.018,392.728046; 5853.105,
-        392.72968; 5913.039,392.7363183; 5976.019,392.740761; 6000,392.740761],
-      offset=-273.15) annotation (thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-302,-194},{-282,
-            -174}})));
+        392.72968; 5913.039,392.7363183; 5976.019,392.740761; 6000,392.740761], offset=
+        0.0)          annotation (Placement(transformation(extent={{-252,-194},{
+            -232,-174}})));
   Modelica.Blocks.Sources.TimeTable Tf_58_Exp(table=[0,405.1629123; 60.05,
         405.8534753; 120.089,406.5157173; 180.096,407.174206; 240.018,
         407.8131497; 300.059,408.458716; 360.086,408.5160257; 420.095,
@@ -933,10 +921,8 @@ model TEDS_DischargeInitial_TableBased
         380.5357203; 5433.112,380.623757; 5493.1,380.696926; 5553.032,
         380.7513047; 5613.072,380.7993323; 5673.094,380.8762877; 5733.002,
         380.9451337; 5793.018,381.029605; 5853.105,381.1218593; 5913.039,
-        381.212675; 5976.019,381.3196607; 6000,381.3196607], offset=-273.15)
-    annotation (thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-298,-264},{-278,
-            -244}})));
+        381.212675; 5976.019,381.3196607; 6000,381.3196607], offset=0.0)
+    annotation (Placement(transformation(extent={{-278,-254},{-258,-234}})));
   Modelica.Blocks.Sources.TimeTable Tf_62pt5_Exp(table=[0,390.711769; 60.05,
         392.0452008; 120.089,393.4225748; 180.096,394.8506155; 240.018,
         396.284376; 300.059,397.811273; 360.086,396.8330993; 420.095,
@@ -971,9 +957,7 @@ model TEDS_DischargeInitial_TableBased
         392.9849703; 5613.072,392.8151248; 5673.094,392.5686393; 5733.002,
         392.3011565; 5793.018,392.0209813; 5853.105,391.6531683; 5913.039,
         391.193189; 5976.019,390.5794823; 6000,390.5794823], offset=-273.15)
-    annotation (thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-300,-300},{-280,
-            -280}})));
+    annotation (Placement(transformation(extent={{-282,-296},{-262,-276}})));
   Modelica.Blocks.Sources.RealExpression Tf8(y=thermocline.TES.Tf[8])
     annotation (Placement(transformation(extent={{-302,148},{-282,168}})));
   Modelica.Blocks.Sources.RealExpression Tf13(y=thermocline.TES.Tf[13])
@@ -1003,52 +987,33 @@ model TEDS_DischargeInitial_TableBased
     annotation (Placement(transformation(extent={{-276,-272},{-256,-252}})));
   Modelica.Blocks.Sources.RealExpression Tf62pt5(y=0.5*(thermocline.TES.Tf[62]
          + thermocline.TES.Tf[63]))
-    annotation (Placement(transformation(extent={{-282,-316},{-262,-296}})));
-  SupportComponents.RMSE_Calculator RMSE8 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-272,136},{-264,144}})));
-  SupportComponents.RMSE_Calculator RMSE13 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-248,102},{-240,110}})));
-  SupportComponents.RMSE_Calculator RMSE18 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-250,70},{-242,78}})));
-  SupportComponents.RMSE_Calculator RMSE22 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-250,32},{-242,40}})));
-  SupportComponents.RMSE_Calculator RMSE26 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-248,-8},{-240,0}})));
-  SupportComponents.RMSE_Calculator RMSE30 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-254,-42},{-246,-34}})));
-  SupportComponents.RMSE_Calculator RMSE35 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-252,-74},{-244,-66}})));
-  SupportComponents.RMSE_Calculator RMSE40 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-230,-112},{-222,
-            -104}})));
-  SupportComponents.RMSE_Calculator RMSE45 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-258,-144},{-250,
-            -136}})));
-  SupportComponents.RMSE_Calculator RMSE50 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-258,-184},{-250,
-            -176}})));
-  SupportComponents.RMSE_Calculator RMSE55 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-266,-230},{-258,
-            -222}})));
-  SupportComponents.RMSE_Calculator RMSE58 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-258,-252},{-250,
-            -244}})));
-  SupportComponents.RMSE_Calculator RMSE63 annotation (
-      thermocline.TES.mediums[30].Placement(
-        thermocline.TES.mediums[30].transformation(extent={{-260,-294},{-252,
-            -286}})));
+    annotation (Placement(transformation(extent={{-282,-322},{-262,-302}})));
+  SupportComponents.RMSE_Calculator RMSE8 annotation (Placement(transformation(extent={{-232,
+            152},{-212,172}})));
+  SupportComponents.RMSE_Calculator RMSE13 annotation (Placement(transformation(extent={{-220,96},
+            {-200,116}})));
+  SupportComponents.RMSE_Calculator RMSE18 annotation (Placement(transformation(extent={{-210,58},
+            {-190,78}})));
+  SupportComponents.RMSE_Calculator RMSE22 annotation (Placement(transformation(extent={{-208,12},
+            {-188,32}})));
+  SupportComponents.RMSE_Calculator RMSE26 annotation (Placement(transformation(extent={{-208,
+            -22},{-188,-2}})));
+  SupportComponents.RMSE_Calculator RMSE30 annotation (Placement(transformation(extent={{-208,
+            -50},{-188,-30}})));
+  SupportComponents.RMSE_Calculator RMSE35 annotation (Placement(transformation(extent={{-208,
+            -82},{-188,-62}})));
+  SupportComponents.RMSE_Calculator RMSE40 annotation (Placement(transformation(extent={{-206,
+            -120},{-186,-100}})));
+  SupportComponents.RMSE_Calculator RMSE45 annotation (Placement(transformation(extent={{-206,
+            -166},{-184,-144}})));
+  SupportComponents.RMSE_Calculator RMSE50 annotation (Placement(transformation(extent={{-206,
+            -196},{-184,-174}})));
+  SupportComponents.RMSE_Calculator RMSE55 annotation (Placement(transformation(extent={{-206,
+            -228},{-186,-208}})));
+  SupportComponents.RMSE_Calculator RMSE58 annotation (Placement(transformation(extent={{-216,
+            -270},{-196,-250}})));
+  SupportComponents.RMSE_Calculator RMSE63 annotation (Placement(transformation(extent={{-228,
+            -306},{-208,-286}})));
 equation
   connect(pipe4.port_b, TC_002.port_a)
     annotation (Line(points={{-103,-38},{-104,-38},{-104,74},{-102,74},{-102,73},
@@ -1350,77 +1315,59 @@ equation
           -108},{214,-144},{212,-144}}, color={0,127,255}));
   connect(PV_008.port_a, pipe3.port_b) annotation (Line(points={{190,-170},{190,
           -144},{200,-144}}, color={0,127,255}));
-  connect(Tf8.y, RMSE8.u1) annotation (thermocline.TES.mediums[30].Line(points=
-          {{-281,158},{-278,158},{-278,142.4},{-272.8,142.4}}, color={0,0,127}));
-  connect(Tf_8_Exp.y, RMSE8.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-285,132},{-285,137.6},{-272.8,137.6}}, color={0,0,127}));
-  connect(Tf13.y, RMSE13.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-257,106},{-257,108.4},{-248.8,108.4}}, color={0,0,127}));
-  connect(Tf_13_Exp.y, RMSE13.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-283,96},{-200,96},{-200,103.6},{-248.8,103.6}}, color={0,0,
-          127}));
-  connect(Tf18.y, RMSE18.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-243,62},{-243,66},{-250.8,66},{-250.8,71.6}}, color={0,0,127}));
-  connect(Tf_18_Exp.y, RMSE18.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-283,64},{-200,64},{-200,60},{-166,60},{-166,76.4},{-250.8,
-          76.4}}, color={0,0,127}));
-  connect(Tf22pt5.y, RMSE22.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-265,38},{-257.9,38},{-257.9,38.4},{-250.8,38.4}}, color={0,0,
-          127}));
-  connect(Tf_22pt5_Exp.y, RMSE22.u2) annotation (
-      thermocline.TES.mediums[30].Line(points={{-283,26},{-200,26},{-200,22},{
-          -166,22},{-166,42},{-200,42},{-200,33.6},{-250.8,33.6}}, color={0,0,
-          127}));
-  connect(Tf26.y, RMSE26.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-241,-12},{-248.8,-12},{-248.8,-6.4}}, color={0,0,127}));
-  connect(Tf30pt5.y, RMSE30.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-245,-46},{-254.8,-46},{-254.8,-40.4}}, color={0,0,127}));
-  connect(Tf_30_Exp.y, RMSE30.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-283,-46},{-270,-46},{-270,-35.6},{-254.8,-35.6}}, color={0,0,
-          127}));
-  connect(Tf35.y, RMSE35.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-269,-68},{-260.9,-68},{-260.9,-67.6},{-252.8,-67.6}}, color={
-          0,0,127}));
-  connect(Tf_35_Exp.y, RMSE35.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-283,-80},{-200,-80},{-200,-84},{-166,-84},{-166,-72.4},{
-          -252.8,-72.4}}, color={0,0,127}));
-  connect(Tf40.y, RMSE40.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-239,-112},{-239,-110.4},{-230.8,-110.4}}, color={0,0,127}));
-  connect(Tf_40_Exp.y, RMSE40.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-281,-114},{-200,-114},{-200,-105.6},{-230.8,-105.6}}, color={
-          0,0,127}));
-  connect(Tf45.y, RMSE45.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-255,-160},{-258.8,-160},{-258.8,-142.4}}, color={0,0,127}));
-  connect(Tf_45_Exp.y, RMSE45.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-281,-148},{-270,-148},{-270,-137.6},{-258.8,-137.6}}, color={
-          0,0,127}));
-  connect(Tf50.y, RMSE50.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-257,-192},{-257,-187.2},{-258.8,-187.2},{-258.8,-182.4}},
-        color={0,0,127}));
-  connect(Tf_50_Exp.y, RMSE50.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-281,-184},{-270,-184},{-270,-177.6},{-258.8,-177.6}}, color={
-          0,0,127}));
-  connect(RMSE55.u1, Tf54pt5.y) annotation (thermocline.TES.mediums[30].Line(
-        points={{-266.8,-223.6},{-200,-223.6},{-200,-212},{-255,-212}}, color={
-          0,0,127}));
-  connect(RMSE55.u2, Tf_54pt5_Exp.y) annotation (
-      thermocline.TES.mediums[30].Line(points={{-266.8,-228.4},{-200,-228.4},{
-          -200,-220},{-279,-220}}, color={0,0,127}));
-  connect(Tf58.y, RMSE58.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-255,-262},{-255,-256},{-258.8,-256},{-258.8,-250.4}}, color={
-          0,0,127}));
-  connect(Tf_58_Exp.y, RMSE58.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-277,-254},{-268,-254},{-268,-245.6},{-258.8,-245.6}}, color={
-          0,0,127}));
-  connect(Tf62pt5.y, RMSE63.u2) annotation (thermocline.TES.mediums[30].Line(
-        points={{-261,-306},{-261,-300},{-260.8,-300},{-260.8,-292.4}}, color={
-          0,0,127}));
-  connect(Tf_62pt5_Exp.y, RMSE63.u1) annotation (
-      thermocline.TES.mediums[30].Line(points={{-279,-290},{-270,-290},{-270,
-          -287.6},{-260.8,-287.6}}, color={0,0,127}));
-  connect(Tf_26_Exp.y, RMSE26.u1) annotation (thermocline.TES.mediums[30].Line(
-        points={{-283,-12},{-200,-12},{-200,-1.6},{-248.8,-1.6}}, color={0,0,
-          127}));
+
+  connect(Tf_62pt5_Exp.y, RMSE63.u1) annotation (Line(points={{-261,-286},{-261,
+          -290},{-230,-290}}, color={0,0,127}));
+  connect(Tf62pt5.y, RMSE63.u2) annotation (Line(points={{-261,-312},{-244,-312},
+          {-244,-302},{-230,-302}}, color={0,0,127}));
+  connect(Tf_58_Exp.y, RMSE58.u1) annotation (Line(points={{-257,-244},{-248,
+          -244},{-248,-254},{-218,-254}}, color={0,0,127}));
+  connect(Tf58.y, RMSE58.u2) annotation (Line(points={{-255,-262},{-255,-266},{
+          -218,-266}}, color={0,0,127}));
+  connect(Tf_54pt5_Exp.y, RMSE55.u2) annotation (Line(points={{-231,-230},{-231,
+          -224},{-208,-224}}, color={0,0,127}));
+  connect(Tf54pt5.y, RMSE55.u1)
+    annotation (Line(points={{-255,-212},{-208,-212}}, color={0,0,127}));
+  connect(Tf50.y, RMSE50.u2) annotation (Line(points={{-257,-192},{-232.6,-192},
+          {-232.6,-191.6},{-208.2,-191.6}}, color={0,0,127}));
+  connect(Tf_50_Exp.y, RMSE50.u1) annotation (Line(points={{-231,-184},{-231,
+          -178.4},{-208.2,-178.4}}, color={0,0,127}));
+  connect(Tf45.y, RMSE45.u2) annotation (Line(points={{-255,-160},{-255,-132},{
+          -216,-132},{-216,-161.6},{-208.2,-161.6}}, color={0,0,127}));
+  connect(Tf_45_Exp.y, RMSE45.u1) annotation (Line(points={{-225,-148},{-216.6,
+          -148},{-216.6,-148.4},{-208.2,-148.4}}, color={0,0,127}));
+  connect(Tf40.y, RMSE40.u2) annotation (Line(points={{-239,-112},{-239,-116},{
+          -208,-116}}, color={0,0,127}));
+  connect(Tf_40_Exp.y, RMSE40.u1) annotation (Line(points={{-223,-96},{-220,-96},
+          {-220,-104},{-208,-104}}, color={0,0,127}));
+  connect(Tf_35_Exp.y, RMSE35.u2) annotation (Line(points={{-221,-76},{-215.5,
+          -76},{-215.5,-78},{-210,-78}}, color={0,0,127}));
+  connect(Tf35.y, RMSE35.u1) annotation (Line(points={{-269,-68},{-252,-68},{
+          -252,-66},{-210,-66}}, color={0,0,127}));
+  connect(Tf30pt5.y, RMSE30.u2)
+    annotation (Line(points={{-245,-46},{-210,-46}}, color={0,0,127}));
+  connect(Tf_30_Exp.y, RMSE30.u1) annotation (Line(points={{-225,-36},{-225,-34},
+          {-210,-34}}, color={0,0,127}));
+  connect(Tf_26_Exp.y, RMSE26.u1)
+    annotation (Line(points={{-219,-2},{-219,-6},{-210,-6}}, color={0,0,127}));
+  connect(Tf26.y, RMSE26.u2) annotation (Line(points={{-241,-12},{-241,-18},{
+          -210,-18}}, color={0,0,127}));
+  connect(Tf_22pt5_Exp.y, RMSE22.u2)
+    annotation (Line(points={{-257,16},{-210,16}}, color={0,0,127}));
+  connect(Tf22pt5.y, RMSE22.u1) annotation (Line(points={{-265,38},{-220,38},{
+          -220,28},{-210,28}}, color={0,0,127}));
+  connect(Tf18.y, RMSE18.u2)
+    annotation (Line(points={{-243,62},{-212,62}}, color={0,0,127}));
+  connect(Tf_18_Exp.y, RMSE18.u1) annotation (Line(points={{-221,76},{-216.5,76},
+          {-216.5,74},{-212,74}}, color={0,0,127}));
+  connect(Tf13.y, RMSE13.u2) annotation (Line(points={{-257,106},{-257,128},{
+          -222,128},{-222,100}}, color={0,0,127}));
+  connect(Tf_13_Exp.y, RMSE13.u1) annotation (Line(points={{-231,110},{-226.5,
+          110},{-226.5,112},{-222,112}}, color={0,0,127}));
+  connect(Tf8.y, RMSE8.u2) annotation (Line(points={{-281,158},{-276,158},{-276,
+          156},{-234,156}}, color={0,0,127}));
+  connect(Tf_8_Exp.y, RMSE8.u1) annotation (Line(points={{-255,176},{-248,176},
+          {-248,168},{-234,168}}, color={0,0,127}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-260},{240,140}}),
                     graphics={
